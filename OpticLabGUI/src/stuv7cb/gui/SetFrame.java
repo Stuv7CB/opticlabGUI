@@ -77,13 +77,13 @@ class SetFrame extends JFrame
 					label.addMouseListener(new MouseListener()
 					{
 						@Override
-						public void mouseClicked(MouseEvent arg0)
+						public void mouseClicked(MouseEvent event)
 						{
 							
 						}
 
 						@Override
-						public void mouseEntered(MouseEvent arg0)
+						public void mouseEntered(MouseEvent event)
 						{
 
 						}
@@ -91,7 +91,7 @@ class SetFrame extends JFrame
 
 						@Override
 
-						public void mouseExited(MouseEvent arg0) 
+						public void mouseExited(MouseEvent event) 
 						{
 
 						}
@@ -99,17 +99,17 @@ class SetFrame extends JFrame
 
 						@Override
 
-						public void mousePressed(MouseEvent arg0)
+						public void mousePressed(MouseEvent event)
 						{
 
 						}
 
 						@Override
-						public void mouseReleased(MouseEvent arg0)
+						public void mouseReleased(MouseEvent event)
 						{
-							arg0.setSource(parent.mainPanel);
-							label.setLocation(arg0.getPoint());
-							System.out.println(arg0.getPoint().x+" "+arg0.getPoint().y);
+							event.setSource(parent.mainPanel);
+							label.setLocation(event.getPoint());
+							System.out.println(event.getPoint().x+" "+event.getPoint().y);
 						}
 					});
 					parent.mainPanel.add(label);
