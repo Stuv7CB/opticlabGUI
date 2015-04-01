@@ -73,7 +73,6 @@ class SetFrame extends JFrame
 				{
 					final LabelLense label=new LabelLense(Double.valueOf(length.getText()), Double.valueOf(uni.getText()));
 					label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
-					label.setSize(1, Integer.valueOf(length.getText()));
 					label.addMouseListener(new MouseListener()
 					{
 						@Override
@@ -109,7 +108,6 @@ class SetFrame extends JFrame
 						{
 							event.setSource(parent.mainPanel);
 							label.setLocation(event.getPoint());
-							System.out.println(event.getPoint().x+" "+event.getPoint().y);
 						}
 					});
 					parent.mainPanel.add(label);
