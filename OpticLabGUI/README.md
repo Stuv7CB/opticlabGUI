@@ -3,9 +3,9 @@ This is GUI for our project.
 
 To compile:
 ```
-javac OpticLabGUI/Main.java
+javac Main.java
 ```
 To run:
 ```
-java OpticLabGUI/Main
+java Main
 ```
