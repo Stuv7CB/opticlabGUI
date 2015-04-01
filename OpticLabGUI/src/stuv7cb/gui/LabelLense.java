@@ -42,4 +42,3 @@ class LabelScreen extends JLabel
 {
 	
 }
-
