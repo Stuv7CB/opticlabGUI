@@ -32,14 +32,3 @@ class LabelLense extends JLabel
 		g2.draw(new Line2D.Double(15d,length,27d,length-13d));
 	}
 }
-
-class LabelSource extends JLabel
-{
-	
-}
-
-class LabelScreen extends JLabel
-{
-	
-}
-
