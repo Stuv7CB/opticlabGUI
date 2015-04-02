@@ -33,13 +33,3 @@ class LabelLense extends JLabel
 	}
 }
 
-class LabelSource extends JLabel
-{
-	
-}
-
-class LabelScreen extends JLabel
-{
-	
-}
-
