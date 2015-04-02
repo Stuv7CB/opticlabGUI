@@ -73,43 +73,6 @@ class SetFrame extends JFrame
 				{
 					final LabelLense label=new LabelLense(Double.valueOf(length.getText()), Double.valueOf(uni.getText()));
 					label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
-					label.addMouseListener(new MouseListener()
-					{
-						@Override
-						public void mouseClicked(MouseEvent event)
-						{
-							
-						}
-
-						@Override
-						public void mouseEntered(MouseEvent event)
-						{
-
-						}
-
-
-						@Override
-
-						public void mouseExited(MouseEvent event) 
-						{
-
-						}
-
-
-						@Override
-
-						public void mousePressed(MouseEvent event)
-						{
-
-						}
-
-						@Override
-						public void mouseReleased(MouseEvent event)
-						{
-							event.setSource(parent.mainPanel);
-							label.setLocation(event.getPoint());
-						}
-					});
 					parent.mainPanel.add(label);
 					label.updateUI();
 				}
