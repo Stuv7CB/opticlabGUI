@@ -3,9 +3,9 @@ This is GUI for our project.
 
 To compile:
 ```
-javac Main.java
+make all
 ```
-To run:
+To make .jar
 ```
-java Main
+make jar
 ```
