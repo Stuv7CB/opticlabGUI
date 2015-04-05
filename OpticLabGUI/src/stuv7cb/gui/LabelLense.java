@@ -22,7 +22,7 @@ class LabelLense extends JLabel
 		length=l;
 		setSize(30,(int)l);
 		this.f=f;
-		JLabel label=this;
+		LabelLense label=this;
 		addMouseListener(new MouseListener()
 		{
 			private int X;
@@ -62,6 +62,7 @@ class LabelLense extends JLabel
 				label.setLocation(label.getX()+event.getX()-X, label.getY()+event.getY()-Y);
 			}
 		});
+		
 	}
 	public void paint(Graphics g)
 	{
