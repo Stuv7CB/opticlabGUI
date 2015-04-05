@@ -10,6 +10,7 @@ class LabelSource extends JLabel
 	LabelSource(String type)
 	{
 		super(type);
+		setSize(25,25);
 		JLabel label=this;
 		addMouseListener(new MouseListener()
 		{

@@ -24,7 +24,6 @@ class SetFrame extends JFrame
 	private JTextField uni;
 	SetFrame(MainFrame frame, String s)
 	{
-		super();
 		parent=frame;
 		type=s;
 		setSize(WIDTH, HEIGHT);
@@ -61,6 +60,10 @@ class SetFrame extends JFrame
 			uni = new JTextField("f");
 			panelWithParams.add(uni);
 		}
+		if(type.equals("Э"))
+		{
+			panelWithParams.add(length);
+		}
 		JButton button = new JButton("Добавить");
 		final JFrame frame=this;
 		button.addActionListener(new ActionListener()
@@ -69,20 +72,32 @@ class SetFrame extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				if(type.equals("Л"))
+				switch (type)
 				{
-					final LabelLense label=new LabelLense(Double.valueOf(length.getText()), Double.valueOf(uni.getText()));
+				case "Л":
+				{
+					LabelLense label=new LabelLense(Double.valueOf(length.getText()), Double.valueOf(uni.getText()));
 					label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
 					parent.mainPanel.add(label);
 					label.updateUI();
+					break;
 				}
-				else
+				case "И":
 				{
-					JLabel label = new JLabel(type);
+					LabelSource label=new LabelSource(type);
 					label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
-					label.setSize(10, 10);
 					parent.mainPanel.add(label);
 					label.updateUI();
+					break;
+				}
+				case "Э":
+				{
+					LabelWall label=new LabelWall(Double.valueOf(length.getText()));
+					label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
+					parent.mainPanel.add(label);
+					label.updateUI();
+					break;
+				}
 				}
 				frame.dispose();
 			}
