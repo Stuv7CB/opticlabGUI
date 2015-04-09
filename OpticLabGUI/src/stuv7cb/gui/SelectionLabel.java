@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 class SelectionLabel extends JLabel
 {
 	static MainFrame parent;
-	protected final static String[] NAME={"Ë","È","Ý"};
+	protected final static String[] NAME={"Ð›","Ð˜","Ð­"};
 	SelectionLabel(int i)
 	{
 		super(NAME[i]);

@@ -21,7 +21,7 @@ public class MainFrame extends JFrame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panel = new JPanel();
 		panel.setSize(3*WIDTH/4, HEIGHT/8);
-		panel.add(new ButtonRun("Начать симуляцию"));
+		panel.add(new ButtonRun("РќР°С‡Р°С‚СЊ"));
 		setLayout(null);
 		panel.setLocation(WIDTH/4, 7*HEIGHT/8);
 		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));

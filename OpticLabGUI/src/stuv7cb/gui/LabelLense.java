@@ -29,8 +29,8 @@ class LabelLense extends JLabel
 		this.f=f;
 		LabelLense label=this;
 		JPopupMenu popup = new JPopupMenu();
-		popup.add(new JMenuItem("Настроить"));
-		JMenuItem delete = new JMenuItem("Удалить");
+		popup.add(new JMenuItem("РќР°СЃС‚СЂРѕРёС‚СЊ"));
+		JMenuItem delete = new JMenuItem("РЈРґР°Р»РёС‚СЊ");
 		delete.addActionListener(new ActionListener()
 		{
 

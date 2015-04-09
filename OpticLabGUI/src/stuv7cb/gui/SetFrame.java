@@ -16,11 +16,11 @@ class SetFrame extends JFrame
 	private final String type;
 	private final int WIDTH=100;
 	private final int HEIGHT=300;
-	private final String TITLE="Свойства объекта";
+	private final String TITLE="РћРєРЅРѕ РЅР°СЃС‚СЂРѕР№РєРё";
 	private JPanel panelWithParams = new JPanel();
 	private JTextField xcord = new JTextField("x");
 	private JTextField ycord = new JTextField("y");
-	private JTextField length = new JTextField("длина");
+	private JTextField length = new JTextField("РґР»РёРЅР°");
 	private JTextField uni;
 	SetFrame(MainFrame frame, String s)
 	{
@@ -37,7 +37,7 @@ class SetFrame extends JFrame
 	}
 	void addObjects()
 	{
-		if(type.equals("Л"))
+		if(type.equals("Р›"))
 		{
 			panelWithParams.setLayout(new GridLayout(5,1));
 		}
@@ -45,7 +45,7 @@ class SetFrame extends JFrame
 		{
 			panelWithParams.setLayout(new GridLayout(3,1));
 		}
-		panelWithParams.add(new JLabel("Введите координаты"));	
+		panelWithParams.add(new JLabel("Р’РІРµРґРёС‚Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹"));	
 		xcord.setFocusable(true);
 		panelWithParams.add(xcord);
 		panelWithParams.add(ycord);
@@ -54,17 +54,17 @@ class SetFrame extends JFrame
 	void addButton()
 	{
 		JPanel panel = new JPanel();
-		if(type.equals("Л"))
+		if(type.equals("Р›"))
 		{
 			panelWithParams.add(length);
 			uni = new JTextField("f");
 			panelWithParams.add(uni);
 		}
-		if(type.equals("Э"))
+		if(type.equals("Р­"))
 		{
 			panelWithParams.add(length);
 		}
-		JButton button = new JButton("Добавить");
+		JButton button = new JButton("Р”РѕР±Р°РІРёС‚СЊ");
 		final JFrame frame=this;
 		button.addActionListener(new ActionListener()
 		{
@@ -74,7 +74,7 @@ class SetFrame extends JFrame
 			{
 				switch (type)
 				{
-				case "Л":
+				case "Р›":
 				{
 					LabelLense label=new LabelLense(Double.valueOf(length.getText()), Double.valueOf(uni.getText()));
 					label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
@@ -82,7 +82,7 @@ class SetFrame extends JFrame
 					label.updateUI();
 					break;
 				}
-				case "И":
+				case "Р":
 				{
 					LabelSource label=new LabelSource(type);
 					label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
@@ -90,7 +90,7 @@ class SetFrame extends JFrame
 					label.updateUI();
 					break;
 				}
-				case "Э":
+				case "Р­":
 				{
 					LabelWall label=new LabelWall(Double.valueOf(length.getText()));
 					label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
