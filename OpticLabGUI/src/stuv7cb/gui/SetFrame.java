@@ -20,7 +20,7 @@ class SetFrame extends JFrame
 	private JPanel panelWithParams = new JPanel();
 	private JTextField xcord = new JTextField("x");
 	private JTextField ycord = new JTextField("y");
-	private JTextField length = new JTextField("length");
+	private JTextField length = new JTextField("длина");
 	private JTextField uni;
 	SetFrame(MainFrame frame, String s)
 	{
