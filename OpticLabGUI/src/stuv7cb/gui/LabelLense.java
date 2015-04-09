@@ -7,7 +7,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.geom.Line2D;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
@@ -46,6 +49,7 @@ class LabelLense extends JLabel
 		{
 			private int X;
 			private int Y;
+			private Timer timer=new Timer();
 			@Override
 			public void mouseClicked(MouseEvent event)
 			{
@@ -76,15 +80,30 @@ class LabelLense extends JLabel
 			{
 				X=event.getX();
 				Y=event.getY();
+				System.out.println("hhhhh");
+				label.addMouseMotionListener(new MouseMotionListener(){
+
+					@Override
+					public void mouseDragged(MouseEvent e) {
+						// TODO Auto-generated method stub
+						System.out.println(e.getX()+" "+e.getY()+" "+X+" "+event.getX());
+						label.setLocation(label.getX()+e.getX()-X, label.getY()+e.getY()-Y);
+					}
+
+					@Override
+					public void mouseMoved(MouseEvent e) {
+						// TODO Auto-generated method stub
+					}
+					
+				});
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent event)
 			{
-				label.setLocation(label.getX()+event.getX()-X, label.getY()+event.getY()-Y);
+				//label.setLocation(label.getX()+event.getX()-X, label.getY()+event.getY()-Y);
 			}
 		});
-		
 	}
 	public void paint(Graphics g)
 	{

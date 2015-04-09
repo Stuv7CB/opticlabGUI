@@ -9,8 +9,8 @@ public class MainFrame extends JFrame
 {
 	private Toolkit kit = Toolkit.getDefaultToolkit();
 	private Dimension screenSize=kit.getScreenSize();
-	final int WIDTH=screenSize.width;
-	final int HEIGHT=screenSize.height;
+	final int WIDTH=screenSize.width/2;
+	final int HEIGHT=screenSize.height/2;
 	private final String TITLE="GUI";
 	MainPanel mainPanel =new MainPanel();
 	public MainFrame()
@@ -29,6 +29,7 @@ public class MainFrame extends JFrame
 		mainPanel.setLayout(null);
 		mainPanel.setSize(3*WIDTH/4, 7*HEIGHT/8);
 		mainPanel.setLocation(WIDTH/4, 0);
+		mainPanel.add(new LabelLense(100,7));
 		add(mainPanel);
 		addPanelOfSelection();
 	}
