@@ -1,14 +1,11 @@
 package stuv7cb.gui;
 
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.awt.event.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 class SetFrame extends JFrame
 {
@@ -17,11 +14,7 @@ class SetFrame extends JFrame
 	private final int WIDTH=100;
 	private final int HEIGHT=300;
 	private final String TITLE="Окно настройки";
-	private JPanel panelWithParams = new JPanel();
-	private JTextField xcord = new JTextField("x");
-	private JTextField ycord = new JTextField("y");
-	private JTextField length = new JTextField("длина");
-	private JTextField uni;
+	private JPanel panel;
 	SetFrame(MainFrame frame, String s)
 	{
 		parent=frame;
@@ -37,72 +30,50 @@ class SetFrame extends JFrame
 	}
 	void addObjects()
 	{
-		if(type.equals("Л"))
+		switch (type)
 		{
-			panelWithParams.setLayout(new GridLayout(5,1));
-		}
-		else
+		case "Л":
 		{
-			panelWithParams.setLayout(new GridLayout(3,1));
+			SetLense panel=new SetLense(parent.mainPanel);
+			panel.addFields();
+			add(panel, BorderLayout.CENTER);
+			this.panel=panel;
+			break;
 		}
-		panelWithParams.add(new JLabel("Введите координаты"));	
-		xcord.setFocusable(true);
-		panelWithParams.add(xcord);
-		panelWithParams.add(ycord);
-		add(panelWithParams, BorderLayout.CENTER);
+		case "И":
+		{
+			SetSource panel=new SetSource(parent.mainPanel);
+			panel.addFields();
+			add(panel, BorderLayout.CENTER);
+			this.panel=panel;
+			break;
+		}
+		case "Э":
+		{
+			SetWall panel=new SetWall(parent.mainPanel);
+			panel.addFields();
+			add(panel, BorderLayout.CENTER);
+			this.panel=panel;
+			break;
+		}
+		}
 	}
 	void addButton()
 	{
-		JPanel panel = new JPanel();
-		if(type.equals("Л"))
-		{
-			panelWithParams.add(length);
-			uni = new JTextField("f");
-			panelWithParams.add(uni);
-		}
-		if(type.equals("Э"))
-		{
-			panelWithParams.add(length);
-		}
+		JPanel panelB = new JPanel();
 		JButton button = new JButton("Добавить");
-		final JFrame frame=this;
+		JFrame frame=this;
 		button.addActionListener(new ActionListener()
 		{
 
 			@Override
-			public void actionPerformed(ActionEvent arg0) 
+			public void actionPerformed(ActionEvent e) 
 			{
-				switch (type)
-				{
-				case "Л":
-				{
-					LabelLense label=new LabelLense(Double.valueOf(length.getText()), Double.valueOf(uni.getText()));
-					label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
-					parent.mainPanel.add(label);
-					label.updateUI();
-					break;
-				}
-				case "И":
-				{
-					LabelSource label=new LabelSource(type);
-					label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
-					parent.mainPanel.add(label);
-					label.updateUI();
-					break;
-				}
-				case "Э":
-				{
-					LabelWall label=new LabelWall(Double.valueOf(length.getText()));
-					label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
-					parent.mainPanel.add(label);
-					label.updateUI();
-					break;
-				}
-				}
+				((SetPanel)panel).addObject();
 				frame.dispose();
 			}
 		});
-		panel.add(button);
-		add(panel, BorderLayout.SOUTH);
+		panelB.add(button);
+		add(panelB, BorderLayout.SOUTH);
 	}
 }

@@ -1,8 +1,12 @@
 package stuv7cb.gui;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.geom.Line2D;
 
 import javax.swing.JLabel;
 
@@ -10,10 +14,9 @@ class LabelSource extends JLabel
 {
 	private int clickX;
 	private int clickY;
-	LabelSource(String type)
+	LabelSource()
 	{
-		super(type);
-		setSize(25,25);
+		setSize(26,26);
 		JLabel label=this;
 		addMouseMotionListener(new MouseMotionListener()
 		{
@@ -67,5 +70,9 @@ class LabelSource extends JLabel
 			}
 			
 		});
+	}
+	public void paint(Graphics g)
+	{
+		g.fillOval(13, 13, 3, 3);
 	}
 }

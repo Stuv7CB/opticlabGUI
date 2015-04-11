@@ -1,8 +1,6 @@
 package stuv7cb.gui;
 
 import java.awt.*;
-import java.awt.event.MouseListener;
-
 import javax.swing.*;
 
 public class MainFrame extends JFrame
@@ -29,7 +27,6 @@ public class MainFrame extends JFrame
 		mainPanel.setLayout(null);
 		mainPanel.setSize(3*WIDTH/4, 7*HEIGHT/8);
 		mainPanel.setLocation(WIDTH/4, 0);
-		mainPanel.add(new LabelLense(100,7));
 		add(mainPanel);
 		addPanelOfSelection();
 	}
