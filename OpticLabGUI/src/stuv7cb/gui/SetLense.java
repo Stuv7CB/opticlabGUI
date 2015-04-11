@@ -2,14 +2,15 @@ package stuv7cb.gui;
 
 import java.awt.GridLayout;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 class SetLense extends SetPanel 
 {
-	SetLense(JPanel p) 
+	SetLense(MainFrame f) 
 	{
-		super(p);
+		super(f);
 	}
 	private JTextField length=new JTextField("Длина");
 	private JTextField f=new JTextField("Фокус");
@@ -26,7 +27,7 @@ class SetLense extends SetPanel
 	{
 		LabelLense label=new LabelLense(Double.valueOf(length.getText()), Double.valueOf(f.getText()));
 		label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
-		panel.add(label);
+		frame.mainPaneladd(label);
 		label.addPopup();
 		label.updateUI();
 	}

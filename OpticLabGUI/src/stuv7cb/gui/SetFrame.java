@@ -34,7 +34,7 @@ class SetFrame extends JFrame
 		{
 		case "Л":
 		{
-			SetLense panel=new SetLense(parent.mainPanel);
+			SetLense panel=new SetLense(parent);
 			panel.addFields();
 			add(panel, BorderLayout.CENTER);
 			this.panel=panel;
@@ -42,7 +42,7 @@ class SetFrame extends JFrame
 		}
 		case "И":
 		{
-			SetSource panel=new SetSource(parent.mainPanel);
+			SetSource panel=new SetSource(parent);
 			panel.addFields();
 			add(panel, BorderLayout.CENTER);
 			this.panel=panel;
@@ -50,7 +50,7 @@ class SetFrame extends JFrame
 		}
 		case "Э":
 		{
-			SetWall panel=new SetWall(parent.mainPanel);
+			SetWall panel=new SetWall(parent);
 			panel.addFields();
 			add(panel, BorderLayout.CENTER);
 			this.panel=panel;

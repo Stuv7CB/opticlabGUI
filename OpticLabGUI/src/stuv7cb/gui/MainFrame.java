@@ -11,7 +11,7 @@ public class MainFrame extends JFrame
 	final int WIDTH=screenSize.width/2;
 	final int HEIGHT=screenSize.height/2;
 	private final String TITLE="GUI";
-	MainPanel mainPanel =new MainPanel();
+	private MainPanel mainPanel =new MainPanel();
 	public MainFrame()
 	{
 		setSize(WIDTH, HEIGHT);
@@ -48,5 +48,9 @@ public class MainFrame extends JFrame
 		panelSelection.setLocation(0, 0);
 		panelSelection.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		add(panelSelection);
+	}
+	void mainPaneladd(JComponent comp)
+	{
+		mainPanel.add(comp);
 	}
 }

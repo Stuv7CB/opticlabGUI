@@ -2,13 +2,14 @@ package stuv7cb.gui;
 
 import java.awt.GridLayout;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 class SetSource extends SetPanel {
 
-	SetSource(JPanel p)
+	SetSource(MainFrame f)
 	{
-		super(p);
+		super(f);
 	}
 
 	@Override
@@ -24,7 +25,7 @@ class SetSource extends SetPanel {
 	{
 		LabelSource label=new LabelSource();
 		label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
-		panel.add(label);
+		frame.mainPaneladd(label);
 		label.updateUI();
 	}
 
