@@ -27,6 +27,7 @@ class SetLense extends SetPanel
 		LabelLense label=new LabelLense(Double.valueOf(length.getText()), Double.valueOf(f.getText()));
 		label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
 		panel.add(label);
+		label.addPopup();
 		label.updateUI();
 	}
 
