@@ -2,54 +2,70 @@ package stuv7cb.gui;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JLabel;
 
 class LabelSource extends JLabel 
 {
+	private int clickX;
+	private int clickY;
 	LabelSource(String type)
 	{
 		super(type);
 		setSize(25,25);
 		JLabel label=this;
+		addMouseMotionListener(new MouseMotionListener()
+		{
+			@Override		
+			public void mouseDragged(MouseEvent e) 
+			{
+				label.setLocation(label.getX()+e.getX()-clickX, label.getY()+e.getY()-clickY);	
+			}
+			@Override
+			public void mouseMoved(MouseEvent e) 
+			{
+				// TODO Auto-generated method stub	
+			}
+		});
 		addMouseListener(new MouseListener()
 		{
-			private int X;
-			private int Y;
+
 			@Override
-			public void mouseClicked(MouseEvent event)
+			public void mouseClicked(MouseEvent e)
 			{
+				// TODO Auto-generated method stub
 				
 			}
 
 			@Override
-			public void mouseEntered(MouseEvent event)
+			public void mouseEntered(MouseEvent e)
 			{
-
-			}
-
-
-			@Override
-
-			public void mouseExited(MouseEvent event) 
-			{
-
-			}
-
-
-			@Override
-
-			public void mousePressed(MouseEvent event)
-			{
-				X=event.getX();
-				Y=event.getY();
+				// TODO Auto-generated method stub
+				
 			}
 
 			@Override
-			public void mouseReleased(MouseEvent event)
+			public void mouseExited(MouseEvent e) 
 			{
-				label.setLocation(label.getX()+event.getX()-X, label.getY()+event.getY()-Y);
+				// TODO Auto-generated method stub
+				
 			}
+
+			@Override
+			public void mousePressed(MouseEvent e) 
+			{
+				clickX=e.getX();
+				clickY=e.getY();
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) 
+			{
+				// TODO Auto-generated method stub
+				
+			}
+			
 		});
 	}
 }
