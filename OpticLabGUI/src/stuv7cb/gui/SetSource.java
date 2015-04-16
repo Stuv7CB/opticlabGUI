@@ -26,6 +26,7 @@ class SetSource extends SetPanel {
 		LabelSource label=new LabelSource();
 		label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
 		frame.mainPaneladd(label);
+		label.addPopup();
 		label.updateUI();
 	}
 

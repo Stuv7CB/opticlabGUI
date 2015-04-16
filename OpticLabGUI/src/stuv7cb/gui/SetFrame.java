@@ -69,8 +69,15 @@ class SetFrame extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
+				try
+				{
 				((SetPanel)panel).addObject();
 				frame.dispose();
+				}
+				catch(NumberFormatException nfe)
+				{
+					System.out.println(nfe.getLocalizedMessage()+"number is invalid.");	
+				}
 			}
 		});
 		panelB.add(button);

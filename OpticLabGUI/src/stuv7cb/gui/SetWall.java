@@ -28,6 +28,7 @@ class SetWall extends SetPanel
 		LabelWall label=new LabelWall(Double.valueOf(length.getText()));
 		label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
 		frame.mainPaneladd(label);
+		label.addPopup();
 		label.updateUI();
 	}
 

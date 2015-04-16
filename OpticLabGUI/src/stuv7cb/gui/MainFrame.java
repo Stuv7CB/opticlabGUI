@@ -29,6 +29,7 @@ public class MainFrame extends JFrame
 		mainPanel.setSize(3*WIDTH/4, 7*HEIGHT/8);
 		mainPanel.setLocation(WIDTH/4, 0);
 		add(mainPanel);
+		//addScrollBar();//Пока не работает
 		addPanelOfSelection();
 	}
 	void addPanelOfSelection()
@@ -52,5 +53,12 @@ public class MainFrame extends JFrame
 	void mainPaneladd(JComponent comp)
 	{
 		mainPanel.add(comp);
+	}
+	void addScrollBar()
+	{
+		JScrollPane scroll = new JScrollPane(mainPanel);
+		scroll.setSize(mainPanel.getSize().width, 30);
+		scroll.setLocation(0, getSize().height-30);
+		getContentPane().add(scroll);
 	}
 }
