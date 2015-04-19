@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>qwerty.jar</name>
+			<type>1</type>
+			<location>D:/qwerty.jar</location>
+		</link>
+	</linkedResources>
 </projectDescription>

@@ -8,6 +8,7 @@ abstract class SetPanel extends JPanel
 {
 	protected JTextField xcord = new JTextField("x");
 	protected JTextField ycord = new JTextField("y");
+	protected JTextField angle = new JTextField("Угол");
 	protected MainFrame frame;
 	SetPanel(MainFrame f)
 	{

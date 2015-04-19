@@ -25,17 +25,22 @@ class LabelLense extends JLabel
 {
 	static private int number=0;
 	private int id;
-	private final double length;
-	private final double f;
+	private double length;
+	private double f;
 	private int clickX;
 	private int clickY;
+	private double angle;
 	private JPopupMenu popup=new JPopupMenu();
-	LabelLense(double l, double f)
+	LabelLense(double l, double f, double a)
 	{
 		id=number;
 		number++;
 		length=l;
-		setSize(30,(int)l);
+		angle=a;
+		if(a!=0)
+		{
+			setSize((int)(l*Math.cos(angle)), (int)(l*Math.sin(angle)));
+		}
 		this.f=f;
 		LabelLense label=this;
 		addMouseMotionListener(new MouseMotionListener()
@@ -115,7 +120,7 @@ class LabelLense extends JLabel
 			}
 		}
 		MainFrame parent=(MainFrame)c;
-		JMenuItem set = new JMenuItem("Настроить");
+		/*JMenuItem set = new JMenuItem("Настроить");
 		set.addActionListener(new ActionListener()
 		{
 			@Override
@@ -150,6 +155,7 @@ class LabelLense extends JLabel
 								catch(NumberFormatException nfe)
 								{
 									System.out.println(nfe.getLocalizedMessage()+"number is invalid.");	
+									System.out.println(p.xcord.getText());
 								}
 							}
 						});
@@ -160,7 +166,7 @@ class LabelLense extends JLabel
 			}
 		});
 		popup.add(set);
-		popup.addSeparator();
+		popup.addSeparator();*/
 		JMenuItem delete=new JMenuItem("Удалить.");
 		delete.addActionListener(new ActionListener()
 		{
@@ -178,10 +184,8 @@ class LabelLense extends JLabel
 	{
 		Graphics2D g2=(Graphics2D) g;
 		g2.setPaint(Color.black);
-		g2.draw(new Line2D.Double(15d,0d,15d,length));
-		g2.draw(new Line2D.Double(15d,0d,3d,12d));
-		g2.draw(new Line2D.Double(15d,0d,27d,12d));
-		g2.draw(new Line2D.Double(15d,length,3d,length-13d));
-		g2.draw(new Line2D.Double(15d,length,27d,length-13d));
+		g2.draw(new Line2D.Double(0, getSize().getHeight(), getSize().getWidth(), 0));
+		g2.draw(new Line2D.Double(0, getSize().getHeight(), 15*Math.cos(angle+0.261799388), getSize().getHeight()-15*Math.sin(angle+0.261799388)));
+		g2.draw(new Line2D.Double(0, getSize().getHeight(), 15*Math.cos(angle-0.261799388), getSize().getHeight()-15*Math.sin(angle-0.261799388)));
 	}
 }

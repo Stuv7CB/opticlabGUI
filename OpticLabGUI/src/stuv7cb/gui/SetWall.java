@@ -17,10 +17,11 @@ class SetWall extends SetPanel
 	@Override
 	void addFields()
 	{
-		setLayout(new GridLayout(3,1));
+		setLayout(new GridLayout(4,1));
 		add(xcord);
 		add(ycord);
 		add(length);
+		add(angle);
 	}
 	@Override
 	void addObject()

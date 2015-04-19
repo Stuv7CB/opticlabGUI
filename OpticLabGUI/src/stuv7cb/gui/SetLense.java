@@ -17,15 +17,16 @@ class SetLense extends SetPanel
 	@Override
 	void addFields() 
 	{
-		setLayout(new GridLayout(4,1));
+		setLayout(new GridLayout(5,1));
 		add(xcord);
 		add(ycord);
 		add(length);
+		add(angle);//Добавить в линзу
 		add(f);
 	}
 	void addObject() 
 	{
-		LabelLense label=new LabelLense(Double.valueOf(length.getText()), Double.valueOf(f.getText()));
+		LabelLense label=new LabelLense(Double.valueOf(length.getText()), Double.valueOf(f.getText()), Double.valueOf(angle.getText()));
 		label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
 		frame.mainPaneladd(label);
 		label.addPopup();
