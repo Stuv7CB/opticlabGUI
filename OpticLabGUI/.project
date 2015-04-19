@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>bin.zip</name>
-			<type>1</type>
-			<location>D:/OpticLabGUI/OpticLabGUI/bin.zip</location>
-		</link>
-	</linkedResources>
 </projectDescription>
