@@ -20,11 +20,13 @@ public class MainFrame extends JFrame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panel = new JPanel();
 		panel.setSize(3*WIDTH/4, HEIGHT/8);
-		panel.add(new ButtonRun("Начать"));
+		ButtonRun br=new ButtonRun("Начать");
+		panel.add(br);
 		setLayout(null);
 		panel.setLocation(WIDTH/4, 7*HEIGHT/8);
 		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		add(panel);
+		br.addClient();
 		mainPanel.setLayout(null);
 		mainPanel.setSize(3*WIDTH/4, 7*HEIGHT/8);
 		mainPanel.setLocation(WIDTH/4, 0);
@@ -54,11 +56,15 @@ public class MainFrame extends JFrame
 	{
 		mainPanel.add(comp);
 	}
-	void addScrollBar()
+	/*void addScrollBar()
 	{
 		JScrollPane scroll = new JScrollPane(mainPanel);
 		scroll.setSize(mainPanel.getSize().width, 30);
 		scroll.setLocation(0, getSize().height-30);
 		getContentPane().add(scroll);
+	}*/
+	Component[] getComponentsofMainPanel()
+	{
+		return mainPanel.getComponents();
 	}
 }

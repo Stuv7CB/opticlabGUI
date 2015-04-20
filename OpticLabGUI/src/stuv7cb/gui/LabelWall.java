@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
-class LabelWall extends JLabel 
+class LabelWall extends LabelObject
 {
 	private double length;
 	private int clickX;
@@ -23,6 +23,7 @@ class LabelWall extends JLabel
 	private JPopupMenu popup=new JPopupMenu();
 	LabelWall(double l)
 	{
+		ID=2;
 		length=l;
 		setSize(30, (int)l);
 		JLabel label=this;

@@ -12,13 +12,14 @@ import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
-class LabelSource extends JLabel 
+class LabelSource extends LabelObject
 {
 	private int clickX;
 	private int clickY;
 	private JPopupMenu popup=new JPopupMenu();
 	LabelSource()
 	{
+		ID=1;
 		setSize(26,26);
 		JLabel label=this;
 		addMouseMotionListener(new MouseMotionListener()
@@ -109,4 +110,5 @@ class LabelSource extends JLabel
 	{
 		g.fillOval(13, 13, 3, 3);
 	}
+
 }

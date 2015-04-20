@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.SwingUtilities;
 
-class LabelLense extends JLabel 
+class LabelLense extends LabelObject
 {
 	static private int number=0;
 	private int id;
@@ -33,6 +33,7 @@ class LabelLense extends JLabel
 	private JPopupMenu popup=new JPopupMenu();
 	LabelLense(double l, double f, double a)
 	{
+		ID=0;
 		id=number;
 		number++;
 		length=l;
