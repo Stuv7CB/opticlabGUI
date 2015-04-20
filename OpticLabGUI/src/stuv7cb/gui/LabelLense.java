@@ -23,8 +23,6 @@ import javax.swing.SwingUtilities;
 
 class LabelLense extends LabelObject
 {
-	static private int number=0;
-	private int id;
 	private double length;
 	private double f;
 	private int clickX;
@@ -34,8 +32,6 @@ class LabelLense extends LabelObject
 	LabelLense(double l, double f, double a)
 	{
 		ID=0;
-		id=number;
-		number++;
 		length=l;
 		angle=a;
 		if(a!=0)
@@ -121,7 +117,7 @@ class LabelLense extends LabelObject
 			}
 		}
 		MainFrame parent=(MainFrame)c;
-		/*JMenuItem set = new JMenuItem("Настроить");
+		JMenuItem set = new JMenuItem("Настроить");
 		set.addActionListener(new ActionListener()
 		{
 			@Override
@@ -134,7 +130,28 @@ class LabelLense extends LabelObject
 						JPanel panelB = new JPanel();
 						JButton button = new JButton("Добавить");
 						JFrame frame=this;
-						SetLense p=new SetLense(parent)
+						button.addActionListener(new ActionListener()
+						{
+							@Override
+							public void actionPerformed(ActionEvent e) 
+							{
+								try
+								{
+								((SetPanel)panel).addObject();
+								frame.dispose();
+								}
+								catch(NumberFormatException nfe)
+								{
+									System.out.println(nfe.getLocalizedMessage()+"number is invalid.");	
+								}
+							}
+						});
+						panelB.add(button);
+						add(panelB, BorderLayout.SOUTH);
+					}
+					void addObjects()
+					{
+						SetLense panel=new SetLense(parent)
 						{
 							void addObject() 
 							{
@@ -142,32 +159,15 @@ class LabelLense extends LabelObject
 								q.updateUI();
 							}
 						};
-						button.addActionListener(new ActionListener()
-						{
-
-							@Override
-							public void actionPerformed(ActionEvent e) 
-							{
-								try
-								{
-								((SetPanel)p).addObject();
-								frame.dispose();
-								}
-								catch(NumberFormatException nfe)
-								{
-									System.out.println(nfe.getLocalizedMessage()+"number is invalid.");	
-									System.out.println(p.xcord.getText());
-								}
-							}
-						});
-						panelB.add(button);
-						add(panelB, BorderLayout.SOUTH);
+						panel.addFields();
+						add(panel, BorderLayout.CENTER);
+						this.panel=panel;
 					}
 				};
 			}
 		});
 		popup.add(set);
-		popup.addSeparator();*/
+		popup.addSeparator();
 		JMenuItem delete=new JMenuItem("Удалить.");
 		delete.addActionListener(new ActionListener()
 		{

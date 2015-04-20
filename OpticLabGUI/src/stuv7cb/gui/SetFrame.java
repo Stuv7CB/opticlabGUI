@@ -10,11 +10,11 @@ import javax.swing.JPanel;
 class SetFrame extends JFrame
 {
 	private final MainFrame parent;
-	private final String type;
+	final String type;
 	private final int WIDTH=100;
 	private final int HEIGHT=300;
 	private final String TITLE="Окно настройки";
-	private JPanel panel;
+	JPanel panel;
 	SetFrame(MainFrame frame, String s)
 	{
 		parent=frame;
@@ -32,30 +32,30 @@ class SetFrame extends JFrame
 	{
 		switch (type)
 		{
-		case "Л":
-		{
-			SetLense panel=new SetLense(parent);
-			panel.addFields();
-			add(panel, BorderLayout.CENTER);
-			this.panel=panel;
-			break;
+			case "Л":
+			{
+				SetLense panel=new SetLense(parent);
+				panel.addFields();
+				add(panel, BorderLayout.CENTER);
+				this.panel=panel;
+				break;
+			}
+			case "И":
+			{
+				SetSource panel=new SetSource(parent);
+				panel.addFields();
+				add(panel, BorderLayout.CENTER);
+				this.panel=panel;
+				break;
 		}
-		case "И":
-		{
-			SetSource panel=new SetSource(parent);
-			panel.addFields();
-			add(panel, BorderLayout.CENTER);
-			this.panel=panel;
-			break;
-		}
-		case "Э":
-		{
-			SetWall panel=new SetWall(parent);
-			panel.addFields();
-			add(panel, BorderLayout.CENTER);
-			this.panel=panel;
-			break;
-		}
+			case "Э":
+			{
+				SetWall panel=new SetWall(parent);
+				panel.addFields();
+				add(panel, BorderLayout.CENTER);
+				this.panel=panel;
+				break;
+			}
 		}
 	}
 	void addButton()
