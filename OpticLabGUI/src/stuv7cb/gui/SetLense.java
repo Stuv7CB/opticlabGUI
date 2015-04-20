@@ -21,7 +21,7 @@ class SetLense extends SetPanel
 		add(xcord);
 		add(ycord);
 		add(length);
-		add(angle);//Добавить в линзу
+		add(angle);
 		add(f);
 	}
 	void addObject() 
