@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 
 class SetFrame extends JFrame
 {
-	private final MainFrame parent;
-	final int ID;
+	private MainFrame parent;
+	private int ID;
 	private final int WIDTH=100;
 	private final int HEIGHT=300;
 	private final String TITLE="Окно настройки";
@@ -27,6 +27,10 @@ class SetFrame extends JFrame
 		addObjects();
 		addButton();
 		setVisible(true);
+	}
+	SetFrame()
+	{
+		super();
 	}
 	void addObjects()
 	{
