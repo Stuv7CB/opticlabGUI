@@ -31,6 +31,9 @@ public class MainFrame extends JFrame
 		mainPanel.setSize(3*WIDTH/4, 7*HEIGHT/8);
 		mainPanel.setLocation(WIDTH/4, 0);
 		add(mainPanel);
+		//
+		mainPanel.add(new LabelLense(111,0,0));
+		//
 		//addScrollBar();//Пока не работает
 		addPanelOfSelection();
 	}
@@ -66,5 +69,9 @@ public class MainFrame extends JFrame
 	Component[] getComponentsofMainPanel()
 	{
 		return mainPanel.getComponents();
+	}
+	void mainPanelPaint(int x0, int y0, int x, int y)
+	{
+		mainPanel.paintNewLine(x0, y0, x, y);
 	}
 }

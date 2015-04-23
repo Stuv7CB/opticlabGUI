@@ -33,35 +33,41 @@ class ButtonRun extends JButton
 				break;
 			}
 		}
-		MainFrame q=(MainFrame) c;
+		MainFrame mainFrame=(MainFrame) c;
 		addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent event)
 			{
 					//ip=(new Scanner(System.in)).nextLine();
-				ip="localhost";
+				ip="192.168.1.15";
 					//port=(new Scanner(System.in)).nextInt();
 				port=6666;
 				try
 				{
-					Socket s=new Socket(ip, port);
-					DataOutputStream sout=new DataOutputStream(s.getOutputStream());
-					DataInputStream sin=new DataInputStream(s.getInputStream());
-					Component[] component=((MainFrame)q).getComponentsofMainPanel();
+					Socket socket=new Socket(ip, port);
+					DataOutputStream out=new DataOutputStream(socket.getOutputStream());
+					DataInputStream in=new DataInputStream(socket.getInputStream());
+					Component[] component=mainFrame.getComponentsofMainPanel();
+					out.writeInt(component.length);
+					out.flush();
 					for (int i=0;i<component.length; i++)
 					{
-						sout.writeInt(((LabelObject)component[i]).getID());
-						sout.flush();
+						out.writeInt(((LabelObject)component[i]).getID());
+						out.flush();
 					}
-					s.close();
+					while(in.readUTF().equals("Next"))
+					{
+						mainFrame.mainPanelPaint(in.readInt(), in.readInt(), in.readInt(), in.readInt());
+					}
+					socket.close();
 				}
 				catch(ConnectException e)
 				{
-					System.out.println("Can't connect to server");
+					System.err.println("Can't connect to server");
 				}
-				catch(Exception e)
+				catch(IOException e)
 				{
-					e.printStackTrace();
+					
 				}
 			}
 		});
