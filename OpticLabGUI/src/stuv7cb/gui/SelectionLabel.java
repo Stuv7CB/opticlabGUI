@@ -11,9 +11,11 @@ class SelectionLabel extends JLabel
 {
 	static MainFrame parent;
 	protected final static String[] NAME={"Л","И","Э"};
+	private int ID;
 	SelectionLabel(int i)
 	{
 		super(NAME[i]);
+		ID=i;
 		setSize(20, 20);
 		setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
@@ -22,7 +24,7 @@ class SelectionLabel extends JLabel
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			SetFrame setFrame = new SetFrame(parent, getText());
+			SetFrame setFrame = new SetFrame(parent, ID);
 			
 		}
 

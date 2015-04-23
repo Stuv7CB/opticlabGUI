@@ -19,174 +19,38 @@ import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 class LabelLense extends LabelObject
 {
 	private double length;
-	private double f;
-	private int clickX;
-	private int clickY;
+	private double focus;
 	private double angle;
-	private JPopupMenu popup=new JPopupMenu();
 	LabelLense(double l, double f, double a)
 	{
 		ID=0;
 		length=l;
 		angle=a;
-		if(a!=0)
-		{
-			setSize((int)(l*Math.cos(angle)), (int)(l*Math.sin(angle)));
-		}
-		this.f=f;
-		LabelLense label=this;
-		addMouseMotionListener(new MouseMotionListener()
-		{
-			@Override		
-			public void mouseDragged(MouseEvent e) 
-			{
-				label.setLocation(label.getX()+e.getX()-clickX, label.getY()+e.getY()-clickY);	
-			}
-			@Override
-			public void mouseMoved(MouseEvent e) 
-			{
-				// TODO Auto-generated method stub	
-			}
-		});
-		addMouseListener(new MouseListener()
-		{
-
-			@Override
-			public void mouseClicked(MouseEvent e)
-			{
-				if (e.getButton()==e.BUTTON3)
-				{
-			        popup.show(e.getComponent(), e.getX(), e.getY());
-				}
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) 
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) 
-			{
-				clickX=e.getX();
-				clickY=e.getY();
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) 
-			{
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-	}
-	void addPopup()
-	{
-		Container c = this;
-		while ( c.getParent() != null)
-		{
-			c = c.getParent();
-			if(c instanceof MainPanel)
-			{
-				break;
-			}
-		}
-		JLabel label=this;
-		MainPanel q=(MainPanel) c;
-		while ( c.getParent() != null)
-		{
-			c = c.getParent();
-			if(c instanceof MainFrame)
-			{
-				break;
-			}
-		}
-		MainFrame parent=(MainFrame)c;
-		JMenuItem set = new JMenuItem("Настроить");
-		set.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				SetFrame set=new SetFrame(parent, "Л")
-				{
-					void addButton()
-					{
-						JPanel panelB = new JPanel();
-						JButton button = new JButton("Добавить");
-						JFrame frame=this;
-						button.addActionListener(new ActionListener()
-						{
-							@Override
-							public void actionPerformed(ActionEvent e) 
-							{
-								try
-								{
-								((SetPanel)panel).addObject();
-								frame.dispose();
-								}
-								catch(NumberFormatException nfe)
-								{
-									System.out.println(nfe.getLocalizedMessage()+"number is invalid.");	
-								}
-							}
-						});
-						panelB.add(button);
-						add(panelB, BorderLayout.SOUTH);
-					}
-					void addObjects()
-					{
-						SetLense panel=new SetLense(parent)
-						{
-							void addObject() 
-							{
-								label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
-								q.updateUI();
-							}
-						};
-						panel.addFields();
-						add(panel, BorderLayout.CENTER);
-						this.panel=panel;
-					}
-				};
-			}
-		});
-		popup.add(set);
-		popup.addSeparator();
-		JMenuItem delete=new JMenuItem("Удалить.");
-		delete.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e) 
-			{
-				q.remove(label);
-				q.updateUI();
-			}	
-		});
-		popup.add(delete);
-		popup.updateUI();
+		focus=f;
+		setSize((int)(l*Math.sin(angle))+10, (int)(l*Math.cos(angle))+10);
 	}
 	public void paint(Graphics g)
 	{
 		Graphics2D g2=(Graphics2D) g;
 		g2.setPaint(Color.black);
-		g2.draw(new Line2D.Double(0, getSize().getHeight(), getSize().getWidth(), 0));
-		g2.draw(new Line2D.Double(0, getSize().getHeight(), 15*Math.cos(angle+0.261799388), getSize().getHeight()-15*Math.sin(angle+0.261799388)));
-		g2.draw(new Line2D.Double(0, getSize().getHeight(), 15*Math.cos(angle-0.261799388), getSize().getHeight()-15*Math.sin(angle-0.261799388)));
+		g2.draw(new Line2D.Double(5, getSize().getHeight()-5, getSize().getWidth()-5, 5));
+		g2.draw(new Line2D.Double(5, getSize().getHeight()-5, 15*Math.sin(angle+0.261799388)+5, getSize().getHeight()-15*Math.cos(angle+0.261799388)-5));
+		g2.draw(new Line2D.Double(5, getSize().getHeight()-5, 15*Math.sin(angle-0.261799388)+5, getSize().getHeight()-15*Math.cos(angle-0.261799388)-5));
+		g2.draw(new Line2D.Double(getSize().getWidth()-5, 5, getSize().getWidth()-5-15*Math.sin(angle+0.261799388), 5+15*Math.cos(angle+0.261799388)));
+		g2.draw(new Line2D.Double(getSize().getWidth()-5, 5, getSize().getWidth()-5-15*Math.sin(angle-0.261799388), 5+15*Math.cos(angle-0.261799388)));
+	}
+	void changeLength(double l)
+	{
+		length=l;
+	}
+	void changeAngle(double a)
+	{
+		angle=a;
 	}
 }

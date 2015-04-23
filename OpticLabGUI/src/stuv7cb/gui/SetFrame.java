@@ -10,15 +10,15 @@ import javax.swing.JPanel;
 class SetFrame extends JFrame
 {
 	private final MainFrame parent;
-	final String type;
+	final int ID;
 	private final int WIDTH=100;
 	private final int HEIGHT=300;
 	private final String TITLE="Окно настройки";
 	JPanel panel;
-	SetFrame(MainFrame frame, String s)
+	SetFrame(MainFrame frame, int id)
 	{
 		parent=frame;
-		type=s;
+		ID=id;
 		setSize(WIDTH, HEIGHT);
 		setTitle(TITLE);
 		setLocationByPlatform(true);
@@ -30,9 +30,9 @@ class SetFrame extends JFrame
 	}
 	void addObjects()
 	{
-		switch (type)
+		switch (ID)
 		{
-			case "Л":
+			case 0:
 			{
 				SetLense panel=new SetLense(parent);
 				panel.addFields();
@@ -40,7 +40,7 @@ class SetFrame extends JFrame
 				this.panel=panel;
 				break;
 			}
-			case "И":
+			case 1:
 			{
 				SetSource panel=new SetSource(parent);
 				panel.addFields();
@@ -48,7 +48,7 @@ class SetFrame extends JFrame
 				this.panel=panel;
 				break;
 		}
-			case "Э":
+			case 2:
 			{
 				SetWall panel=new SetWall(parent);
 				panel.addFields();

@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 
 class SetWall extends SetPanel
 {
-	private JTextField length=new JTextField("Длина");
+	protected JTextField length=new JTextField("Длина");
 	SetWall(MainFrame f) 
 	{
 		super(f);
@@ -28,6 +28,7 @@ class SetWall extends SetPanel
 	{
 		LabelWall label=new LabelWall(Double.valueOf(length.getText()));
 		label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
+		label.addMouseControl();
 		frame.mainPaneladd(label);
 		label.addPopup();
 		label.updateUI();

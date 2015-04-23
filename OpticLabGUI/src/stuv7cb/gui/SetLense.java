@@ -12,8 +12,8 @@ class SetLense extends SetPanel
 	{
 		super(f);
 	}
-	private JTextField length=new JTextField("Длина");
-	private JTextField f=new JTextField("Фокус");
+	protected JTextField length=new JTextField("Длина");
+	protected JTextField f=new JTextField("Фокус");
 	@Override
 	void addFields() 
 	{
@@ -28,9 +28,9 @@ class SetLense extends SetPanel
 	{
 		LabelLense label=new LabelLense(Double.valueOf(length.getText()), Double.valueOf(f.getText()), Double.valueOf(angle.getText()));
 		label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
+		label.addMouseControl();
 		frame.mainPaneladd(label);
 		label.addPopup();
 		label.updateUI();
 	}
-
 }
