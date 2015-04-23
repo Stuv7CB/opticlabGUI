@@ -26,7 +26,7 @@ class SetWall extends SetPanel
 	@Override
 	void addObject()
 	{
-		LabelWall label=new LabelWall(Double.valueOf(length.getText()));
+		LabelWall label=new LabelWall(Double.valueOf(length.getText()), Double.valueOf(angle.getText()));
 		label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
 		label.addMouseControl();
 		frame.mainPaneladd(label);

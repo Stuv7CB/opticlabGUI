@@ -11,21 +11,19 @@ class SetFrame extends JFrame
 {
 	private MainFrame parent;
 	private int ID;
-	private final int WIDTH=100;
-	private final int HEIGHT=300;
 	private final String TITLE="Окно настройки";
 	JPanel panel;
 	SetFrame(MainFrame frame, int id)
 	{
 		parent=frame;
 		ID=id;
-		setSize(WIDTH, HEIGHT);
 		setTitle(TITLE);
 		setLocationByPlatform(true);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		addObjects();
 		addButton();
+		pack();
 		setVisible(true);
 	}
 	SetFrame()
@@ -80,7 +78,7 @@ class SetFrame extends JFrame
 				}
 				catch(NumberFormatException nfe)
 				{
-					System.out.println(nfe.getLocalizedMessage()+"number is invalid.");	
+					System.err.println(nfe.getLocalizedMessage()+"number is invalid.");	
 				}
 			}
 		});

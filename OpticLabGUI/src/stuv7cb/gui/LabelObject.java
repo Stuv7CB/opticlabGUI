@@ -158,8 +158,11 @@ abstract class LabelObject extends JLabel
 								{
 									void addObject()
 									{
+										((LabelWall)label).changeLength(Double.valueOf(length.getText()));
+										((LabelWall)label).changeAngle(Double.valueOf(angle.getText()));
 										((LabelWall)label).setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
-										((LabelWall)label).paint(((LabelLense)label).getGraphics());
+										((LabelWall)label).setSize((int)(Double.valueOf(length.getText())*Math.sin(Double.valueOf(angle.getText())))+10, (int)(Double.valueOf(length.getText())*Math.cos(Double.valueOf(angle.getText())))+10);
+										((LabelWall)label).paint(((LabelWall)label).getGraphics());
 										((LabelWall)label).updateUI();
 									}
 								};

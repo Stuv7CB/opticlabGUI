@@ -54,8 +54,15 @@ class ButtonRun extends JButton
 							@Override
 							public void actionPerformed(ActionEvent e) 
 							{
-								ip=IP.getText();
-								port=Integer.valueOf(PORT.getText());
+								try
+								{
+									ip=IP.getText();
+									port=Integer.valueOf(PORT.getText());
+								}
+								catch(NumberFormatException nfe)
+								{
+									System.err.println(nfe.getLocalizedMessage()+" number is invalid.");	
+									}
 								addSocket();
 								dispose();
 							}

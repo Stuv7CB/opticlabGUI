@@ -33,7 +33,7 @@ class LabelLense extends LabelObject
 		length=l;
 		angle=a;
 		focus=f;
-		setSize((int)(l*Math.sin(angle))+10, (int)(l*Math.cos(angle))+10);
+		setSize((int)(length*Math.sin(angle))+10, (int)(length*Math.cos(angle))+10);
 	}
 	public void paint(Graphics g)
 	{

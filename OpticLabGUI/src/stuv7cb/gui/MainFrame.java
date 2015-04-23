@@ -30,6 +30,7 @@ public class MainFrame extends JFrame
 		mainPanel.setLayout(null);
 		mainPanel.setSize(3*WIDTH/4, 7*HEIGHT/8);
 		mainPanel.setLocation(WIDTH/4, 0);
+		mainPanel.setBackground(Color.WHITE);
 		add(mainPanel);
 		//
 		mainPanel.add(new LabelLense(111,0,0));
