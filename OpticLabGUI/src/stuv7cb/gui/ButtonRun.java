@@ -155,7 +155,7 @@ class ButtonRun extends JButton
 		}
 		catch(ConnectException e)
 		{
-			System.err.println("Can't connect to server");
+			System.err.println("Can't connect to server.");
 		}
 		catch(IOException e)
 		{
