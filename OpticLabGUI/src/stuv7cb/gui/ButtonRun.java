@@ -21,7 +21,8 @@ import javax.swing.JTextField;
 
 class ButtonRun extends JButton
 {
-	String ip;
+	String ip="ip";
+	boolean saveSocket=false;
 	int port;
 	ButtonRun(String a)
 	{
@@ -42,8 +43,8 @@ class ButtonRun extends JButton
 						setTitle("Input address");
 						setLocationByPlatform(true);
 						setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						JTextField IP=new JTextField("ip");
-						JTextField PORT=new JTextField("port");
+						JTextField IP=new JTextField(ip);
+						JTextField PORT=new JTextField(String.valueOf(port));
 						panel.setLayout(new GridLayout(2,1));
 						panel.add(IP);
 						panel.add(PORT);
@@ -95,11 +96,13 @@ class ButtonRun extends JButton
 			DataOutputStream out=new DataOutputStream(socket.getOutputStream());
 			DataInputStream in=new DataInputStream(socket.getInputStream());
 			Component[] component=mainFrame.getComponentsofMainPanel();
-			out.writeInt(component.length);
+			out.write(String.valueOf(component.length).getBytes());
 			out.flush();
 			for (int i=0;i<component.length; i++)
 			{
-				out.writeInt(((LabelObject)component[i]).getID());
+				String line=String.valueOf(((LabelObject)component[i]).getID())+" "+((LabelObject)component[i]).getParams();
+				System.out.println(line);
+				out.write(line.getBytes());
 				out.flush();
 			}
 			while(in.readUTF().equals("Next"))

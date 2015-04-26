@@ -16,12 +16,19 @@ class LabelSource extends LabelObject
 {
 	LabelSource()
 	{
-		ID=1;
+		ID=0;
 		setSize(26,26);
 	}
 	public void paint(Graphics g)
 	{
 		g.fillOval(13, 13, 3, 3);
+	}
+	@Override
+	String getParams() 
+	{
+		String line="";
+		line=line+getLocation().getX()+" "+getLocation().getY();
+		return line;
 	}
 
 }

@@ -117,7 +117,7 @@ abstract class LabelObject extends JLabel
 					{
 						switch (ID)
 						{
-							case 0:
+							case 2:
 							{
 								SetLense panel=new SetLense(parent)
 								{
@@ -136,7 +136,7 @@ abstract class LabelObject extends JLabel
 								this.panel=panel;
 								break;
 							}
-							case 1:
+							case 0:
 							{
 								SetSource panel=new SetSource(parent)
 								{
@@ -152,7 +152,7 @@ abstract class LabelObject extends JLabel
 								this.panel=panel;
 								break;
 						}
-							case 2:
+							case 1:
 							{
 								SetWall panel=new SetWall(parent)
 								{
@@ -216,4 +216,5 @@ abstract class LabelObject extends JLabel
 		popup.add(delete);
 		popup.updateUI();
 	}
+	abstract String getParams();
 }

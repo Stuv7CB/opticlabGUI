@@ -29,7 +29,7 @@ class LabelLense extends LabelObject
 	private double angle;
 	LabelLense(double l, double f, double a)
 	{
-		ID=0;
+		ID=2;
 		length=l;
 		angle=a;
 		focus=f;
@@ -52,5 +52,11 @@ class LabelLense extends LabelObject
 	void changeAngle(double a)
 	{
 		angle=a;
+	}
+	String getParams()
+	{
+		String line="";
+		line+=line+getLocation().getX()+" "+getLocation().getY()+" "+length+" "+0+" "+focus;
+		return line;
 	}
 }

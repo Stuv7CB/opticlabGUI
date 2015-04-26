@@ -34,7 +34,7 @@ class SetFrame extends JFrame
 	{
 		switch (ID)
 		{
-			case 0:
+			case 2:
 			{
 				SetLense panel=new SetLense(parent);
 				panel.addFields();
@@ -42,7 +42,7 @@ class SetFrame extends JFrame
 				this.panel=panel;
 				break;
 			}
-			case 1:
+			case 0:
 			{
 				SetSource panel=new SetSource(parent);
 				panel.addFields();
@@ -50,7 +50,7 @@ class SetFrame extends JFrame
 				this.panel=panel;
 				break;
 		}
-			case 2:
+			case 1:
 			{
 				SetWall panel=new SetWall(parent);
 				panel.addFields();

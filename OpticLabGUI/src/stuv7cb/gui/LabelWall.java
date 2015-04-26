@@ -21,7 +21,7 @@ class LabelWall extends LabelObject
 	private double angle;
 	LabelWall(double l, double a)
 	{
-		ID=2;
+		ID=1;
 		length=l;
 		angle=a;
 		setSize((int)(length*Math.sin(angle))+10, (int)(length*Math.cos(angle))+10);
@@ -43,5 +43,10 @@ class LabelWall extends LabelObject
 	void changeAngle(double a)
 	{
 		angle=a;
+	}
+	@Override
+	String getParams() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
