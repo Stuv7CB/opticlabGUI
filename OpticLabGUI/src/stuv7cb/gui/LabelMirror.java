@@ -15,13 +15,13 @@ import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
-class LabelWall extends LabelObject
+class LabelMirror extends LabelObject
 {
 	private double length;
 	private double angle;
-	LabelWall(double l, double a)
+	LabelMirror(double l, double a)
 	{
-		ID=1;
+		ID=3;
 		length=l;
 		angle=a;
 		setSize((int)(length*Math.sin(angle))+10, (int)(length*Math.cos(angle))+10);
@@ -31,6 +31,10 @@ class LabelWall extends LabelObject
 		Graphics2D g2=(Graphics2D) g;
 		g2.setPaint(Color.black);
 		g2.draw(new Line2D.Double(5, getSize().getHeight()-5, getSize().getWidth()-5, 5));
+		for (int i=(int)length; i>=0; i-=4)
+		{
+			g2.draw(new Line2D.Double(getSize().getWidth()-i*Math.sin(angle)-5, i*Math.cos(angle)+5, getSize().getWidth()-i*Math.sin(angle), i*Math.cos(angle)+5));
+		}
 	}
 	void changeLength(double l)
 	{

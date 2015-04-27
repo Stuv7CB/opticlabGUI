@@ -151,7 +151,7 @@ abstract class LabelObject extends JLabel
 								add(panel, BorderLayout.CENTER);
 								this.panel=panel;
 								break;
-						}
+							}
 							case 1:
 							{
 								SetWall panel=new SetWall(parent)
@@ -164,6 +164,25 @@ abstract class LabelObject extends JLabel
 										((LabelWall)label).setSize((int)(Double.valueOf(length.getText())*Math.sin(Double.valueOf(angle.getText())))+10, (int)(Double.valueOf(length.getText())*Math.cos(Double.valueOf(angle.getText())))+10);
 										((LabelWall)label).paint(((LabelWall)label).getGraphics());
 										((LabelWall)label).updateUI();
+									}
+								};
+								panel.addFields();
+								add(panel, BorderLayout.CENTER);
+								this.panel=panel;
+								break;
+							}
+							case 3:
+							{
+								SetMirror panel=new SetMirror(parent)
+								{
+									void addObject()
+									{
+										((LabelMirror)label).changeLength(Double.valueOf(length.getText()));
+										((LabelMirror)label).changeAngle(Double.valueOf(angle.getText()));
+										((LabelMirror)label).setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
+										((LabelMirror)label).setSize((int)(Double.valueOf(length.getText())*Math.sin(Double.valueOf(angle.getText())))+10, (int)(Double.valueOf(length.getText())*Math.cos(Double.valueOf(angle.getText())))+10);
+										((LabelMirror)label).paint(((LabelMirror)label).getGraphics());
+										((LabelMirror)label).updateUI();
 									}
 								};
 								panel.addFields();

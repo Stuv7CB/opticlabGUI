@@ -15,22 +15,29 @@ import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
-class LabelWall extends LabelObject
+class LabelPlate extends LabelObject
 {
 	private double length;
+	private double width;
 	private double angle;
-	LabelWall(double l, double a)
+	private double n;
+	LabelPlate(double l, double w, double a, double n)
 	{
-		ID=1;
+		ID=4;
 		length=l;
 		angle=a;
-		setSize((int)(length*Math.sin(angle))+10, (int)(length*Math.cos(angle))+10);
+		width=w;
+		this.n=n;
+		setSize((int)(length*Math.sin(angle)+width*Math.cos(angle)),(int)(length*Math.cos(angle)+width*Math.sin(angle)));
 	}
 	public void paint(Graphics g)
 	{
 		Graphics2D g2=(Graphics2D) g;
 		g2.setPaint(Color.black);
-		g2.draw(new Line2D.Double(5, getSize().getHeight()-5, getSize().getWidth()-5, 5));
+		g2.draw(new Line2D.Double(0,length*Math.cos(angle), length*Math.sin(angle), 0));
+		g2.draw(new Line2D.Double(length*Math.sin(angle), 0, getSize().getWidth(), width*Math.sin(angle)));
+		g2.draw(new Line2D.Double(getSize().getWidth(), width*Math.sin(angle), width*Math.cos(angle), getSize().getHeight()));
+		g2.draw(new Line2D.Double(width*Math.cos(angle), getSize().getHeight(), 0,length*Math.cos(angle)));
 	}
 	void changeLength(double l)
 	{
@@ -41,7 +48,8 @@ class LabelWall extends LabelObject
 		angle=a;
 	}
 	@Override
-	String getParams() {
+	String getParams() 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}

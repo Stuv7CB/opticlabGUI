@@ -49,10 +49,26 @@ class SetFrame extends JFrame
 				add(panel, BorderLayout.CENTER);
 				this.panel=panel;
 				break;
-		}
+			}
 			case 1:
 			{
 				SetWall panel=new SetWall(parent);
+				panel.addFields();
+				add(panel, BorderLayout.CENTER);
+				this.panel=panel;
+				break;
+			}
+			case 3:
+			{
+				SetMirror panel=new SetMirror(parent);
+				panel.addFields();
+				add(panel, BorderLayout.CENTER);
+				this.panel=panel;
+				break;
+			}
+			case 4:
+			{
+				SetPlate panel=new SetPlate(parent);
 				panel.addFields();
 				add(panel, BorderLayout.CENTER);
 				this.panel=panel;

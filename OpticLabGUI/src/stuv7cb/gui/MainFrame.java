@@ -41,10 +41,10 @@ public class MainFrame extends JFrame
 	void addPanelOfSelection()
 	{
 		JPanel panelSelection = new JPanel();
-		final SelectionLabel[] selectionLabel = new SelectionLabel[3];
+		final SelectionLabel[] selectionLabel = new SelectionLabel[5];
 		panelSelection.setLayout(null);
 		SelectionLabel.parent=this;
-		for(int i=0;i<3;i++)
+		for(int i=0;i<5;i++)
 		{
 			selectionLabel[i]=new SelectionLabel(i);
 			selectionLabel[i].addMouseListener(selectionLabel[i].new MyMouseListener());
