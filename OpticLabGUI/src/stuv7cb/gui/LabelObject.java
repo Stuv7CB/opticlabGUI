@@ -49,6 +49,10 @@ abstract class LabelObject extends JLabel
 				{
 					((LabelSource) label).changeCenter(((LabelSource) label).getCenter().getX()+e.getX()-clickX, ((LabelSource) label).getCenter().getY()+e.getY()-clickY);
 				}
+				if (label instanceof LabelMirror)
+				{
+					((LabelMirror) label).changeCenter(((LabelMirror) label).getCenter().getX()+e.getX()-clickX, ((LabelMirror) label).getCenter().getY()+e.getY()-clickY);
+				}
 			}
 			@Override
 			public void mouseMoved(MouseEvent e) 
@@ -195,8 +199,8 @@ abstract class LabelObject extends JLabel
 									{
 										((LabelMirror)label).changeLength(Double.valueOf(length.getText()));
 										((LabelMirror)label).changeAngle(Double.valueOf(angle.getText()));
-										((LabelMirror)label).setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
-										((LabelMirror)label).setSize((int)(Double.valueOf(length.getText())*Math.sin(Double.valueOf(angle.getText())))+10, (int)(Double.valueOf(length.getText())*Math.cos(Double.valueOf(angle.getText())))+10);
+										((LabelMirror)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
+										((LabelMirror)label).setDimension();
 										((LabelMirror)label).paint(((LabelMirror)label).getGraphics());
 										((LabelMirror)label).updateUI();
 									}

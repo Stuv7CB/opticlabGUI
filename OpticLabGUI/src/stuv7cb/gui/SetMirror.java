@@ -1,6 +1,7 @@
 package stuv7cb.gui;
 
 import java.awt.GridLayout;
+import java.awt.Point;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -26,8 +27,9 @@ class SetMirror extends SetPanel
 	@Override
 	void addObject()
 	{
-		LabelMirror label=new LabelMirror(Double.valueOf(length.getText()), Double.valueOf(angle.getText()));
-		label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
+		Point p=new Point();
+		p.setLocation(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
+		LabelMirror label=new LabelMirror(p, Double.valueOf(length.getText()), Double.valueOf(angle.getText()));
 		label.addMouseControl();
 		frame.mainPaneladd(label);
 		label.addPopup();

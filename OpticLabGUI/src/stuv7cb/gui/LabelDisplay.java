@@ -9,9 +9,9 @@ import java.awt.geom.Line2D;
 
 class LabelDisplay extends LabelObject
 {
-	private double length;
-	private double angle;
-	private Point center;
+	protected double length;
+	protected double angle;
+	protected Point center;
 	LabelDisplay(Point p, double l, double a)
 	{
 		center=p;
