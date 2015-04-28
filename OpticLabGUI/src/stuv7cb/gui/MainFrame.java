@@ -33,11 +33,10 @@ public class MainFrame extends JFrame
 		mainPanel.setBackground(Color.WHITE);
 		add(mainPanel);
 		//
-		LabelLense ll=new LabelLense(100,0,0);
-		LabelSource ls=new LabelSource();
+		LabelLense ll=new LabelLense(new Point(50,100),100,0,0);
+		LabelLaser ls=new LabelLaser(0);
 		LabelWall lw=new LabelWall(100, 0);
 		ls.setLocation(0, 100);
-		ll.setLocation(50, 50);
 		lw.setLocation(100, 50);
 		mainPanel.add(ls);
 		mainPanel.add(ll);
@@ -50,10 +49,10 @@ public class MainFrame extends JFrame
 	void addPanelOfSelection()
 	{
 		JPanel panelSelection = new JPanel();
-		final SelectionLabel[] selectionLabel = new SelectionLabel[5];
+		final SelectionLabel[] selectionLabel = new SelectionLabel[6];
 		panelSelection.setLayout(null);
 		SelectionLabel.parent=this;
-		for(int i=0;i<5;i++)
+		for(int i=0;i<6;i++)
 		{
 			selectionLabel[i]=new SelectionLabel(i);
 			selectionLabel[i].addMouseListener(selectionLabel[i].new MyMouseListener());

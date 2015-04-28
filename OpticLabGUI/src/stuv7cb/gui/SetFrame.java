@@ -74,6 +74,14 @@ class SetFrame extends JFrame
 				this.panel=panel;
 				break;
 			}
+			case 5:
+			{
+				SetLaser panel=new SetLaser(parent);
+				panel.addFields();
+				add(panel, BorderLayout.CENTER);
+				this.panel=panel;
+				break;
+			}
 		}
 	}
 	void addButton()

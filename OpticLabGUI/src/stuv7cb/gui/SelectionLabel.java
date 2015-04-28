@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 class SelectionLabel extends JLabel
 {
 	static MainFrame parent;
-	protected final static String[] NAME={"И","Э","Л", "З", "П"};
+	protected final static String[] NAME={"И","Э","Л", "З", "П", "L"};
 	private int ID;
 	SelectionLabel(int i)
 	{

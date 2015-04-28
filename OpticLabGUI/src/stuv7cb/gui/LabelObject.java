@@ -27,13 +27,18 @@ abstract class LabelObject extends JLabel
 	}
 	void addMouseControl()
 	{
+		//TODO It doesn't work!
 		LabelObject label=this;
 		addMouseMotionListener(new MouseMotionListener()
 		{
 			@Override		
 			public void mouseDragged(MouseEvent e) 
 			{
-				label.setLocation(label.getX()+e.getX()-clickX, label.getY()+e.getY()-clickY);	
+				label.setLocation(label.getX()+e.getX()-clickX, label.getY()+e.getY()-clickY);
+				if (label instanceof LabelLense)
+				{
+					((LabelLense) label).setCenter(label.getX()+e.getX()-clickX, label.getY()+e.getY()-clickY);
+				}
 			}
 			@Override
 			public void mouseMoved(MouseEvent e) 
