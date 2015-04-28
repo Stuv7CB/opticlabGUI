@@ -75,7 +75,6 @@ class ButtonRun extends JButton
 					}
 				};
 				frame.addButton();
-				
 			}
 		});
 	}
