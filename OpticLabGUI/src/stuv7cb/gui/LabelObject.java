@@ -53,6 +53,10 @@ abstract class LabelObject extends JLabel
 				{
 					((LabelMirror) label).changeCenter(((LabelMirror) label).getCenter().getX()+e.getX()-clickX, ((LabelMirror) label).getCenter().getY()+e.getY()-clickY);
 				}
+				if (label instanceof LabelPlate)
+				{
+					((LabelPlate) label).changeCenter(((LabelPlate) label).getCenter().getX()+e.getX()-clickX, ((LabelPlate) label).getCenter().getY()+e.getY()-clickY);
+				}
 			}
 			@Override
 			public void mouseMoved(MouseEvent e) 

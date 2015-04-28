@@ -28,7 +28,8 @@ class LabelLense extends LabelObject
 		g2.setPaint(Color.black);
 		Point p=new Point();
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
-		g2.draw(new Line2D.Double(p.getX()+0.5*length*Math.sin(angle), p.getY()-0.5*length*Math.cos(angle), p.getX()-0.5*length*Math.sin(angle), p.getY()+0.5*length*Math.cos(angle)));
+		g2.rotate(angle, p.getX(), p.getY());
+		g2.draw(new Line2D.Double(p.getX(), p.getY()-0.5*length, p.getX(), p.getY()+0.5*length));
 	}
 	void changeLength(double l)
 	{
