@@ -1,6 +1,7 @@
 package stuv7cb.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -37,7 +39,15 @@ abstract class LabelObject extends JLabel
 				label.setLocation(label.getX()+e.getX()-clickX, label.getY()+e.getY()-clickY);
 				if (label instanceof LabelLense)
 				{
-					((LabelLense) label).setCenter(label.getX()+e.getX()-clickX, label.getY()+e.getY()-clickY);
+					((LabelLense) label).changeCenter(((LabelLense) label).getCenter().getX()+e.getX()-clickX, ((LabelLense) label).getCenter().getY()+e.getY()-clickY);
+				}
+				if (label instanceof LabelDisplay)
+				{
+					((LabelDisplay) label).changeCenter(((LabelDisplay) label).getCenter().getX()+e.getX()-clickX, ((LabelDisplay) label).getCenter().getY()+e.getY()-clickY);
+				}
+				if (label instanceof LabelSource)
+				{
+					((LabelSource) label).changeCenter(((LabelSource) label).getCenter().getX()+e.getX()-clickX, ((LabelSource) label).getCenter().getY()+e.getY()-clickY);
 				}
 			}
 			@Override
@@ -77,13 +87,13 @@ abstract class LabelObject extends JLabel
 			{
 				clickX=e.getX();
 				clickY=e.getY();
+				label.setBorder(BorderFactory.createDashedBorder(Color.BLACK));
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) 
 			{
-				// TODO Auto-generated method stub
-				
+				label.setBorder(BorderFactory.createEmptyBorder());
 			}
 			
 		});
@@ -130,8 +140,9 @@ abstract class LabelObject extends JLabel
 									{
 										((LabelLense)label).changeLength(Double.valueOf(length.getText()));
 										((LabelLense)label).changeAngle(Double.valueOf(angle.getText()));
-										((LabelLense)label).setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
-										((LabelLense)label).setSize((int)(Double.valueOf(length.getText())*Math.sin(Double.valueOf(angle.getText())))+10, (int)(Double.valueOf(length.getText())*Math.cos(Double.valueOf(angle.getText())))+10);
+										((LabelLense)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
+										((LabelLense)label).setDimension();
+										((LabelLense)label).changeFocus(Double.valueOf(f.getText()));
 										((LabelLense)label).paint(((LabelLense)label).getGraphics());
 										((LabelLense)label).updateUI();
 									}
@@ -147,8 +158,8 @@ abstract class LabelObject extends JLabel
 								{
 									void addObject() 
 									{
-										((LabelSource)label).setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
-										((LabelSource)label).paint(((LabelLense)label).getGraphics());
+										((LabelSource)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
+										((LabelSource)label).paint(((LabelSource)label).getGraphics());
 										((LabelSource)label).updateUI();
 									}
 								};
@@ -159,16 +170,16 @@ abstract class LabelObject extends JLabel
 							}
 							case 1:
 							{
-								SetWall panel=new SetWall(parent)
+								SetDisplay panel=new SetDisplay(parent)
 								{
 									void addObject()
 									{
-										((LabelWall)label).changeLength(Double.valueOf(length.getText()));
-										((LabelWall)label).changeAngle(Double.valueOf(angle.getText()));
-										((LabelWall)label).setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
-										((LabelWall)label).setSize((int)(Double.valueOf(length.getText())*Math.sin(Double.valueOf(angle.getText())))+10, (int)(Double.valueOf(length.getText())*Math.cos(Double.valueOf(angle.getText())))+10);
-										((LabelWall)label).paint(((LabelWall)label).getGraphics());
-										((LabelWall)label).updateUI();
+										((LabelDisplay)label).changeLength(Double.valueOf(length.getText()));
+										((LabelDisplay)label).changeAngle(Double.valueOf(angle.getText()));
+										((LabelDisplay)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
+										((LabelDisplay)label).setDimension();
+										((LabelDisplay)label).paint(((LabelDisplay)label).getGraphics());
+										((LabelDisplay)label).updateUI();
 									}
 								};
 								panel.addFields();
@@ -188,6 +199,23 @@ abstract class LabelObject extends JLabel
 										((LabelMirror)label).setSize((int)(Double.valueOf(length.getText())*Math.sin(Double.valueOf(angle.getText())))+10, (int)(Double.valueOf(length.getText())*Math.cos(Double.valueOf(angle.getText())))+10);
 										((LabelMirror)label).paint(((LabelMirror)label).getGraphics());
 										((LabelMirror)label).updateUI();
+									}
+								};
+								panel.addFields();
+								add(panel, BorderLayout.CENTER);
+								this.panel=panel;
+								break;
+							}
+							case 5:
+							{
+								SetLaser panel=new SetLaser(parent)
+								{
+									void addObject() 
+									{
+										((LabelLaser)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
+										((LabelLaser)label).changeAngle(Double.valueOf(angle.getText()));
+										((LabelLaser)label).paint(((LabelLaser)label).getGraphics());
+										((LabelLaser)label).updateUI();
 									}
 								};
 								panel.addFields();

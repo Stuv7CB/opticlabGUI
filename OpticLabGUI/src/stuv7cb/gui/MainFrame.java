@@ -34,10 +34,8 @@ public class MainFrame extends JFrame
 		add(mainPanel);
 		//
 		LabelLense ll=new LabelLense(new Point(50,100),100,0,0);
-		LabelLaser ls=new LabelLaser(0);
-		LabelWall lw=new LabelWall(100, 0);
-		ls.setLocation(0, 100);
-		lw.setLocation(100, 50);
+		LabelLaser ls=new LabelLaser(new Point(0,100), 0.0);
+		LabelDisplay lw=new LabelDisplay(new Point(100,100), 100, 0);
 		mainPanel.add(ls);
 		mainPanel.add(ll);
 		mainPanel.add(lw);

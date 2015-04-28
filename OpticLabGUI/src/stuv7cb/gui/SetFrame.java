@@ -52,7 +52,7 @@ class SetFrame extends JFrame
 			}
 			case 1:
 			{
-				SetWall panel=new SetWall(parent);
+				SetDisplay panel=new SetDisplay(parent);
 				panel.addFields();
 				add(panel, BorderLayout.CENTER);
 				this.panel=panel;

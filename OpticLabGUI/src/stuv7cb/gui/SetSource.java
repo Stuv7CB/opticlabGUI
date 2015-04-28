@@ -1,6 +1,7 @@
 package stuv7cb.gui;
 
 import java.awt.GridLayout;
+import java.awt.Point;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -23,8 +24,9 @@ class SetSource extends SetPanel {
 	@Override
 	void addObject() 
 	{
-		LabelSource label=new LabelSource();
-		label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
+		Point p=new Point();
+		p.setLocation(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
+		LabelSource label=new LabelSource(p);
 		label.addMouseControl();
 		frame.mainPaneladd(label);
 		label.addPopup();

@@ -7,19 +7,17 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.geom.Line2D;
 
-class LabelLense extends LabelObject
+class LabelDisplay extends LabelObject
 {
 	private double length;
-	private double focus;
 	private double angle;
 	private Point center;
-	LabelLense(Point p, double l, double f, double a)
+	LabelDisplay(Point p, double l, double a)
 	{
 		center=p;
-		ID=2;
+		ID=1;
 		length=l;
 		angle=a;
-		focus=f;
 		setDimension();
 	}
 	public void paint(Graphics g)
@@ -38,10 +36,11 @@ class LabelLense extends LabelObject
 	{
 		angle=a;
 	}
-	String getParams()
+	@Override
+	String getParams() 
 	{
 		String line="";
-		line+=line+center.getX()+" "+center.getY()+" "+length+" "+0+" "+focus;
+		line+=line+getLocation().getX()+" "+getLocation().getY()+" "+length+" "+0;
 		return line;
 	}
 	void setDimension()
@@ -87,9 +86,5 @@ class LabelLense extends LabelObject
 	Point getCenter()
 	{
 		return center;
-	}
-	void changeFocus(double f)
-	{
-		focus=f;
 	}
 }

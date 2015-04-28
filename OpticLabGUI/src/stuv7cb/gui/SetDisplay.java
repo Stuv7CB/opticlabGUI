@@ -1,15 +1,16 @@
 package stuv7cb.gui;
 
 import java.awt.GridLayout;
+import java.awt.Point;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-class SetWall extends SetPanel
+class SetDisplay extends SetPanel
 {
 	protected JTextField length=new JTextField("Длина");
-	SetWall(MainFrame f) 
+	SetDisplay(MainFrame f) 
 	{
 		super(f);
 	}
@@ -26,8 +27,9 @@ class SetWall extends SetPanel
 	@Override
 	void addObject()
 	{
-		LabelWall label=new LabelWall(Double.valueOf(length.getText()), Double.valueOf(angle.getText()));
-		label.setLocation(Integer.valueOf(xcord.getText()), Integer.valueOf(ycord.getText()));
+		Point p=new Point();
+		p.setLocation(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
+		LabelDisplay label=new LabelDisplay(p, Double.valueOf(length.getText()), Double.valueOf(angle.getText()));
 		label.addMouseControl();
 		frame.mainPaneladd(label);
 		label.addPopup();

@@ -22,9 +22,9 @@ import javax.swing.JTextField;
 class ButtonRun extends JButton
 {
 	Socket mainSocket;
-	String ip=/*"ip"*/"192.168.43.51";
+	String ip=/*"ip"*/"192.168.1.15";
 	boolean saveSocket=false;
-	int port=5679;
+	int port=5678;
 	ButtonRun(String a)
 	{
 		super(a);
@@ -91,7 +91,7 @@ class ButtonRun extends JButton
 			}
 		}
 		MainFrame mainFrame=(MainFrame) c;
-		/*try
+		try
 		{
 			Socket socket=new Socket(ip, port);
 			DataOutputStream out=new DataOutputStream(socket.getOutputStream());
@@ -103,8 +103,8 @@ class ButtonRun extends JButton
 			{
 				String line=String.valueOf(((LabelObject)component[i]).getID())+" "+((LabelObject)component[i]).getParams();
 				System.out.println(line);
-				int status=in.read();
-				if (status!=0)
+				int status=in.read()-48;
+				if (status!=1)
 				{
 					System.err.println("Error in socket");
 					socket.close();
@@ -123,8 +123,8 @@ class ButtonRun extends JButton
 		catch(IOException e)
 		{
 			
-		}*/
-		Component[] component=mainFrame.getComponentsofMainPanel();
+		}
+		/*Component[] component=mainFrame.getComponentsofMainPanel();
 		for (int i=0;i<component.length; i++)
 		{
 			String line=String.valueOf(((LabelObject)component[i]).getID())+" "+((LabelObject)component[i]).getParams();
@@ -139,7 +139,7 @@ class ButtonRun extends JButton
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 	void send(String line)
 	{
