@@ -231,6 +231,26 @@ abstract class LabelObject extends JLabel
 								this.panel=panel;
 								break;
 							}
+							case 4:
+							{
+								SetPlate panel=new SetPlate(parent)
+								{
+									void addObject() 
+									{
+										((LabelPlate)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
+										((LabelPlate)label).changeAngle(Double.valueOf(angle.getText()));
+										((LabelPlate)label).changeLength(Double.valueOf(length.getText()));
+										((LabelPlate)label).changeWidth(Double.valueOf(width.getText()));
+										((LabelPlate)label).changeN(Double.valueOf(n.getText()));
+										((LabelPlate)label).paint(((LabelPlate)label).getGraphics());
+										((LabelPlate)label).updateUI();
+									}
+								};
+								panel.addFields();
+								add(panel, BorderLayout.CENTER);
+								this.panel=panel;
+								break;
+							}
 						}
 					}
 					void addButton()
