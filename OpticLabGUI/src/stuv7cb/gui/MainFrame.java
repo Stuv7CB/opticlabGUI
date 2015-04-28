@@ -33,7 +33,16 @@ public class MainFrame extends JFrame
 		mainPanel.setBackground(Color.WHITE);
 		add(mainPanel);
 		//
-		//mainPanel.add(new LabelLense(111,0,0));
+		LabelLense ll=new LabelLense(100,0,0);
+		LabelSource ls=new LabelSource();
+		LabelWall lw=new LabelWall(100, 0);
+		ls.setLocation(0, 100);
+		ll.setLocation(50, 50);
+		lw.setLocation(100, 50);
+		mainPanel.add(ls);
+		mainPanel.add(ll);
+		mainPanel.add(lw);
+		
 		//
 		//addScrollBar();//Пока не работает
 		addPanelOfSelection();
