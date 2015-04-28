@@ -41,8 +41,10 @@ class LabelWall extends LabelObject
 		angle=a;
 	}
 	@Override
-	String getParams() {
-		// TODO Auto-generated method stub
-		return null;
+	String getParams() 
+	{
+		String line="";
+		line+=line+getLocation().getX()+" "+getLocation().getY()+" "+length+" "+0;
+		return line;
 	}
 }
