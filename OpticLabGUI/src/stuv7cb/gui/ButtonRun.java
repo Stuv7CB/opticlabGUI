@@ -6,9 +6,11 @@ import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ConnectException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -22,7 +24,7 @@ import javax.swing.JTextField;
 class ButtonRun extends JButton
 {
 	Socket mainSocket;
-	String ip=/*"ip"*/"192.168.1.15";
+	String ip=/*"ip"*/"10.8.0.6";
 	boolean saveSocket=false;
 	int port=5678;
 	ButtonRun(String a)
@@ -108,11 +110,24 @@ class ButtonRun extends JButton
 					System.err.println("Error in socket");
 					socket.close();
 				}
+				System.out.println(status);
 				out.write(line.getBytes());
 				out.flush();
 			}
+			int status=in.read()-48;
+			if (status!=1)
+			{
+				System.err.println("Error in socket");
+				socket.close();
+			}
+			System.out.println(status);
 			out.write("FINISH".getBytes());
 			out.flush();
+			BufferedReader bin=new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			char []cbuf=new char[100];
+			bin.read(cbuf);
+			String line=String.copyValueOf(cbuf);
+			System.out.println(line);
 			socket.close();
 		}
 		catch(ConnectException e)
