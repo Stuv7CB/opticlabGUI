@@ -3,6 +3,7 @@ package stuv7cb.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -37,34 +38,7 @@ abstract class LabelObject extends JLabel
 			public void mouseDragged(MouseEvent e) 
 			{
 				label.setLocation(label.getX()+e.getX()-clickX, label.getY()+e.getY()-clickY);
-				if (label instanceof LabelLense)
-				{
-					((LabelLense) label).changeCenter(((LabelLense) label).getCenter().getX()+e.getX()-clickX, ((LabelLense) label).getCenter().getY()+e.getY()-clickY);
-				}
-				if (label instanceof LabelDisplay)
-				{
-					((LabelDisplay) label).changeCenter(((LabelDisplay) label).getCenter().getX()+e.getX()-clickX, ((LabelDisplay) label).getCenter().getY()+e.getY()-clickY);
-				}
-				if (label instanceof LabelSource)
-				{
-					((LabelSource) label).changeCenter(((LabelSource) label).getCenter().getX()+e.getX()-clickX, ((LabelSource) label).getCenter().getY()+e.getY()-clickY);
-				}
-				if (label instanceof LabelMirror)
-				{
-					((LabelMirror) label).changeCenter(((LabelMirror) label).getCenter().getX()+e.getX()-clickX, ((LabelMirror) label).getCenter().getY()+e.getY()-clickY);
-				}
-				if (label instanceof LabelPlate)
-				{
-					((LabelPlate) label).changeCenter(((LabelPlate) label).getCenter().getX()+e.getX()-clickX, ((LabelPlate) label).getCenter().getY()+e.getY()-clickY);
-				}
-				if (label instanceof LabelPrism)
-				{
-					((LabelPrism) label).changeCenter(((LabelPrism) label).getCenter().getX()+e.getX()-clickX, ((LabelPrism) label).getCenter().getY()+e.getY()-clickY);
-				}
-				if (label instanceof LabelSphereMirror)
-				{
-					((LabelSphereMirror) label).changeCenter(((LabelSphereMirror) label).getCenter().getX()+e.getX()-clickX, ((LabelSphereMirror) label).getCenter().getY()+e.getY()-clickY);
-				}
+				label.changeCenter(label.getCenter().getX()+e.getX()-clickX, label.getCenter().getY()+e.getY()-clickY);
 			}
 			@Override
 			public void mouseMoved(MouseEvent e) 
@@ -345,4 +319,6 @@ abstract class LabelObject extends JLabel
 		popup.updateUI();
 	}
 	abstract String getParams();
+	abstract void changeCenter(double x, double y);
+	abstract Point getCenter();
 }
