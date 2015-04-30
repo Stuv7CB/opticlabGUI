@@ -1,26 +1,19 @@
 package stuv7cb.gui;
 
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
-
-import javax.swing.JLabel;
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
 
 class LabelPlate extends LabelObject
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4722310494349835255L;
 	private double length;
 	private double width;
 	private double angle;

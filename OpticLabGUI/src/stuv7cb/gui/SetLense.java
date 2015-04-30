@@ -3,12 +3,14 @@ package stuv7cb.gui;
 import java.awt.GridLayout;
 import java.awt.Point;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 class SetLense extends SetPanel 
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1981505352249759178L;
 	SetLense(MainFrame f) 
 	{
 		super(f);

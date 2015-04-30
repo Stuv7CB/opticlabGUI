@@ -7,6 +7,10 @@ import javax.swing.JTextField;
 
 public class SetPrism extends SetPanel
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9218521815993285182L;
 	protected JTextField a=new JTextField("a");
 	protected JTextField b=new JTextField("b");
 	protected JTextField c=new JTextField("c");

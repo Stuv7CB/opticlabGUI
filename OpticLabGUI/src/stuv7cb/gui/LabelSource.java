@@ -6,6 +6,10 @@ import java.awt.Point;
 
 class LabelSource extends LabelObject
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -128411531057201508L;
 	private Point center;
 	LabelSource(Point p)
 	{

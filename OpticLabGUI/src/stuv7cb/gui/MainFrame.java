@@ -6,6 +6,10 @@ import javax.swing.*;
 
 public class MainFrame extends JFrame
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7814866059557571520L;
 	private Toolkit kit = Toolkit.getDefaultToolkit();
 	private Dimension screenSize=kit.getScreenSize();
 	final int WIDTH=screenSize.width/2;

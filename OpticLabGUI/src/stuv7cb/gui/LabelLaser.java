@@ -1,27 +1,19 @@
 package stuv7cb.gui;
 
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-
-import javax.swing.JLabel;
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
 
 class LabelLaser extends LabelObject
 {
-	private double angle;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7342766801550239655L;
 	private Point center;
 	LabelLaser(Point p, double a)
 	{
 		center=p;
-		angle=a;
 		ID=5;
 		setDimension();
 	}
@@ -57,6 +49,5 @@ class LabelLaser extends LabelObject
 	}
 	void changeAngle(double a)
 	{
-		angle=a;
 	}
 }

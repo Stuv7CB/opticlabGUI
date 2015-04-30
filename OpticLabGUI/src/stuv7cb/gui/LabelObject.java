@@ -20,6 +20,10 @@ import javax.swing.JPopupMenu;
 
 abstract class LabelObject extends JLabel 
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8613616493043654911L;
 	protected int clickX;
 	protected int clickY;
 	protected int ID;
@@ -52,7 +56,7 @@ abstract class LabelObject extends JLabel
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				if (e.getButton()==e.BUTTON3)
+				if (e.getButton()==MouseEvent.BUTTON3)
 				{
 			        popup.show(e.getComponent(), e.getX(), e.getY());
 				}
@@ -116,8 +120,13 @@ abstract class LabelObject extends JLabel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				@SuppressWarnings("unused")
 				SetFrame frame=new SetFrame(parent, ID)
 				{//Begin of override of SetFrame
+					/**
+					 * 
+					 */
+					private static final long serialVersionUID = 8856504742615904849L;
 					void addObjects()
 					{
 						switch (ID)
@@ -126,6 +135,11 @@ abstract class LabelObject extends JLabel
 							{
 								SetLense panel=new SetLense(parent)
 								{
+									/**
+									 * 
+									 */
+									private static final long serialVersionUID = 1317636620999020251L;
+
 									void addObject() 
 									{
 										((LabelLense)label).changeLength(Double.valueOf(length.getText()));
@@ -146,6 +160,11 @@ abstract class LabelObject extends JLabel
 							{
 								SetSource panel=new SetSource(parent)
 								{
+									/**
+									 * 
+									 */
+									private static final long serialVersionUID = -4864093504858950013L;
+
 									void addObject() 
 									{
 										((LabelSource)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
@@ -162,6 +181,11 @@ abstract class LabelObject extends JLabel
 							{
 								SetDisplay panel=new SetDisplay(parent)
 								{
+									/**
+									 * 
+									 */
+									private static final long serialVersionUID = -8262698205245021655L;
+
 									void addObject()
 									{
 										((LabelDisplay)label).changeLength(Double.valueOf(length.getText()));
@@ -181,6 +205,11 @@ abstract class LabelObject extends JLabel
 							{
 								SetMirror panel=new SetMirror(parent)
 								{
+									/**
+									 * 
+									 */
+									private static final long serialVersionUID = -7744158490634809134L;
+
 									void addObject()
 									{
 										((LabelMirror)label).changeLength(Double.valueOf(length.getText()));
@@ -200,6 +229,11 @@ abstract class LabelObject extends JLabel
 							{
 								SetLaser panel=new SetLaser(parent)
 								{
+									/**
+									 * 
+									 */
+									private static final long serialVersionUID = 4134310404204984628L;
+
 									void addObject() 
 									{
 										((LabelLaser)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
@@ -217,6 +251,11 @@ abstract class LabelObject extends JLabel
 							{
 								SetPlate panel=new SetPlate(parent)
 								{
+									/**
+									 * 
+									 */
+									private static final long serialVersionUID = 7570566962019361304L;
+
 									void addObject() 
 									{
 										((LabelPlate)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
@@ -237,6 +276,11 @@ abstract class LabelObject extends JLabel
 							{
 								SetPrism panel=new SetPrism(parent)
 								{
+									/**
+									 * 
+									 */
+									private static final long serialVersionUID = -7549903345315889770L;
+
 									void addObject() 
 									{
 										((LabelPrism)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
@@ -258,6 +302,11 @@ abstract class LabelObject extends JLabel
 							{
 								SetSphereMirror panel=new SetSphereMirror(parent)
 								{
+									/**
+									 * 
+									 */
+									private static final long serialVersionUID = -4713732881465506820L;
+
 									void addObject() 
 									{
 										((LabelSphereMirror)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));

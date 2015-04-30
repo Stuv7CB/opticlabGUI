@@ -5,12 +5,15 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.Polygon;
 import java.awt.RenderingHints;
 import java.awt.geom.Line2D;
 
 class LabelPrism extends LabelObject
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4197113709182642607L;
 	private double a;
 	private double b;
 	private double c;

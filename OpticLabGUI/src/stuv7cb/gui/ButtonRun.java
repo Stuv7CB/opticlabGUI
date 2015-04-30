@@ -6,17 +6,11 @@ import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.ConnectException;
-import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -24,6 +18,10 @@ import javax.swing.JTextField;
 
 class ButtonRun extends JButton
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7936232824411414193L;
 	String ip=/*"ip"*/"192.168.1.15";
 	boolean saveSocket=false;
 	int port=5678;
@@ -39,6 +37,11 @@ class ButtonRun extends JButton
 			{
 				SetFrame frame=new SetFrame()
 				{
+					/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1481598913629240428L;
+
 					void addButton()
 					{
 						setResizable(false);

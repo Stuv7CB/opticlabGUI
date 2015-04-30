@@ -10,6 +10,10 @@ import java.awt.geom.Line2D;
 
 class LabelDisplay extends LabelObject
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4510284477037061770L;
 	protected double length;
 	protected double angle;
 	protected Point center;

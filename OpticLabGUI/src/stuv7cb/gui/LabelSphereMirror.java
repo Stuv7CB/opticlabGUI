@@ -10,6 +10,10 @@ import java.awt.geom.Arc2D;
 
 class LabelSphereMirror extends LabelObject
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1456719604479245937L;
 	private double startAngle;
 	private double endAngle;
 	private double r;
