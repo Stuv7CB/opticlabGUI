@@ -25,8 +25,8 @@ class LabelSphereMirror extends LabelObject
 	}
 	String getParams()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		String line=""+center.getX()+" "+center.getY()+" "+r+" "+startAngle+" "+endAngle;
+		return line;
 	}
 	public void paint(Graphics g)
 	{
@@ -35,7 +35,7 @@ class LabelSphereMirror extends LabelObject
 		g2.setPaint(Color.black);
 		Point p=new Point();
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
-		g2.draw(new Arc2D.Double(0, 0, 2*r, 2*r, startAngle*(180/Math.PI), endAngle*(180/Math.PI), Arc2D.OPEN));
+		g2.draw(new Arc2D.Double(0, 0, 2*r, 2*r, startAngle*(180/Math.PI), (endAngle-startAngle)*(180/Math.PI), Arc2D.OPEN));
 	}
 	void changeCenter(double x, double y)
 	{

@@ -17,6 +17,12 @@ class LabelPrism extends LabelObject
 	private double angle;
 	private Point center;
 	private double n;
+	private double x1;
+	private double x2;
+	private double x3;
+	private double y1;
+	private double y2;
+	private double y3;
 	LabelPrism(Point p, double a, double b, double c, double angle, double n)
 	{
 		ID=6;
@@ -38,20 +44,20 @@ class LabelPrism extends LabelObject
 		g2.rotate(angle, p.getX(), p.getY());
 		double ma=Math.sqrt(2*b*b+2*c*c-a*a)*0.5;
 		double cosalpha=(b*b-0.25*a*a-ma*ma)/(-1.0*a*ma);
-		double x1=p.getX()-0.5*a-(1.0/3.0)*ma*cosalpha;
-		double x2=p.getX()+0.5*a-(1.0/3.0)*ma*cosalpha;
-		double x3=p.getX()+(2.0/3.0)*ma*cosalpha;
-		double y1=p.getY()+(1.0/3.0)*ma*Math.sin(Math.acos(cosalpha));
-		double y2=y1;
-		double y3=p.getY()-(2.0/3.0)*ma*Math.sin(Math.acos(cosalpha));
+		x1=p.getX()-0.5*a-(1.0/3.0)*ma*cosalpha;
+		x2=p.getX()+0.5*a-(1.0/3.0)*ma*cosalpha;
+		x3=p.getX()+(2.0/3.0)*ma*cosalpha;
+		y1=p.getY()+(1.0/3.0)*ma*Math.sin(Math.acos(cosalpha));
+		y2=y1;
+		y3=p.getY()-(2.0/3.0)*ma*Math.sin(Math.acos(cosalpha));
 		g2.draw(new Line2D.Double(x1,y1,x2,y2));
 		g2.draw(new Line2D.Double(x2,y2,x3,y3));
 		g2.draw(new Line2D.Double(x3,y3,x1,y1));
 	}
 	String getParams() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		String line=""+x1+" "+y1+" "+x2+" "+y2+" "+x3+" "+y3;
+		return line;
 	}
 	void setDimension()
 	{

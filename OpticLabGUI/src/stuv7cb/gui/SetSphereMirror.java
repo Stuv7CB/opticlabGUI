@@ -10,7 +10,8 @@ import javax.swing.JTextField;
 class SetSphereMirror extends SetPanel
 {
 	protected JTextField r=new JTextField("Радиус");
-	protected JTextField endAngle=new JTextField("Угол разворота");
+	protected JTextField angle=new JTextField("Угол начала");
+	protected JTextField endAngle=new JTextField("Угол конца");
 	SetSphereMirror(MainFrame f)
 	{
 		super(f);
