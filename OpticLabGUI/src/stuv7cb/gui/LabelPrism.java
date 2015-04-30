@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Polygon;
+import java.awt.RenderingHints;
 import java.awt.geom.Line2D;
 
 class LabelPrism extends LabelObject
@@ -30,6 +31,7 @@ class LabelPrism extends LabelObject
 	public void paint(Graphics g)
 	{
 		Graphics2D g2=(Graphics2D) g;
+		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setPaint(Color.black);
 		Point p=new Point();
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());

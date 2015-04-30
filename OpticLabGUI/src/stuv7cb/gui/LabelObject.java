@@ -61,6 +61,10 @@ abstract class LabelObject extends JLabel
 				{
 					((LabelPrism) label).changeCenter(((LabelPrism) label).getCenter().getX()+e.getX()-clickX, ((LabelPrism) label).getCenter().getY()+e.getY()-clickY);
 				}
+				if (label instanceof LabelSphereMirror)
+				{
+					((LabelSphereMirror) label).changeCenter(((LabelSphereMirror) label).getCenter().getX()+e.getX()-clickX, ((LabelSphereMirror) label).getCenter().getY()+e.getY()-clickY);
+				}
 			}
 			@Override
 			public void mouseMoved(MouseEvent e) 
@@ -269,6 +273,25 @@ abstract class LabelObject extends JLabel
 										((LabelPrism)label).changeN(Double.valueOf(n.getText()));
 										((LabelPrism)label).paint(((LabelPrism)label).getGraphics());
 										((LabelPrism)label).updateUI();
+									}
+								};
+								panel.addFields();
+								add(panel, BorderLayout.CENTER);
+								this.panel=panel;
+								break;
+							}
+							case 7:
+							{
+								SetSphereMirror panel=new SetSphereMirror(parent)
+								{
+									void addObject() 
+									{
+										((LabelSphereMirror)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
+										((LabelSphereMirror)label).changeStartAngle(Double.valueOf(angle.getText()));
+										((LabelSphereMirror)label).changeEndAngle(Double.valueOf(endAngle.getText()));
+										((LabelSphereMirror)label).changeR(Double.valueOf(r.getText()));
+										((LabelSphereMirror)label).paint(((LabelSphereMirror)label).getGraphics());
+										((LabelSphereMirror)label).updateUI();
 									}
 								};
 								panel.addFields();

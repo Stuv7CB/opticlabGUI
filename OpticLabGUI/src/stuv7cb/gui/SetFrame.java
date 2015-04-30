@@ -90,6 +90,14 @@ class SetFrame extends JFrame
 				this.panel=panel;
 				break;
 			}
+			case 7:
+			{
+				SetSphereMirror panel=new SetSphereMirror(parent);
+				panel.addFields();
+				add(panel, BorderLayout.CENTER);
+				this.panel=panel;
+				break;
+			}
 		}
 	}
 	void addButton()
