@@ -5,7 +5,8 @@ To compile:
 ```
 make all
 ```
-To make .jar
+To run:
 ```
-make jar
+cd ./bin
+java Main
 ```
