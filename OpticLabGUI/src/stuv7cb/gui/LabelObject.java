@@ -29,7 +29,7 @@ abstract class LabelObject extends JLabel
 	}
 	void addMouseControl()
 	{
-		//TODO It doesn't work!
+		//TODO Use polymorphism!
 		LabelObject label=this;
 		addMouseMotionListener(new MouseMotionListener()
 		{
