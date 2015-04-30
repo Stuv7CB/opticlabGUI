@@ -82,6 +82,14 @@ class SetFrame extends JFrame
 				this.panel=panel;
 				break;
 			}
+			case 6:
+			{
+				SetPrism panel=new SetPrism(parent);
+				panel.addFields();
+				add(panel, BorderLayout.CENTER);
+				this.panel=panel;
+				break;
+			}
 		}
 	}
 	void addButton()

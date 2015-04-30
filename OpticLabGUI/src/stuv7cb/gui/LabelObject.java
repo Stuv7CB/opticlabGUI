@@ -57,6 +57,10 @@ abstract class LabelObject extends JLabel
 				{
 					((LabelPlate) label).changeCenter(((LabelPlate) label).getCenter().getX()+e.getX()-clickX, ((LabelPlate) label).getCenter().getY()+e.getY()-clickY);
 				}
+				if (label instanceof LabelPrism)
+				{
+					((LabelPrism) label).changeCenter(((LabelPrism) label).getCenter().getX()+e.getX()-clickX, ((LabelPrism) label).getCenter().getY()+e.getY()-clickY);
+				}
 			}
 			@Override
 			public void mouseMoved(MouseEvent e) 
@@ -244,6 +248,27 @@ abstract class LabelObject extends JLabel
 										((LabelPlate)label).changeN(Double.valueOf(n.getText()));
 										((LabelPlate)label).paint(((LabelPlate)label).getGraphics());
 										((LabelPlate)label).updateUI();
+									}
+								};
+								panel.addFields();
+								add(panel, BorderLayout.CENTER);
+								this.panel=panel;
+								break;
+							}
+							case 6:
+							{
+								SetPrism panel=new SetPrism(parent)
+								{
+									void addObject() 
+									{
+										((LabelPrism)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
+										((LabelPrism)label).changeAngle(Double.valueOf(angle.getText()));
+										((LabelPrism)label).changeA(Double.valueOf(a.getText()));
+										((LabelPrism)label).changeB(Double.valueOf(b.getText()));
+										((LabelPrism)label).changeC(Double.valueOf(c.getText()));
+										((LabelPrism)label).changeN(Double.valueOf(n.getText()));
+										((LabelPrism)label).paint(((LabelPrism)label).getGraphics());
+										((LabelPrism)label).updateUI();
 									}
 								};
 								panel.addFields();
