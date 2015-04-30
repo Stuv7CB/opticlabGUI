@@ -24,7 +24,6 @@ import javax.swing.JTextField;
 
 class ButtonRun extends JButton
 {
-	Socket mainSocket;
 	String ip=/*"ip"*/"192.168.1.15";
 	boolean saveSocket=false;
 	int port=5678;
@@ -100,8 +99,6 @@ class ButtonRun extends JButton
 			DataInputStream in=new DataInputStream(socket.getInputStream());
 			Component[] component=mainFrame.getComponentsofMainPanel();
 			int status;
-			/*out.write(String.valueOf(component.length).getBytes());
-			out.flush();*/
 			for (int i=0;i<component.length; i++)
 			{
 				String line=String.valueOf(((LabelObject)component[i]).getID())+" "+((LabelObject)component[i]).getParams();
@@ -128,59 +125,16 @@ class ButtonRun extends JButton
 				out.flush();
 			}
 			byte []buf=new byte[100];
-			if(in.read(buf)==-1)
-			{
-				System.out.println("EOF");
-			}
-			else
-			{
+				while(in.read(buf)!=-1)
+				{
 				String line=new String(buf, "US-ASCII");
 				System.out.println(line);
-			}
+				}
 			socket.close();
 		}
 		catch(ConnectException e)
 		{
 			System.err.println("Can't connect to server");
-		}
-		catch(IOException e)
-		{
-			
-		}
-		/*Component[] component=mainFrame.getComponentsofMainPanel();
-		for (int i=0;i<component.length; i++)
-		{
-			String line=String.valueOf(((LabelObject)component[i]).getID())+" "+((LabelObject)component[i]).getParams();
-			System.out.println(line);
-			send(line);
-		}
-		send("FINISH");
-		try {
-			DataInputStream in=new DataInputStream(mainSocket.getInputStream());
-			int buf=in.read()-48;
-			System.out.println(buf);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-	}
-	void send(String line)
-	{
-		try
-		{
-			Socket socket=new Socket(ip, port);
-			DataOutputStream out=new DataOutputStream(socket.getOutputStream());
-			DataInputStream in=new DataInputStream(socket.getInputStream());
-			//out.write(String.valueOf(component.length).getBytes());
-			//out.flush();
-				out.write(line.getBytes());
-				out.flush();
-				in.read();
-				mainSocket=socket;
-		}
-		catch(ConnectException e)
-		{
-			System.err.println("Can't connect to server.");
 		}
 		catch(IOException e)
 		{
