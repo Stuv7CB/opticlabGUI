@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.ConnectException;
 import java.net.ServerSocket;
@@ -24,7 +25,7 @@ import javax.swing.JTextField;
 class ButtonRun extends JButton
 {
 	Socket mainSocket;
-	String ip=/*"ip"*/"10.8.0.6";
+	String ip=/*"ip"*/"192.168.1.15";
 	boolean saveSocket=false;
 	int port=5678;
 	ButtonRun(String a)
@@ -98,13 +99,14 @@ class ButtonRun extends JButton
 			DataOutputStream out=new DataOutputStream(socket.getOutputStream());
 			DataInputStream in=new DataInputStream(socket.getInputStream());
 			Component[] component=mainFrame.getComponentsofMainPanel();
-			//out.write(String.valueOf(component.length).getBytes());
-			//out.flush();
+			int status;
+			/*out.write(String.valueOf(component.length).getBytes());
+			out.flush();*/
 			for (int i=0;i<component.length; i++)
 			{
 				String line=String.valueOf(((LabelObject)component[i]).getID())+" "+((LabelObject)component[i]).getParams();
 				System.out.println(line);
-				int status=in.read()-48;
+				status=in.read()-48;
 				if (status!=1)
 				{
 					System.err.println("Error in socket");
@@ -114,20 +116,27 @@ class ButtonRun extends JButton
 				out.write(line.getBytes());
 				out.flush();
 			}
-			int status=in.read()-48;
+			status=in.read()-48;
 			if (status!=1)
 			{
 				System.err.println("Error in socket");
 				socket.close();
 			}
-			System.out.println(status);
-			out.write("FINISH".getBytes());
-			out.flush();
-			BufferedReader bin=new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			char []cbuf=new char[100];
-			bin.read(cbuf);
-			String line=String.copyValueOf(cbuf);
-			System.out.println(line);
+			else
+			{
+				out.write("FINISH".getBytes());
+				out.flush();
+			}
+			byte []buf=new byte[100];
+			if(in.read(buf)==-1)
+			{
+				System.out.println("EOF");
+			}
+			else
+			{
+				String line=new String(buf, "US-ASCII");
+				System.out.println(line);
+			}
 			socket.close();
 		}
 		catch(ConnectException e)
