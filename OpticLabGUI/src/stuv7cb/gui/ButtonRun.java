@@ -143,15 +143,15 @@ class ButtonRun extends JButton
 				String line=new String(buf, 0, i, "US-ASCII");
 				if(line.compareTo("FINISH")==0)
 				{
-					System.out.println(line);
 					socket.close();
+					mainFrame.mayClean();
 					break;
 				}
 				else
 				{
 					out.write("1".getBytes());
 					out.flush();
-					System.out.println(line);
+					mainFrame.mainPanelPaint(line);
 					buf=new byte[100];
 				}
 			}
@@ -164,5 +164,6 @@ class ButtonRun extends JButton
 		{
 			System.err.println("EOF");
 		}
+		
 	}
 }

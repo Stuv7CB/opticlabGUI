@@ -28,6 +28,7 @@ public class MainFrame extends JFrame
 	private MainPanel mainPanel =new MainPanel();
 	private SpringLayout springLayout;
 	private JPanel panel;
+	private JButton clean=new JButton("Очистить");
 	public MainFrame()
 	{
 		setMinimumSize(new Dimension(349, 278));
@@ -46,6 +47,20 @@ public class MainFrame extends JFrame
 		springLayout.putConstraint(SpringLayout.NORTH, panel, -35, SpringLayout.SOUTH, getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panel, 0, SpringLayout.SOUTH, getContentPane());
 		ButtonRun br=new ButtonRun("Начать");
+		clean.setVisible(false);
+		clean.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				mainPanel.clean();
+				mainPanel.updateUI();
+				clean.setVisible(false);
+			}
+			
+		});
+		panel.add(clean);
 		panel.add(br);
 		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		getContentPane().add(panel);
@@ -53,14 +68,14 @@ public class MainFrame extends JFrame
 		mainPanel.setLayout(null);
 		mainPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		getContentPane().add(mainPanel);
-		
+		/*
 		LabelLense ll=new LabelLense(new Point(50,100),100,0,0);
 		LabelLaser ls=new LabelLaser(new Point(0,100), 0.0);
 		LabelDisplay lw=new LabelDisplay(new Point(100,100), 100, 0);
 		mainPanel.add(ls);
 		mainPanel.add(ll);
 		mainPanel.add(lw);
-		
+		*/
 		//addScrollBar();//Пока не работает
 		addMenuBar();
 		addPanelOfSelection();
@@ -100,9 +115,10 @@ public class MainFrame extends JFrame
 	{
 		return mainPanel.getComponents();
 	}
-	void mainPanelPaint(int x0, int y0, int x, int y)
+	void mainPanelPaint(String line)
 	{
-		mainPanel.paintNewLine(x0, y0, x, y);
+		mainPanel.paintNewLine(line);
+		mainPanel.updateUI();
 	}
 	private void addMenuBar()
 	{
@@ -169,101 +185,114 @@ public class MainFrame extends JFrame
 								}
 								else
 								{
-									System.out.println(lineScanner.next());
+									lineScanner.next();
 								}
 							}
 							int i=0;
-							switch(ID)
+							try
 							{
-							case 2:
+								switch(ID)
+								{
+								case 2:
+					
+								{
+								
+									Point p=new Point();
+
+									p.setLocation(params.get(i++), params.get(i++));
+									LabelLense label=new LabelLense(p, params.get(i++), params.get(i++), params.get(i++));
+									label.addMouseControl();
+									mainPaneladd(label);
+									label.addPopup();
+									label.updateUI();
+									break;
+								}
+								case 0:
+								{
+									Point p=new Point();
+									p.setLocation(params.get(i++),params.get(i++));
+									LabelSource label=new LabelSource(p);
+									label.addMouseControl();
+									mainPaneladd(label);
+									label.addPopup();
+									label.updateUI();
+									break;
+								}
+								case 1:
+								{
+									Point p=new Point();
+									p.setLocation(params.get(i++),params.get(i++));
+									LabelDisplay label=new LabelDisplay(p,params.get(i++),params.get(i++));
+									label.addMouseControl();
+									mainPaneladd(label);
+									label.addPopup();
+									label.updateUI();
+									break;
+								}
+								case 3:
+								{
+									Point p=new Point();
+									p.setLocation(params.get(i++),params.get(i++));
+									LabelMirror label=new LabelMirror(p, params.get(i++),params.get(i++));
+									label.addMouseControl();
+									mainPaneladd(label);
+									label.addPopup();
+									label.updateUI();
+									break;
+								}
+								case 4:
+								{
+									Point p=new Point();
+									p.setLocation(params.get(i++),params.get(i++));
+									LabelPlate label=new LabelPlate(p, params.get(i++),params.get(i++),params.get(i++),params.get(i++));
+									label.addMouseControl();
+									mainPaneladd(label);
+									label.addPopup();
+									label.updateUI();
+									break;
+								}
+								case 5:
+								{
+									Point p=new Point();
+									p.setLocation(params.get(i++),params.get(i++));
+									LabelLaser label=new LabelLaser(p, params.get(i++));
+									label.addMouseControl();
+									mainPaneladd(label);
+									label.addPopup();
+									label.updateUI();
+									break;
+								}
+								case 6:
+								{
+									Point p=new Point();
+									p.setLocation(params.get(i++),params.get(i++));
+									LabelPrism label=new LabelPrism(p, params.get(i++),params.get(i++),params.get(i++),params.get(i++),params.get(i++),params.get(i++),params.get(i++));
+									label.addMouseControl();
+									mainPaneladd(label);
+									label.addPopup();
+									label.updateUI();
+									break;
+								}
+								case 7:
+								{
+									Point p=new Point();
+									p.setLocation(params.get(i++),params.get(i++));
+									LabelSphereMirror label=new LabelSphereMirror(p, params.get(i++),params.get(i++),params.get(i++));
+									label.addMouseControl();
+									mainPaneladd(label);
+									label.addPopup();
+									label.updateUI();
+								}
+								}
+							}
+							catch(NullPointerException npe)
 							{
-								Point p=new Point();
-								p.setLocation(params.get(i++), params.get(i++));
-								LabelLense label=new LabelLense(p, params.get(i++), params.get(i++), params.get(i++));
-								label.addMouseControl();
-								mainPaneladd(label);
-								label.addPopup();
-								label.updateUI();
-								break;
+								System.err.println("Something wrong in savefile");
 							}
-							case 0:
+							finally
 							{
-								Point p=new Point();
-								p.setLocation(params.get(i++),params.get(i++));
-								LabelSource label=new LabelSource(p);
-								label.addMouseControl();
-								mainPaneladd(label);
-								label.addPopup();
-								label.updateUI();
-								break;
+								lineScanner.close();
 							}
-							case 1:
-							{
-								Point p=new Point();
-								p.setLocation(params.get(i++),params.get(i++));
-								LabelDisplay label=new LabelDisplay(p,params.get(i++),params.get(i++));
-								label.addMouseControl();
-								mainPaneladd(label);
-								label.addPopup();
-								label.updateUI();
-								break;
-							}
-							case 3:
-							{
-								Point p=new Point();
-								p.setLocation(params.get(i++),params.get(i++));
-								LabelMirror label=new LabelMirror(p, params.get(i++),params.get(i++));
-								label.addMouseControl();
-								mainPaneladd(label);
-								label.addPopup();
-								label.updateUI();
-								break;
-							}
-							case 4:
-							{
-								Point p=new Point();
-								p.setLocation(params.get(i++),params.get(i++));
-								LabelPlate label=new LabelPlate(p, params.get(i++),params.get(i++),params.get(i++),params.get(i++));
-								label.addMouseControl();
-								mainPaneladd(label);
-								label.addPopup();
-								label.updateUI();
-								break;
-							}
-							case 5:
-							{
-								Point p=new Point();
-								p.setLocation(params.get(i++),params.get(i++));
-								LabelLaser label=new LabelLaser(p, params.get(i++));
-								label.addMouseControl();
-								mainPaneladd(label);
-								label.addPopup();
-								label.updateUI();
-								break;
-							}
-							case 6:
-							{
-								Point p=new Point();
-								p.setLocation(params.get(i++),params.get(i++));
-								LabelPrism label=new LabelPrism(p, params.get(i++),params.get(i++),params.get(i++),params.get(i++),params.get(i++),params.get(i++),params.get(i++));
-								label.addMouseControl();
-								mainPaneladd(label);
-								label.addPopup();
-								label.updateUI();
-								break;
-							}
-							case 7:
-							{
-								Point p=new Point();
-								p.setLocation(params.get(i++),params.get(i++));
-								LabelSphereMirror label=new LabelSphereMirror(p, params.get(i++),params.get(i++),params.get(i++));
-								label.addMouseControl();
-								mainPaneladd(label);
-								label.addPopup();
-								label.updateUI();
-							}
-							}
-							lineScanner.close();
 						}
 						scanner.close();
 					}
@@ -324,5 +353,9 @@ public class MainFrame extends JFrame
 		});
 		file.add(exit);
 		setJMenuBar(menuBar);
+	}
+	void mayClean()
+	{
+		clean.setVisible(true);
 	}
 }
