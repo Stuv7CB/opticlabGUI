@@ -14,14 +14,15 @@ class SelectionLabel extends JLabel
 	 */
 	private static final long serialVersionUID = 7255951589130964243L;
 	static MainFrame parent;
-	protected final static String[] NAME={"И","Э","Л", "З", "П", "L", "P", "S"};
+	protected final static String[] NAME={"Источник","Экран","Линза", "Зеркало", "Плоскопараллельная пластника", "Лазер", "Призма", "Сферическое зеркало"};
 	private int ID;
 	SelectionLabel(int i)
 	{
 		super(NAME[i]);
 		ID=i;
-		setSize(20, 20);
+		setSize(100, 20);
 		setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		setToolTipText(getText());
 	}
 	class MyMouseListener implements MouseListener
 	{

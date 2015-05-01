@@ -22,26 +22,33 @@ public class MainFrame extends JFrame
 	final int HEIGHT=screenSize.height/2;
 	private final String TITLE="GUI";
 	private MainPanel mainPanel =new MainPanel();
+	private SpringLayout springLayout;
+	private JPanel panel;
 	public MainFrame()
 	{
-		setSize(WIDTH, HEIGHT);
+		setMinimumSize(new Dimension(349, 278));
+		setSize(760, 459);
 		setTitle(TITLE);
-		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JPanel panel = new JPanel();
-		panel.setSize(3*WIDTH/4, HEIGHT/8);
+		springLayout = new SpringLayout();
+		springLayout.putConstraint(SpringLayout.NORTH, mainPanel, 0, SpringLayout.NORTH, getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, mainPanel, 0, SpringLayout.EAST, getContentPane());
+		getContentPane().setLayout(springLayout);
+		panel = new JPanel();
+		springLayout.putConstraint(SpringLayout.WEST, mainPanel, 0, SpringLayout.WEST, panel);
+		springLayout.putConstraint(SpringLayout.SOUTH, mainPanel, 0, SpringLayout.NORTH, panel);
+		springLayout.putConstraint(SpringLayout.WEST, panel, 137, SpringLayout.WEST, getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel, 0, SpringLayout.EAST, getContentPane());
+		springLayout.putConstraint(SpringLayout.NORTH, panel, -35, SpringLayout.SOUTH, getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel, 0, SpringLayout.SOUTH, getContentPane());
 		ButtonRun br=new ButtonRun("Начать");
 		panel.add(br);
-		setLayout(null);
-		panel.setLocation(WIDTH/4, 7*HEIGHT/8);
 		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		add(panel);
+		getContentPane().add(panel);
 		br.addClient();
 		mainPanel.setLayout(null);
-		mainPanel.setSize(3*WIDTH/4, 7*HEIGHT/8);
-		mainPanel.setLocation(WIDTH/4, 0);
 		mainPanel.setBackground(Color.WHITE);
-		add(mainPanel);
+		getContentPane().add(mainPanel);
 		/*
 		LabelLense ll=new LabelLense(new Point(50,100),100,0,0);
 		LabelLaser ls=new LabelLaser(new Point(0,100), 0.0);
@@ -57,6 +64,10 @@ public class MainFrame extends JFrame
 	void addPanelOfSelection()
 	{
 		JPanel panelSelection = new JPanel();
+		springLayout.putConstraint(SpringLayout.WEST, panelSelection, 0, SpringLayout.WEST, getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panelSelection, 0, SpringLayout.WEST, mainPanel);
+		springLayout.putConstraint(SpringLayout.NORTH, panelSelection, 0, SpringLayout.NORTH, getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panelSelection, 0, SpringLayout.SOUTH, getContentPane());
 		final SelectionLabel[] selectionLabel = new SelectionLabel[8];
 		panelSelection.setLayout(null);
 		SelectionLabel.parent=this;
@@ -67,10 +78,8 @@ public class MainFrame extends JFrame
 			selectionLabel[i].setLocation(0, i*20);
 			panelSelection.add(selectionLabel[i]);
 		}
-		panelSelection.setSize(WIDTH/4, HEIGHT);
-		panelSelection.setLocation(0, 0);
 		panelSelection.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		add(panelSelection);
+		getContentPane().add(panelSelection);
 	}
 	void mainPaneladd(JComponent comp)
 	{
