@@ -20,14 +20,14 @@ public class MainFrame extends JFrame
 	private Dimension screenSize=kit.getScreenSize();
 	final int WIDTH=screenSize.width/2;
 	final int HEIGHT=screenSize.height/2;
-	private final String TITLE="GUI";
+	private final String TITLE="Оптическая лаборатория";
 	private MainPanel mainPanel =new MainPanel();
 	private SpringLayout springLayout;
 	private JPanel panel;
 	public MainFrame()
 	{
 		setMinimumSize(new Dimension(349, 278));
-		setSize(760, 459);
+		setSize(WIDTH, HEIGHT);
 		setTitle(TITLE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		springLayout = new SpringLayout();
