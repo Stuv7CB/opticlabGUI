@@ -33,6 +33,7 @@ class LabelLense extends LabelObject
 		Graphics2D g2=(Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setPaint(Color.black);
+		g2.setBackground(Color.WHITE);
 		Point p=new Point();
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
 		g2.rotate(angle, p.getX(), p.getY());

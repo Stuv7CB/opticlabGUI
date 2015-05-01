@@ -63,7 +63,6 @@ public class MainFrame extends JFrame
 		//addScrollBar();//Пока не работает
 		addMenuBar();
 		addPanelOfSelection();
-		mainPanel.setOpaque(false);
 	}
 	private void addPanelOfSelection()
 	{

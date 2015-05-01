@@ -28,6 +28,7 @@ class MainPanel extends JPanel
 	{
 		super.paintComponent(g);
 		Graphics2D g2=(Graphics2D)g;
-		g2.setBackground(Color.white);
+		g2.setColor(Color.white);
+		g2.fillRect(0, 0, getWidth(), getHeight());
 	}
 }
