@@ -1,6 +1,12 @@
 package stuv7cb.gui;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 import javax.swing.*;
 
@@ -43,7 +49,7 @@ public class MainFrame extends JFrame
 		mainPanel.add(ls);
 		mainPanel.add(ll);
 		mainPanel.add(lw);
-		
+		addMenuBar();
 		//
 		//addScrollBar();//Пока не работает
 		addPanelOfSelection();
@@ -84,5 +90,76 @@ public class MainFrame extends JFrame
 	void mainPanelPaint(int x0, int y0, int x, int y)
 	{
 		mainPanel.paintNewLine(x0, y0, x, y);
+	}
+	void addMenuBar()
+	{
+		JMenuBar menuBar=new JMenuBar();
+		JMenu file=new JMenu("Файл");
+		menuBar.add(file);
+		JMenuItem newOne=new JMenuItem("Новый");
+		newOne.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_MASK));
+		newOne.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				Component[] component=getComponentsofMainPanel();
+				for(int i=0; i<component.length; i++)
+				{
+					mainPanel.remove(component[i]);
+				}
+				mainPanel.updateUI();
+			}
+			
+		});
+		file.add(newOne);
+		JMenuItem save=new JMenuItem("Сохранить");
+		save.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				JFileChooser fileChooser=new JFileChooser();
+				fileChooser.showSaveDialog(mainPanel);
+				File file=fileChooser.getSelectedFile();
+				if(!file.getAbsolutePath().endsWith(".svo") )
+				{
+	                file = new File(file.getAbsolutePath() + ".svo");
+				}
+				try
+				{
+					PrintWriter out=new PrintWriter(file.getAbsoluteFile());
+					Component[] component=getComponentsofMainPanel();
+					for(int i=0; i<component.length; i++)
+					{
+						out.println(((LabelObject)component[i]).getID()+" "+((LabelObject)component[i]).getParams());
+					}
+					out.close();
+				}
+				catch (FileNotFoundException fnfe)
+				{
+					System.err.println("Couldn't find file!");
+				}
+			}
+			
+		});
+		save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_MASK));
+		file.add(save);
+		file.addSeparator();
+		JMenuItem exit=new JMenuItem("Выход");
+		MainFrame mf=this;
+		exit.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				mf.dispose();
+			}
+			
+		});
+		file.add(exit);
+		setJMenuBar(menuBar);
 	}
 }

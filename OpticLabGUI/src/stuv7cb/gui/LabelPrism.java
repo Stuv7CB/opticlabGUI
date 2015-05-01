@@ -26,6 +26,7 @@ class LabelPrism extends LabelObject
 	private double y1;
 	private double y2;
 	private double y3;
+	private final boolean CONSTRUCTOR2;
 	LabelPrism(Point p, double a, double b, double c, double angle, double n)
 	{
 		ID=6;
@@ -35,6 +36,21 @@ class LabelPrism extends LabelObject
 		this.angle=angle;
 		this.n=n;
 		center=p;
+		CONSTRUCTOR2=false;
+		setDimension();
+	}
+	LabelPrism(Point p, double x1, double y1, double x2, double y2, double x3, double y3, double n)
+	{
+		ID=6;
+		this.x1=x1;
+		this.y1=y1;
+		this.x2=x2;
+		this.y2=y2;
+		this.x3=x3;
+		this.y3=y3;
+		this.n=n;
+		center=p;
+		CONSTRUCTOR2=true;
 		setDimension();
 	}
 	public void paint(Graphics g)
@@ -44,15 +60,18 @@ class LabelPrism extends LabelObject
 		g2.setPaint(Color.black);
 		Point p=new Point();
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
-		g2.rotate(angle, p.getX(), p.getY());
-		double ma=Math.sqrt(2*b*b+2*c*c-a*a)*0.5;
-		double cosalpha=(b*b-0.25*a*a-ma*ma)/(-1.0*a*ma);
-		x1=p.getX()-0.5*a-(1.0/3.0)*ma*cosalpha;
-		x2=p.getX()+0.5*a-(1.0/3.0)*ma*cosalpha;
-		x3=p.getX()+(2.0/3.0)*ma*cosalpha;
-		y1=p.getY()+(1.0/3.0)*ma*Math.sin(Math.acos(cosalpha));
-		y2=y1;
-		y3=p.getY()-(2.0/3.0)*ma*Math.sin(Math.acos(cosalpha));
+		if(!CONSTRUCTOR2)
+		{
+			g2.rotate(angle, p.getX(), p.getY());
+			double ma=Math.sqrt(2*b*b+2*c*c-a*a)*0.5;
+			double cosalpha=(b*b-0.25*a*a-ma*ma)/(-1.0*a*ma);
+			x1=p.getX()-0.5*a-(1.0/3.0)*ma*cosalpha;
+			x2=p.getX()+0.5*a-(1.0/3.0)*ma*cosalpha;
+			x3=p.getX()+(2.0/3.0)*ma*cosalpha;
+			y1=p.getY()+(1.0/3.0)*ma*Math.sin(Math.acos(cosalpha));
+			y2=y1;
+			y3=p.getY()-(2.0/3.0)*ma*Math.sin(Math.acos(cosalpha));
+		}
 		g2.draw(new Line2D.Double(x1,y1,x2,y2));
 		g2.draw(new Line2D.Double(x2,y2,x3,y3));
 		g2.draw(new Line2D.Double(x3,y3,x1,y1));
