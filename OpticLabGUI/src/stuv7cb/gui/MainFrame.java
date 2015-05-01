@@ -7,8 +7,12 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Scanner;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MainFrame extends JFrame
 {
@@ -123,6 +127,147 @@ public class MainFrame extends JFrame
 			
 		});
 		file.add(newOne);
+		JMenuItem open=new JMenuItem("Открыть");
+		open.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				JFileChooser fileChooser=new JFileChooser();
+				FileNameExtensionFilter fef=new FileNameExtensionFilter("Save file", "svo");
+				fileChooser.setFileFilter(fef);
+				int ret=fileChooser.showOpenDialog(mainPanel);
+				if(ret==JFileChooser.CANCEL_OPTION||ret==JFileChooser.ERROR_OPTION)
+				{
+					System.out.println("File wasn't open");
+				}
+				else
+				{
+					File file=fileChooser.getSelectedFile();
+					try
+					{
+						Scanner scanner=new Scanner(file);
+						while(scanner.hasNextLine())
+						{
+							String line=scanner.nextLine();
+							Scanner lineScanner=new Scanner(line);
+							lineScanner.useLocale(Locale.US);
+							int ID=lineScanner.nextInt();
+							ArrayList<Double> params = new ArrayList<Double>();
+							while(lineScanner.hasNext())
+							{
+								if(lineScanner.hasNextDouble())
+								{
+									params.add(lineScanner.nextDouble());
+								}
+								else
+								{
+									System.out.println(lineScanner.next());
+								}
+							}
+							int i=0;
+							switch(ID)
+							{
+							case 2:
+							{
+								Point p=new Point();
+								p.setLocation(params.get(i++), params.get(i++));
+								LabelLense label=new LabelLense(p, params.get(i++), params.get(i++), params.get(i++));
+								label.addMouseControl();
+								mainPaneladd(label);
+								label.addPopup();
+								label.updateUI();
+								break;
+							}
+							case 0:
+							{
+								Point p=new Point();
+								p.setLocation(params.get(i++),params.get(i++));
+								LabelSource label=new LabelSource(p);
+								label.addMouseControl();
+								mainPaneladd(label);
+								label.addPopup();
+								label.updateUI();
+								break;
+							}
+							case 1:
+							{
+								Point p=new Point();
+								p.setLocation(params.get(i++),params.get(i++));
+								LabelDisplay label=new LabelDisplay(p,params.get(i++),params.get(i++));
+								label.addMouseControl();
+								mainPaneladd(label);
+								label.addPopup();
+								label.updateUI();
+								break;
+							}
+							case 3:
+							{
+								Point p=new Point();
+								p.setLocation(params.get(i++),params.get(i++));
+								LabelMirror label=new LabelMirror(p, params.get(i++),params.get(i++));
+								label.addMouseControl();
+								mainPaneladd(label);
+								label.addPopup();
+								label.updateUI();
+								break;
+							}
+							case 4:
+							{
+								Point p=new Point();
+								p.setLocation(params.get(i++),params.get(i++));
+								LabelPlate label=new LabelPlate(p, params.get(i++),params.get(i++),params.get(i++),params.get(i++));
+								label.addMouseControl();
+								mainPaneladd(label);
+								label.addPopup();
+								label.updateUI();
+								break;
+							}
+							case 5:
+							{
+								Point p=new Point();
+								p.setLocation(params.get(i++),params.get(i++));
+								LabelLaser label=new LabelLaser(p, params.get(i++));
+								label.addMouseControl();
+								mainPaneladd(label);
+								label.addPopup();
+								label.updateUI();
+								break;
+							}
+							case 6:
+							{
+								Point p=new Point();
+								p.setLocation(params.get(i++),params.get(i++));
+								LabelPrism label=new LabelPrism(p, params.get(i++),params.get(i++),params.get(i++),params.get(i++),params.get(i++),params.get(i++),params.get(i++));
+								label.addMouseControl();
+								mainPaneladd(label);
+								label.addPopup();
+								label.updateUI();
+								break;
+							}
+							case 7:
+							{
+								Point p=new Point();
+								p.setLocation(params.get(i++),params.get(i++));
+								LabelSphereMirror label=new LabelSphereMirror(p, params.get(i++),params.get(i++),params.get(i++));
+								label.addMouseControl();
+								mainPaneladd(label);
+								label.addPopup();
+								label.updateUI();
+							}
+							}
+						}
+					}
+					catch (FileNotFoundException fnfe)
+					{
+						System.err.println("Couldn't find file!");
+					}
+				}
+			}			
+		});
+		open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_MASK));
+		file.add(open);
 		JMenuItem save=new JMenuItem("Сохранить");
 		save.addActionListener(new ActionListener()
 		{
@@ -131,6 +276,7 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				JFileChooser fileChooser=new JFileChooser();
+				fileChooser.setSelectedFile(new File("save.svo"));
 				fileChooser.showSaveDialog(mainPanel);
 				File file=fileChooser.getSelectedFile();
 				if(!file.getAbsolutePath().endsWith(".svo") )
