@@ -42,16 +42,16 @@ public class MainFrame extends JFrame
 		mainPanel.setLocation(WIDTH/4, 0);
 		mainPanel.setBackground(Color.WHITE);
 		add(mainPanel);
-		//
+		/*
 		LabelLense ll=new LabelLense(new Point(50,100),100,0,0);
 		LabelLaser ls=new LabelLaser(new Point(0,100), 0.0);
 		LabelDisplay lw=new LabelDisplay(new Point(100,100), 100, 0);
 		mainPanel.add(ls);
 		mainPanel.add(ll);
 		mainPanel.add(lw);
-		addMenuBar();
-		//
+		*/
 		//addScrollBar();//Пока не работает
+		addMenuBar();
 		addPanelOfSelection();
 	}
 	void addPanelOfSelection()
