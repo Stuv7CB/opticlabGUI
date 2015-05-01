@@ -257,7 +257,9 @@ public class MainFrame extends JFrame
 								label.updateUI();
 							}
 							}
+							lineScanner.close();
 						}
+						scanner.close();
 					}
 					catch (FileNotFoundException fnfe)
 					{
