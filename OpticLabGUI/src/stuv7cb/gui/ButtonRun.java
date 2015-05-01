@@ -22,7 +22,7 @@ class ButtonRun extends JButton
 	 * 
 	 */
 	private static final long serialVersionUID = -7936232824411414193L;
-	String ip=/*"ip"*/"192.168.1.15";
+	String ip="ip"/*"192.168.1.15"*/;
 	boolean saveSocket=false;
 	int port=5678;
 	ButtonRun(String a)
