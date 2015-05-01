@@ -25,8 +25,9 @@ class LabelDisplay extends LabelObject
 		angle=a;
 		setDimension();
 	}
-	public void paint(Graphics g)
+	public void paintComponent(Graphics g)
 	{
+		super.paintComponent(g);
 		Graphics2D g2=(Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setPaint(Color.black);
@@ -34,6 +35,7 @@ class LabelDisplay extends LabelObject
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
 		g2.rotate(angle, p.getX(), p.getY());
 		g2.draw(new Line2D.Double(p.getX(), p.getY()-0.5*length, p.getX(), p.getY()+0.5*length));
+		g2.rotate(-angle, p.getX(), p.getY());
 	}
 	void changeLength(double l)
 	{

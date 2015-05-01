@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -81,14 +80,12 @@ abstract class LabelObject extends JLabel
 				clickX=e.getX();
 				clickY=e.getY();
 				label.setBorder(BorderFactory.createDashedBorder(Color.BLACK));
-				label.updateUI();
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) 
 			{
 				label.setBorder(BorderFactory.createEmptyBorder());
-				label.updateUI();
 			}
 			
 		});
@@ -366,7 +363,6 @@ abstract class LabelObject extends JLabel
 			}	
 		});
 		popup.add(delete);
-		popup.updateUI();
 	}
 	abstract String getParams();
 	abstract void changeCenter(double x, double y);

@@ -21,6 +21,13 @@ class MainPanel extends JPanel
 		backup=createImage(getWidth(), getHeight());
 		Graphics2D saved = (Graphics2D)(backup.getGraphics());
 		saved.setColor(Color.black);
+		saved.setBackground(Color.WHITE);
 		saved.draw(new Line2D.Double(x0,y0,x,y));
+	}
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		Graphics2D g2=(Graphics2D)g;
+		g2.setBackground(Color.white);
 	}
 }

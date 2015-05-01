@@ -51,7 +51,6 @@ public class MainFrame extends JFrame
 		getContentPane().add(panel);
 		br.addClient();
 		mainPanel.setLayout(null);
-		mainPanel.setBackground(Color.WHITE);
 		getContentPane().add(mainPanel);
 		/*
 		LabelLense ll=new LabelLense(new Point(50,100),100,0,0);
@@ -64,8 +63,9 @@ public class MainFrame extends JFrame
 		//addScrollBar();//Пока не работает
 		addMenuBar();
 		addPanelOfSelection();
+		mainPanel.setOpaque(false);
 	}
-	void addPanelOfSelection()
+	private void addPanelOfSelection()
 	{
 		JPanel panelSelection = new JPanel();
 		springLayout.putConstraint(SpringLayout.WEST, panelSelection, 0, SpringLayout.WEST, getContentPane());
@@ -104,7 +104,7 @@ public class MainFrame extends JFrame
 	{
 		mainPanel.paintNewLine(x0, y0, x, y);
 	}
-	void addMenuBar()
+	private void addMenuBar()
 	{
 		JMenuBar menuBar=new JMenuBar();
 		JMenu file=new JMenu("Файл");

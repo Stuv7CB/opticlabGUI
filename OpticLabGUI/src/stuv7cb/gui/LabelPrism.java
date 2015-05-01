@@ -53,8 +53,9 @@ class LabelPrism extends LabelObject
 		CONSTRUCTOR2=true;
 		setDimension();
 	}
-	public void paint(Graphics g)
+	public void paintComponent(Graphics g)
 	{
+		super.paintComponent(g);
 		Graphics2D g2=(Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setPaint(Color.black);
@@ -71,6 +72,7 @@ class LabelPrism extends LabelObject
 			y1=p.getY()+(1.0/3.0)*ma*Math.sin(Math.acos(cosalpha));
 			y2=y1;
 			y3=p.getY()-(2.0/3.0)*ma*Math.sin(Math.acos(cosalpha));
+			g2.rotate(-angle, p.getX(), p.getY());
 		}
 		g2.draw(new Line2D.Double(x1,y1,x2,y2));
 		g2.draw(new Line2D.Double(x2,y2,x3,y3));

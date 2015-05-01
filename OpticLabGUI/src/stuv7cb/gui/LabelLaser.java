@@ -17,8 +17,9 @@ class LabelLaser extends LabelObject
 		ID=5;
 		setDimension();
 	}
-	public void paint(Graphics g)
+	public void paintComponent(Graphics g)
 	{
+		super.paintComponent(g);
 		g.fillOval(3, 3, 6, 6);
 	}
 	@Override

@@ -29,8 +29,9 @@ class LabelPlate extends LabelObject
 		this.n=n;
 		setDimension();
 	}
-	public void paint(Graphics g)
+	public void paintComponent(Graphics g)
 	{
+		super.paintComponent(g);
 		Graphics2D g2=(Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setPaint(Color.black);
@@ -38,6 +39,7 @@ class LabelPlate extends LabelObject
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
 		g2.rotate(angle, p.getX(), p.getY());
 		g2.draw(new Rectangle2D.Double(p.getX()-0.5*width, p.getY()-0.5*length, width, length));
+		g2.rotate(-angle, p.getX(), p.getY());
 	}
 	void changeLength(double l)
 	{

@@ -21,8 +21,9 @@ class LabelMirror extends LabelDisplay
 		angle=a;
 		setSize((int)(length*Math.sin(angle))+10, (int)(length*Math.cos(angle))+10);
 	}
-	public void paint(Graphics g)
+	public void paintComponent(Graphics g)
 	{
+		super.paintComponent(g);
 		Graphics2D g2=(Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setPaint(Color.black);
@@ -34,5 +35,6 @@ class LabelMirror extends LabelDisplay
 		{
 			g2.draw(new Line2D.Double(p.getX(), p.getY()+i, p.getX()+5, p.getY()+i));
 		}
+		g2.rotate(-angle, p.getX(), p.getY());
 	}
 }

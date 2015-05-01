@@ -32,8 +32,9 @@ class LabelSphereMirror extends LabelObject
 		String line=""+center.getX()+" "+center.getY()+" "+r+" "+startAngle+" "+endAngle;
 		return line;
 	}
-	public void paint(Graphics g)
+	public void paintComponent(Graphics g)
 	{
+		super.paintComponent(g);
 		Graphics2D g2=(Graphics2D)g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setPaint(Color.black);
