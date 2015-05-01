@@ -134,6 +134,12 @@ public class MainFrame extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				Component[] component=getComponentsofMainPanel();
+				for(int i=0; i<component.length; i++)
+				{
+					mainPanel.remove(component[i]);
+				}
+				mainPanel.updateUI();
 				JFileChooser fileChooser=new JFileChooser();
 				FileNameExtensionFilter fef=new FileNameExtensionFilter("Save file", "svo");
 				fileChooser.setFileFilter(fef);
