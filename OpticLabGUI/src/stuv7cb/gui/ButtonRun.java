@@ -109,7 +109,7 @@ class ButtonRun extends JButton
 				status=in.read()-48;
 				if (status!=1)
 				{
-					System.err.println("Error in socket");
+					System.err.println("Error in server");
 					socket.close();
 				}
 				System.out.println(status);
@@ -119,7 +119,7 @@ class ButtonRun extends JButton
 			status=in.read()-48;
 			if (status!=1)
 			{
-				System.err.println("Error in socket");
+				System.err.println("Error in server");
 				socket.close();
 			}
 			else
@@ -127,13 +127,34 @@ class ButtonRun extends JButton
 				out.write("FINISH".getBytes());
 				out.flush();
 			}
+			out.write("1".getBytes());
+			out.flush();
 			byte []buf=new byte[100];
-				while(in.read(buf)!=-1)
+			while(in.read(buf)!=-1)
+			{
+				int i;
+				for (i=0; i<buf.length;i++)
 				{
-				String line=new String(buf, "US-ASCII");
-				System.out.println(line);
+					if(buf[i]==0)
+					{
+						break;
+					}
 				}
-			socket.close();
+				String line=new String(buf, 0, i, "US-ASCII");
+				if(line.compareTo("FINISH")==0)
+				{
+					System.out.println(line);
+					socket.close();
+					break;
+				}
+				else
+				{
+					out.write("1".getBytes());
+					out.flush();
+					System.out.println(line);
+					buf=new byte[100];
+				}
+			}
 		}
 		catch(ConnectException e)
 		{
@@ -141,7 +162,7 @@ class ButtonRun extends JButton
 		}
 		catch(IOException e)
 		{
-			
+			System.err.println("EOF");
 		}
 	}
 }
