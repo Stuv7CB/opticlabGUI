@@ -34,7 +34,6 @@ abstract class LabelObject extends JLabel
 	}
 	void addMouseControl()
 	{
-		//TODO Use polymorphism!
 		LabelObject label=this;
 		addMouseMotionListener(new MouseMotionListener()
 		{
@@ -82,12 +81,14 @@ abstract class LabelObject extends JLabel
 				clickX=e.getX();
 				clickY=e.getY();
 				label.setBorder(BorderFactory.createDashedBorder(Color.BLACK));
+				label.updateUI();
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) 
 			{
 				label.setBorder(BorderFactory.createEmptyBorder());
+				label.updateUI();
 			}
 			
 		});
