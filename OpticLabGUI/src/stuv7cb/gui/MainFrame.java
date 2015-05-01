@@ -122,6 +122,7 @@ public class MainFrame extends JFrame
 	}
 	private void addMenuBar()
 	{
+		MainFrame mainFrame=this;
 		JMenuBar menuBar=new JMenuBar();
 		JMenu file=new JMenu("Файл");
 		menuBar.add(file);
@@ -288,6 +289,7 @@ public class MainFrame extends JFrame
 							catch(NullPointerException npe)
 							{
 								System.err.println("Something wrong in savefile");
+								JOptionPane.showMessageDialog(mainFrame, "Something wrong in savefile");
 							}
 							finally
 							{
@@ -299,6 +301,7 @@ public class MainFrame extends JFrame
 					catch (FileNotFoundException fnfe)
 					{
 						System.err.println("Couldn't find file!");
+						JOptionPane.showMessageDialog(mainFrame, "Couldn't find file!");
 					}
 				}
 			}			
@@ -333,6 +336,7 @@ public class MainFrame extends JFrame
 				catch (FileNotFoundException fnfe)
 				{
 					System.err.println("Couldn't find file!");
+					JOptionPane.showMessageDialog(mainFrame, "Couldn't find file!");
 				}
 			}
 			

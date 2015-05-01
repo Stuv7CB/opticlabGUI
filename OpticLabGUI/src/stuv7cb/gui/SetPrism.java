@@ -3,6 +3,7 @@ package stuv7cb.gui;
 import java.awt.GridLayout;
 import java.awt.Point;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class SetPrism extends SetPanel
@@ -50,6 +51,7 @@ public class SetPrism extends SetPanel
 		else
 		{
 			System.err.println("This isn't triangle!");
+			JOptionPane.showMessageDialog(frame, "Ihis isn't triangle!");
 		}
 	}
 

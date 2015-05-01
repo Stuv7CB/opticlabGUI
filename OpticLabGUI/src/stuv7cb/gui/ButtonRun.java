@@ -11,8 +11,10 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.Socket;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -159,10 +161,13 @@ class ButtonRun extends JButton
 		catch(ConnectException e)
 		{
 			System.err.println("Can't connect to server");
+			JOptionPane.showMessageDialog(mainFrame, "Can't connect to server");
 		}
 		catch(IOException e)
 		{
-			System.err.println("EOF");
+			System.err.println("IO exception");
+			System.err.println(e.getLocalizedMessage());
+			JOptionPane.showMessageDialog(mainFrame, "IO exception");
 		}
 		
 	}

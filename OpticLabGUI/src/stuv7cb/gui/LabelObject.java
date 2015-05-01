@@ -9,11 +9,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
@@ -340,7 +342,8 @@ abstract class LabelObject extends JLabel
 								}
 								catch(NumberFormatException nfe)
 								{
-									System.out.println(nfe.getLocalizedMessage()+"number is invalid.");	
+									System.err.println(nfe.getLocalizedMessage()+"number is invalid.");
+									JOptionPane.showMessageDialog(frame, nfe.getLocalizedMessage()+"number is invalid.");
 								}
 							}
 						});

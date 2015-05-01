@@ -5,6 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 class SetFrame extends JFrame
@@ -122,7 +123,8 @@ class SetFrame extends JFrame
 				}
 				catch(NumberFormatException nfe)
 				{
-					System.err.println(nfe.getLocalizedMessage()+"number is invalid.");	
+					System.err.println(nfe.getLocalizedMessage()+"number is invalid.");
+					JOptionPane.showMessageDialog(frame, nfe.getLocalizedMessage()+"number is invalid.");
 				}
 			}
 		});
