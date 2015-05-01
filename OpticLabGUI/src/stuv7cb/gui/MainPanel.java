@@ -5,9 +5,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 class MainPanel extends JPanel
@@ -22,20 +24,39 @@ class MainPanel extends JPanel
 		Scanner lineScanner=new Scanner(line);
 		lineScanner.useLocale(Locale.US);
 		ArrayList<Double> params = new ArrayList<Double>();
-		while(lineScanner.hasNext())
+		try
 		{
-			if(lineScanner.hasNextDouble())
+			while(lineScanner.hasNext())
 			{
-				params.add(lineScanner.nextDouble());
-			}
-			else
-			{
-				lineScanner.next();
+				if(lineScanner.hasNextDouble())
+				{
+					params.add(lineScanner.nextDouble());
+				}
+				else
+				{
+					lineScanner.next();
+				}
 			}
 		}
-		lineScanner.close();
-		int i=0;
-		array.add(new Line2D.Double(params.get(i++),params.get(i++),params.get(i++),params.get(i++)));
+		catch(InputMismatchException ime)
+		{
+			System.err.println("Wrong params");
+			JOptionPane.showMessageDialog(this, "Wrong params");
+		}
+		finally
+		{
+			lineScanner.close();
+		}
+		if (array.size()!=4)
+		{
+			System.err.println("Wrong params");
+			JOptionPane.showMessageDialog(this, "Wrong params");
+		}
+		else
+		{
+			int i=0;
+			array.add(new Line2D.Double(params.get(i++),params.get(i++),params.get(i++),params.get(i++)));
+		}
 	}
 	public void paintComponent(Graphics g)
 	{

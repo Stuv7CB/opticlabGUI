@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -302,6 +303,11 @@ public class MainFrame extends JFrame
 					{
 						System.err.println("Couldn't find file!");
 						JOptionPane.showMessageDialog(mainFrame, "Couldn't find file!");
+					}
+					catch (InputMismatchException ime)
+					{
+						System.err.println("Something wrong in savefile");
+						JOptionPane.showMessageDialog(mainFrame, "Something wrong in savefile");
 					}
 				}
 			}			
