@@ -24,7 +24,7 @@ class ButtonRun extends JButton
 	 * 
 	 */
 	private static final long serialVersionUID = -7936232824411414193L;
-	String ip="ip"/*"192.168.1.15"*/;
+	String ip="ip";
 	boolean saveSocket=false;
 	int port=5678;
 	ButtonRun(String a)
@@ -129,8 +129,6 @@ class ButtonRun extends JButton
 				out.write("FINISH".getBytes());
 				out.flush();
 			}
-			out.write("1".getBytes());
-			out.flush();
 			byte []buf=new byte[100];
 			while(in.read(buf)!=-1)
 			{
@@ -153,6 +151,7 @@ class ButtonRun extends JButton
 				{
 					out.write("1".getBytes());
 					out.flush();
+					System.out.println(line);
 					mainFrame.mainPanelPaint(line);
 					buf=new byte[100];
 				}
@@ -169,6 +168,5 @@ class ButtonRun extends JButton
 			System.err.println(e.getLocalizedMessage());
 			JOptionPane.showMessageDialog(mainFrame, "IO exception");
 		}
-		
 	}
 }

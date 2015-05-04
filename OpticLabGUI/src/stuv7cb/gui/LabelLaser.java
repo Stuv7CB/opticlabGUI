@@ -11,10 +11,12 @@ class LabelLaser extends LabelObject
 	 */
 	private static final long serialVersionUID = -7342766801550239655L;
 	private Point center;
+	private double angle;
 	LabelLaser(Point p, double a)
 	{
 		center=p;
 		ID=5;
+		angle=a;
 		setDimension();
 	}
 	public void paintComponent(Graphics g)
@@ -26,7 +28,7 @@ class LabelLaser extends LabelObject
 	String getParams() 
 	{
 		String line="";
-		line=line+center.getX()+" "+center.getY();
+		line=line+center.getX()+" "+center.getY()+" "+angle;
 		return line;
 	}
 	void setDimension()
@@ -50,5 +52,6 @@ class LabelLaser extends LabelObject
 	}
 	void changeAngle(double a)
 	{
+		angle=a;
 	}
 }

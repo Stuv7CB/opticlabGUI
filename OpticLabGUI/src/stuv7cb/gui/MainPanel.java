@@ -47,7 +47,7 @@ class MainPanel extends JPanel
 		{
 			lineScanner.close();
 		}
-		if (array.size()!=4)
+		if (params.size()!=4)
 		{
 			System.err.println("Wrong params");
 			JOptionPane.showMessageDialog(this, "Wrong params");
