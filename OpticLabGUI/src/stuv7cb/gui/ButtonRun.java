@@ -76,7 +76,7 @@ class ButtonRun extends JButton
 								dispose();
 							}
 						});
-						add(b, BorderLayout.NORTH);
+						add(b, BorderLayout.SOUTH);
 						pack();
 						setVisible(true);
 					}
