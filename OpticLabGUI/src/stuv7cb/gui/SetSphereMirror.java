@@ -36,7 +36,7 @@ class SetSphereMirror extends SetPanel
 	{
 		Point p=new Point();
 		p.setLocation(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
-		LabelSphereMirror label=new LabelSphereMirror(p, Double.valueOf(angle.getText()), Double.valueOf(endAngle.getText()), Double.valueOf(r.getText()));
+		LabelSphereMirror label=new LabelSphereMirror(p, Math.PI*Double.valueOf(angle.getText())/180, Math.PI*Double.valueOf(endAngle.getText())/180, Double.valueOf(r.getText()));
 		label.addMouseControl();
 		frame.mainPaneladd(label);
 		label.addPopup();

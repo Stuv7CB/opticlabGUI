@@ -66,12 +66,12 @@ class LabelLense extends LabelObject
 	}
 	void changeAngle(double a)
 	{
-		angle=a;
+		angle=a*Math.PI/180;
 	}
 	String getParams()
 	{
 		String line="";
-		line+=line+center.getX()+" "+center.getY()+" "+length+" "+0+" "+focus;
+		line+=line+center.getX()+" "+center.getY()+" "+length+" "+angle*(180/Math.PI)+" "+focus;
 		return line;
 	}
 	void setDimension()

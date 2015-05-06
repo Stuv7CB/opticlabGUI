@@ -48,13 +48,13 @@ class LabelDisplay extends LabelObject
 	}
 	void changeAngle(double a)
 	{
-		angle=a;
+		angle=a*Math.PI/180;
 	}
 	@Override
 	String getParams() 
 	{
 		String line="";
-		line+=line+center.getX()+" "+center.getY()+" "+length+" "+0;
+		line+=line+center.getX()+" "+center.getY()+" "+length+" "+angle*(180/Math.PI);
 		return line;
 	}
 	void setDimension()
