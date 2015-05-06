@@ -108,7 +108,6 @@ public class MainFrame extends JFrame
 	void clean()
 	{
 		mainPanel.clean();
-		mainPanel.updateUI();
 	}
 	void mainPaneladd(JComponent comp)
 	{

@@ -12,6 +12,10 @@ class LabelLaser extends LabelObject
 	private static final long serialVersionUID = -7342766801550239655L;
 	private Point center;
 	private double angle;
+	/**
+	 * @param p Координаты центра
+	 * @param a Угол наклона, отсчитывающийся от вертикали (в радианах)
+	 */
 	LabelLaser(Point p, double a)//Координаты x, y и угол в градусах от горизонтали
 	{
 		center=p;

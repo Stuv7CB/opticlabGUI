@@ -13,6 +13,11 @@ class LabelMirror extends LabelDisplay
 	 * 
 	 */
 	private static final long serialVersionUID = -6920621717725167293L;
+	/**
+	 * @param p Координаты центра
+	 * @param l Длина зеркала
+	 * @param a Угол наклона, отсчитывающийся от вертикали (в радианах)
+	 */
 	LabelMirror(Point p, double l, double a)
 	{
 		super(p, l, a);

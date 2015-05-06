@@ -17,6 +17,11 @@ class LabelDisplay extends LabelObject
 	protected double length;
 	protected double angle;
 	protected Point center;
+	/**
+	 * @param p Координаты центра
+	 * @param l Длина
+	 * @param a Угол наклона, отсчитывающийся от вертикали (в радианах)
+	 */
 	LabelDisplay(Point p, double l, double a)
 	{
 		center=p;

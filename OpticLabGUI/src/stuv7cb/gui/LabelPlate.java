@@ -19,6 +19,13 @@ class LabelPlate extends LabelObject
 	private double angle;
 	private double n;
 	private Point center;
+	/**
+	 * @param p Координаты центра
+	 * @param l Длина
+	 * @param w Ширина
+	 * @param a Угол наклона, отсчитывающийся от вертикали (в радианах)
+	 * @param n Показатель преломления
+	 */
 	LabelPlate(Point p,double l, double w, double a, double n)
 	{
 		center=p;
