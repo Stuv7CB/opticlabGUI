@@ -42,7 +42,7 @@ public class SetPrism extends SetPanel
 		double C=Double.valueOf(c.getText());
 		if(A+B>C&&A+C>=B&&C+B>=A)
 		{
-			LabelPrism label=new LabelPrism(p, A, B, C, Double.valueOf(angle.getText()),Double.valueOf(n.getText()));
+			LabelPrism label=new LabelPrism(p, A, B, C, Math.PI*Double.valueOf(angle.getText())/180,Double.valueOf(n.getText()));
 			label.addMouseControl();
 			frame.mainPaneladd(label);
 			label.addPopup();

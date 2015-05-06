@@ -122,7 +122,7 @@ class LabelPrism extends LabelObject
 	}
 	void changeAngle(double a)
 	{
-		angle=a;
+		angle=a*Math.PI/180;
 	}
 	void changeA(double a)
 	{

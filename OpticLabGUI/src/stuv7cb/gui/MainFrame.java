@@ -71,14 +71,14 @@ public class MainFrame extends JFrame
 		getContentPane().add(mainPanel);
 		
 		LabelLense ll1=new LabelLense(new Point(50,100),100,50,0);
-		LabelLense ll2=new LabelLense(new Point(125,100),100,25,0);
-		LabelLense ll3=new LabelLense(new Point(200,100), 100, 50, 0);
+		LabelLense ll2=new LabelLense(new Point(125,100),100,100,0);
+		LabelLense ll3=new LabelLense(new Point(200,100), 100, -25, 0);
 		LabelLaser ls=new LabelLaser(new Point(0,100), 15);
-		LabelDisplay lw=new LabelDisplay(new Point(300,100), 100, 0);
+		LabelDisplay lw=new LabelDisplay(new Point(300,100), 1000, 0);
 		mainPanel.add(ls);
 		mainPanel.add(ll1);
 		mainPanel.add(ll2);
-		mainPanel.add(ll3);
+		//mainPanel.add(ll3);
 		mainPanel.add(lw);
 		
 		//addScrollBar();//Пока не работает
@@ -217,6 +217,7 @@ public class MainFrame extends JFrame
 									label.updateUI();
 									break;
 								}
+								
 								case 0:
 								{
 									Point p=new Point();

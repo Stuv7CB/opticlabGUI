@@ -35,7 +35,7 @@ class SetPlate extends SetPanel
 	{
 		Point p=new Point();
 		p.setLocation(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
-		LabelPlate label=new LabelPlate(p, Double.valueOf(length.getText()), Double.valueOf(width.getText()),Double.valueOf(angle.getText()),Double.valueOf(n.getText()));
+		LabelPlate label=new LabelPlate(p, Double.valueOf(length.getText()), Double.valueOf(width.getText()),Math.PI*Double.valueOf(angle.getText())/180,Double.valueOf(n.getText()));
 		label.addMouseControl();
 		frame.mainPaneladd(label);
 		label.addPopup();

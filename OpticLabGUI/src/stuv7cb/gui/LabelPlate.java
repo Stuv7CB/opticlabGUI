@@ -54,7 +54,7 @@ class LabelPlate extends LabelObject
 	}
 	void changeAngle(double a)
 	{
-		angle=a;
+		angle=a*Math.PI/180;
 	}
 	void changeWidth(double w)
 	{
@@ -75,7 +75,7 @@ class LabelPlate extends LabelObject
 	String getParams()
 	{
 		String line="";
-		line+=line+center.getX()+" "+center.getY()+" "+length+" "+width+" "+0+" "+n;
+		line+=line+center.getX()+" "+center.getY()+" "+length+" "+width+" "+angle*(180/Math.PI)+" "+n;
 		return line;
 	}
 	void setDimension()
