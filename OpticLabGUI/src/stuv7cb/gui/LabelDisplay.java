@@ -33,9 +33,9 @@ class LabelDisplay extends LabelObject
 		g2.setPaint(Color.black);
 		Point p=new Point();
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
-		g2.rotate(angle, p.getX(), p.getY());
-		g2.draw(new Line2D.Double(p.getX(), p.getY()-0.5*length, p.getX(), p.getY()+0.5*length));
 		g2.rotate(-angle, p.getX(), p.getY());
+		g2.draw(new Line2D.Double(p.getX(), p.getY()-0.5*length, p.getX(), p.getY()+0.5*length));
+		g2.rotate(angle, p.getX(), p.getY());
 	}
 	void changeLength(double l)
 	{
@@ -49,7 +49,7 @@ class LabelDisplay extends LabelObject
 	String getParams() 
 	{
 		String line="";
-		line+=line+getLocation().getX()+" "+getLocation().getY()+" "+length+" "+0;
+		line+=line+center.getX()+" "+center.getY()+" "+length+" "+0;
 		return line;
 	}
 	void setDimension()

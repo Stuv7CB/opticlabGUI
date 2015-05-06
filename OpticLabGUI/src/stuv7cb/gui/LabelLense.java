@@ -18,7 +18,7 @@ class LabelLense extends LabelObject
 	private double focus;
 	private double angle;
 	private Point center;
-	LabelLense(Point p, double l, double f, double a)
+	LabelLense(Point p, double l, double f, double a)//Координаты x, y, длина, фокус и угол поворота относительно вертикали
 	{
 		center=p;
 		ID=2;
@@ -36,9 +36,9 @@ class LabelLense extends LabelObject
 		g2.setBackground(Color.WHITE);
 		Point p=new Point();
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
-		g2.rotate(angle, p.getX(), p.getY());
-		g2.draw(new Line2D.Double(p.getX(), p.getY()-0.5*length, p.getX(), p.getY()+0.5*length));
 		g2.rotate(-angle, p.getX(), p.getY());
+		g2.draw(new Line2D.Double(p.getX(), p.getY()-0.5*length, p.getX(), p.getY()+0.5*length));
+		g2.rotate(angle, p.getX(), p.getY());
 	}
 	void changeLength(double l)
 	{

@@ -12,7 +12,7 @@ class LabelLaser extends LabelObject
 	private static final long serialVersionUID = -7342766801550239655L;
 	private Point center;
 	private double angle;
-	LabelLaser(Point p, double a)
+	LabelLaser(Point p, double a)//Координаты x, y и угол в градусах от горизонтали
 	{
 		center=p;
 		ID=5;

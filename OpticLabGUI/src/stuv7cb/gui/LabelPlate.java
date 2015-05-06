@@ -37,9 +37,9 @@ class LabelPlate extends LabelObject
 		g2.setPaint(Color.black);
 		Point p=new Point();
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
-		g2.rotate(angle, p.getX(), p.getY());
-		g2.draw(new Rectangle2D.Double(p.getX()-0.5*width, p.getY()-0.5*length, width, length));
 		g2.rotate(-angle, p.getX(), p.getY());
+		g2.draw(new Rectangle2D.Double(p.getX()-0.5*width, p.getY()-0.5*length, width, length));
+		g2.rotate(angle, p.getX(), p.getY());
 	}
 	void changeLength(double l)
 	{

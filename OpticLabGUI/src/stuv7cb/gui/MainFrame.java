@@ -69,16 +69,16 @@ public class MainFrame extends JFrame
 		mainPanel.setLayout(null);
 		mainPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		getContentPane().add(mainPanel);
-		/*
-		LabelLense ll1=new LabelLense(new Point(50,100),100,0,0);
-		LabelLense ll2=new LabelLense(new Point(100,100),100,0,0);
-		LabelLaser ls=new LabelLaser(new Point(0,100), 0.0);
+		
+		LabelLense ll1=new LabelLense(new Point(50,100),100,100,0);
+		LabelLense ll2=new LabelLense(new Point(100,100),100,100,0);
+		LabelLaser ls=new LabelLaser(new Point(0,100), 15);
 		LabelDisplay lw=new LabelDisplay(new Point(150,100), 100, 0);
 		mainPanel.add(ls);
 		mainPanel.add(ll1);
 		mainPanel.add(ll2);
 		mainPanel.add(lw);
-		*/
+		
 		//addScrollBar();//Пока не работает
 		addMenuBar();
 		addPanelOfSelection();

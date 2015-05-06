@@ -63,7 +63,7 @@ class LabelPrism extends LabelObject
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
 		if(!CONSTRUCTOR2)
 		{
-			g2.rotate(angle, p.getX(), p.getY());
+			g2.rotate(-angle, p.getX(), p.getY());
 			double ma=Math.sqrt(2*b*b+2*c*c-a*a)*0.5;
 			double cosalpha=(b*b-0.25*a*a-ma*ma)/(-1.0*a*ma);
 			x1=p.getX()-0.5*a-(1.0/3.0)*ma*cosalpha;
@@ -72,7 +72,7 @@ class LabelPrism extends LabelObject
 			y1=p.getY()+(1.0/3.0)*ma*Math.sin(Math.acos(cosalpha));
 			y2=y1;
 			y3=p.getY()-(2.0/3.0)*ma*Math.sin(Math.acos(cosalpha));
-			g2.rotate(-angle, p.getX(), p.getY());
+			g2.rotate(angle, p.getX(), p.getY());
 		}
 		g2.draw(new Line2D.Double(x1,y1,x2,y2));
 		g2.draw(new Line2D.Double(x2,y2,x3,y3));
