@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.geom.Line2D;
+import java.awt.geom.Line2D.Double;
 
 class LabelLense extends LabelObject
 {
@@ -38,6 +39,20 @@ class LabelLense extends LabelObject
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
 		g2.rotate(-angle, p.getX(), p.getY());
 		g2.draw(new Line2D.Double(p.getX(), p.getY()-0.5*length, p.getX(), p.getY()+0.5*length));
+		if(focus>0.0)
+		{
+			g2.draw(new Line2D.Double(p.getX(), p.getY()-0.5*length, p.getX()+5, p.getY()-0.5*length+5));
+			g2.draw(new Line2D.Double(p.getX(), p.getY()-0.5*length, p.getX()-5, p.getY()-0.5*length+5));
+			g2.draw(new Line2D.Double(p.getX(), p.getY()+0.5*length, p.getX()+5, p.getY()+0.5*length-5));
+			g2.draw(new Line2D.Double(p.getX(), p.getY()+0.5*length, p.getX()-5, p.getY()+0.5*length-5));
+		}
+		else
+		{
+			g2.draw(new Line2D.Double(p.getX(), p.getY()-0.5*length, p.getX()+5, p.getY()-0.5*length-5));
+			g2.draw(new Line2D.Double(p.getX(), p.getY()-0.5*length, p.getX()-5, p.getY()-0.5*length-5));
+			g2.draw(new Line2D.Double(p.getX(), p.getY()+0.5*length, p.getX()+5, p.getY()+0.5*length+5));
+			g2.draw(new Line2D.Double(p.getX(), p.getY()+0.5*length, p.getX()-5, p.getY()+0.5*length+5));
+		}
 		g2.rotate(angle, p.getX(), p.getY());
 	}
 	void changeLength(double l)
