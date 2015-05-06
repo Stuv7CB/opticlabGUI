@@ -24,7 +24,7 @@ class LabelLense extends LabelObject
 	 * @param f Фокусное расстояние
 	 * @param a Угол наклона, отсчитываемый от вертикали (в радианах)
 	 */
-	LabelLense(Point p, double l, double f, double a)//Координаты x, y, длина, фокус и угол поворота относительно вертикали
+	LabelLense(Point p, double l, double f, double a)
 	{
 		center=p;
 		ID=2;
