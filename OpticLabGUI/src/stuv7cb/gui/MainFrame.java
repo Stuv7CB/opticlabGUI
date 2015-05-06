@@ -79,7 +79,7 @@ public class MainFrame extends JFrame
 		mainPanel.add(ll1);
 		mainPanel.add(ll2);
 		//mainPanel.add(ll3);
-		mainPanel.add(lw);
+		//mainPanel.add(lw);
 		*/
 		//addScrollBar();//Пока не работает
 		addMenuBar();
