@@ -57,6 +57,7 @@ public class MainFrame extends JFrame
 			{
 				mainPanel.clean();
 				mainPanel.updateUI();
+				addListeners();
 				clean.setVisible(false);
 			}
 			
@@ -69,19 +70,18 @@ public class MainFrame extends JFrame
 		mainPanel.setLayout(null);
 		mainPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		getContentPane().add(mainPanel);
-		/*
+		
 		LabelLense ll1=new LabelLense(new Point(50,100),100,50,0);
 		LabelLense ll2=new LabelLense(new Point(125,100),100,100,0);
 		LabelLense ll3=new LabelLense(new Point(200,100), 100, -25, 0);
 		LabelLaser ls=new LabelLaser(new Point(0,100), 15);
-		LabelDisplay lw=new LabelDisplay(new Point(300,100), 1000, 0);
+		LabelDisplay lw=new LabelDisplay(new Point(300,100), 100, 0);
 		mainPanel.add(ls);
 		mainPanel.add(ll1);
 		mainPanel.add(ll2);
-		//mainPanel.add(ll3);
-		//mainPanel.add(lw);
-		*/
-		//addScrollBar();//Пока не работает
+		mainPanel.add(ll3);
+		mainPanel.add(lw);
+		
 		addMenuBar();
 		addPanelOfSelection();
 	}
@@ -113,16 +113,25 @@ public class MainFrame extends JFrame
 	{
 		mainPanel.add(comp);
 	}
-	/*void addScrollBar()
-	{
-		JScrollPane scroll = new JScrollPane(mainPanel);
-		scroll.setSize(mainPanel.getSize().width, 30);
-		scroll.setLocation(0, getSize().height-30);
-		getContentPane().add(scroll);
-	}*/
 	Component[] getComponentsofMainPanel()
 	{
 		return mainPanel.getComponents();
+	}
+	void removeListeners()
+	{
+		Component[] labelObjects=getComponentsofMainPanel();
+		for(int i=0; i<labelObjects.length;i++)
+		{
+			((LabelObject)labelObjects[i]).removeMouseControl();
+		}
+	}
+	void addListeners()
+	{
+		Component[] labelObjects=getComponentsofMainPanel();
+		for(int i=0; i<labelObjects.length;i++)
+		{
+			((LabelObject)labelObjects[i]).addMouseControl();
+		}
 	}
 	void mainPanelPaint(String line)
 	{
@@ -376,5 +385,6 @@ public class MainFrame extends JFrame
 	void mayClean()
 	{
 		clean.setVisible(true);
+		removeListeners();
 	}
 }

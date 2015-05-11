@@ -29,6 +29,8 @@ abstract class LabelObject extends JLabel
 	protected int clickY;
 	protected int ID;
 	protected JPopupMenu popup=new JPopupMenu();
+	private MouseListener ml;
+	private MouseMotionListener mml;
 	int getID()
 	{
 		return ID;
@@ -36,7 +38,7 @@ abstract class LabelObject extends JLabel
 	void addMouseControl()
 	{
 		LabelObject label=this;
-		addMouseMotionListener(new MouseMotionListener()
+		mml=new MouseMotionListener()
 		{
 			@Override		
 			public void mouseDragged(MouseEvent e) 
@@ -49,8 +51,61 @@ abstract class LabelObject extends JLabel
 			{
 				// TODO Auto-generated method stub	
 			}
-		});
-		addMouseListener(new MouseListener()
+		};
+		addMouseMotionListener(mml);/*new MouseMotionListener()
+		{
+			@Override		
+			public void mouseDragged(MouseEvent e) 
+			{
+				label.setLocation(label.getX()+e.getX()-clickX, label.getY()+e.getY()-clickY);
+				label.changeCenter(label.getCenter().getX()+e.getX()-clickX, label.getCenter().getY()+e.getY()-clickY);
+			}
+			@Override
+			public void mouseMoved(MouseEvent e) 
+			{
+				// TODO Auto-generated method stub	
+			}
+		});*/
+		ml=new MouseListener()
+		{
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+				if (e.getButton()==MouseEvent.BUTTON3)
+				{
+			        popup.show(e.getComponent(), e.getX(), e.getY());
+				}
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) 
+			{
+				clickX=e.getX();
+				clickY=e.getY();
+				label.setBorder(BorderFactory.createDashedBorder(Color.BLACK));
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) 
+			{
+				label.setBorder(BorderFactory.createEmptyBorder());
+			}
+		};
+		addMouseListener(ml);/*new MouseListener()
 		{
 
 			@Override
@@ -90,7 +145,12 @@ abstract class LabelObject extends JLabel
 				label.setBorder(BorderFactory.createEmptyBorder());
 			}
 			
-		});
+		});*/
+	}
+	void removeMouseControl()
+	{
+		removeMouseListener(ml);
+		removeMouseMotionListener(mml);
 	}
 	void addPopup()
 	{
