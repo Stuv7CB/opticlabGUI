@@ -21,11 +21,11 @@ public class MainFrame extends JFrame
 	 * 
 	 */
 	private static final long serialVersionUID = -7814866059557571520L;
-	private final String TITLE="Оптическая лаборатория";
-	private MainPanel mainPanel =new MainPanel();
-	private SpringLayout springLayout;
-	private JPanel panel;
 	private JButton clean=new JButton("Очистить");
+	private MainPanel mainPanel =new MainPanel();
+	private JPanel panel;
+	private SpringLayout springLayout;
+	private final String TITLE="Оптическая лаборатория";
 	public MainFrame()
 	{
 		setMinimumSize(new Dimension(349, 278));
@@ -81,46 +81,6 @@ public class MainFrame extends JFrame
 		addMenuBar();
 		addPanelOfSelection();
 	}
-	private void addPanelOfSelection()
-	{
-		JPanel panelSelection = new JPanel();
-		springLayout.putConstraint(SpringLayout.WEST, panelSelection, 0, SpringLayout.WEST, getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, panelSelection, 0, SpringLayout.WEST, mainPanel);
-		springLayout.putConstraint(SpringLayout.NORTH, panelSelection, 0, SpringLayout.NORTH, getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, panelSelection, 0, SpringLayout.SOUTH, getContentPane());
-		final SelectionLabel[] selectionLabel = new SelectionLabel[9];
-		panelSelection.setLayout(null);
-		SelectionLabel.parent=this;
-		for(int i=0;i<9;i++)
-		{
-			selectionLabel[i]=new SelectionLabel(i);
-			selectionLabel[i].addMouseListener(selectionLabel[i].new MyMouseListener());
-			selectionLabel[i].setLocation(0, i*20);
-			panelSelection.add(selectionLabel[i]);
-		}
-		panelSelection.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		getContentPane().add(panelSelection);
-	}
-	void clean()
-	{
-		mainPanel.clean();
-	}
-	void mainPaneladd(JComponent comp)
-	{
-		mainPanel.add(comp);
-	}
-	Component[] getComponentsofMainPanel()
-	{
-		return mainPanel.getComponents();
-	}
-	void removeListeners()
-	{
-		Component[] labelObjects=getComponentsofMainPanel();
-		for(int i=0; i<labelObjects.length;i++)
-		{
-			((LabelObject)labelObjects[i]).removeMouseControl();
-		}
-	}
 	void addListeners()
 	{
 		Component[] labelObjects=getComponentsofMainPanel();
@@ -128,11 +88,6 @@ public class MainFrame extends JFrame
 		{
 			((LabelObject)labelObjects[i]).addMouseControl();
 		}
-	}
-	void mainPanelPaint(String line)
-	{
-		mainPanel.paintNewLine(line);
-		mainPanel.updateUI();
 	}
 	private void addMenuBar()
 	{
@@ -390,9 +345,54 @@ public class MainFrame extends JFrame
 		file.add(exit);
 		setJMenuBar(menuBar);
 	}
+	private void addPanelOfSelection()
+	{
+		JPanel panelSelection = new JPanel();
+		springLayout.putConstraint(SpringLayout.WEST, panelSelection, 0, SpringLayout.WEST, getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panelSelection, 0, SpringLayout.WEST, mainPanel);
+		springLayout.putConstraint(SpringLayout.NORTH, panelSelection, 0, SpringLayout.NORTH, getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panelSelection, 0, SpringLayout.SOUTH, getContentPane());
+		final SelectionLabel[] selectionLabel = new SelectionLabel[9];
+		panelSelection.setLayout(null);
+		SelectionLabel.parent=this;
+		for(int i=0;i<9;i++)
+		{
+			selectionLabel[i]=new SelectionLabel(i);
+			selectionLabel[i].addMouseListener(selectionLabel[i].new MyMouseListener());
+			selectionLabel[i].setLocation(0, i*20);
+			panelSelection.add(selectionLabel[i]);
+		}
+		panelSelection.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		getContentPane().add(panelSelection);
+	}
+	void clean()
+	{
+		mainPanel.clean();
+	}
+	Component[] getComponentsofMainPanel()
+	{
+		return mainPanel.getComponents();
+	}
+	void mainPaneladd(JComponent comp)
+	{
+		mainPanel.add(comp);
+	}
+	void mainPanelPaint(String line)
+	{
+		mainPanel.paintNewLine(line);
+		mainPanel.updateUI();
+	}
 	void mayClean()
 	{
 		clean.setVisible(true);
 		removeListeners();
+	}
+	void removeListeners()
+	{
+		Component[] labelObjects=getComponentsofMainPanel();
+		for(int i=0; i<labelObjects.length;i++)
+		{
+			((LabelObject)labelObjects[i]).removeMouseControl();
+		}
 	}
 }

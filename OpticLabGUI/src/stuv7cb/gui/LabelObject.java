@@ -322,6 +322,7 @@ abstract class LabelObject extends JLabel
 									{
 										((LabelLaser)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
 										((LabelLaser)label).changeAngle(Double.valueOf(angle.getText()));
+										((LabelLaser)label).setDimension();
 										((LabelLaser)label).paint(((LabelLaser)label).getGraphics());
 										((LabelLaser)label).updateUI();
 									}
@@ -364,6 +365,7 @@ abstract class LabelObject extends JLabel
 										((LabelPlate)label).changeLength(Double.valueOf(length.getText()));
 										((LabelPlate)label).changeWidth(Double.valueOf(width.getText()));
 										((LabelPlate)label).changeN(Double.valueOf(n.getText()));
+										((LabelPlate)label).setDimension();
 										((LabelPlate)label).paint(((LabelPlate)label).getGraphics());
 										((LabelPlate)label).updateUI();
 									}
@@ -408,6 +410,7 @@ abstract class LabelObject extends JLabel
 										((LabelPrism)label).changeB(Double.valueOf(b.getText()));
 										((LabelPrism)label).changeC(Double.valueOf(c.getText()));
 										((LabelPrism)label).changeN(Double.valueOf(n.getText()));
+										((LabelPrism)label).setDimension();
 										((LabelPrism)label).paint(((LabelPrism)label).getGraphics());
 										((LabelPrism)label).updateUI();
 									}
@@ -446,6 +449,7 @@ abstract class LabelObject extends JLabel
 										((LabelSphereMirror)label).changeStartAngle(Double.valueOf(angle.getText()));
 										((LabelSphereMirror)label).changeEndAngle(Double.valueOf(endAngle.getText()));
 										((LabelSphereMirror)label).changeR(Double.valueOf(r.getText()));
+										((LabelSphereMirror)label).setDimension();
 										((LabelSphereMirror)label).paint(((LabelSphereMirror)label).getGraphics());
 										((LabelSphereMirror)label).updateUI();
 									}
@@ -493,7 +497,8 @@ abstract class LabelObject extends JLabel
 										((LabelRealLense)label).changeN(Double.valueOf(n.getText()));
 										((LabelRealLense)label).changeLength(Double.valueOf(length.getText()));
 										((LabelRealLense)label).changeD(Double.valueOf(d.getText()));
-										((LabelRealLense)label).paint(((LabelSphereMirror)label).getGraphics());
+										((LabelRealLense)label).setDimension();
+										((LabelRealLense)label).paint(((LabelRealLense)label).getGraphics());
 										((LabelRealLense)label).updateUI();
 									}
 								};

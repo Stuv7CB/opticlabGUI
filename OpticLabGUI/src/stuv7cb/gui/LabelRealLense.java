@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.geom.Arc2D;
+import java.awt.geom.Line2D;
 
 class LabelRealLense extends LabelObject
 {
@@ -116,23 +117,31 @@ class LabelRealLense extends LabelObject
 		g2.rotate(-angle, p.getX(), p.getY());
 		if(R1<0)
 		{
-			double th=Math.asin(2*length/R1);
-			g2.draw(new Arc2D.Double(p.getX()-R1*(1-Math.cos(th))-2*R1-d/2.0, p.getY()-R1, 2*R1, 2*R1,-th*180/Math.PI, 2*th*180/Math.PI, Arc2D.OPEN));
+			double th=Math.asin(length/(2*Math.abs(R1)))*180/Math.PI;
+			g2.draw(new Arc2D.Double(p.getX()-0.5*d+2*R1, p.getY()+R1, -2.0*R1, -2.0*R1, -th, 2*th, Arc2D.OPEN));
+			g2.draw(new Line2D.Double(p.getX()-0.5*d-Math.abs(R1)*(1-Math.cos(th)), p.getY()-0.5*length, p.getX(), p.getY()-0.5*length));
+			g2.draw(new Line2D.Double(p.getX()-0.5*d-Math.abs(R1)*(1-Math.cos(th)), p.getY()+0.5*length, p.getX(), p.getY()+0.5*length));
 		}
 		else
 		{
-			double th=Math.asin(2*length/R1);
-			g2.draw(new Arc2D.Double(p.getX()-R1*(1-Math.cos(th))+d/2.0, p.getY()-R1, 2*R1, 2*R1, 180+180*th/Math.PI, -2*th*180/Math.PI, Arc2D.OPEN));
+			double th=Math.asin(length/(2*Math.abs(R1)))*180/Math.PI;
+			g2.draw(new Arc2D.Double(p.getX()-0.5*d, p.getY()-R1, 2.0*R1, 2.0*R1, 180-th, 2*th, Arc2D.OPEN));
+			g2.draw(new Line2D.Double(p.getX()-0.5*d, p.getY()-0.5*length, p.getX(), p.getY()-0.5*length));
+			g2.draw(new Line2D.Double(p.getX()-0.5*d, p.getY()+0.5*length, p.getX(), p.getY()+0.5*length));
 		}
 		if(R2<0)
 		{
-			double th=Math.asin(2*length/R1);
-			g2.draw(new Arc2D.Double(p.getX()+R2*(1-Math.cos(th))+d/2.0, p.getY()-R2, 2*R2, 2*R2,180+th*180/Math.PI, -2*th*180/Math.PI, Arc2D.OPEN));
+			double th=Math.asin(length/(2*Math.abs(R2)))*180/Math.PI;
+			g2.draw(new Arc2D.Double(p.getX()+0.5*d, p.getY()+R2, -2.0*R2, -2.0*R2, 180-th, 2*th, Arc2D.OPEN));
+			g2.draw(new Line2D.Double(p.getX()+0.5*d+Math.abs(R1)*(1-Math.cos(th)), p.getY()-0.5*length, p.getX(), p.getY()-0.5*length));
+			g2.draw(new Line2D.Double(p.getX()+0.5*d+Math.abs(R1)*(1-Math.cos(th)), p.getY()+0.5*length, p.getX(), p.getY()+0.5*length));
 		}
 		else
 		{
-			double th=Math.asin(2*length/R1);
-			g2.draw(new Arc2D.Double(p.getX()-R2*Math.cos(th)-R2-d/2.0, p.getY()-R2, 2*R2, 2*R2, -180*th/Math.PI, 2*th, Arc2D.OPEN));
+			double th=Math.asin(length/(2*Math.abs(R2)))*180/Math.PI;
+			g2.draw(new Arc2D.Double(p.getX()+0.5*d-2*R2, p.getY()-R2, 2.0*R2, 2.0*R2, -th, 2*th, Arc2D.OPEN));
+			g2.draw(new Line2D.Double(p.getX()+0.5*d, p.getY()-0.5*length, p.getX(), p.getY()-0.5*length));
+			g2.draw(new Line2D.Double(p.getX()+0.5*d, p.getY()+0.5*length, p.getX(), p.getY()+0.5*length));
 		}
 		g2.rotate(angle, p.getX(), p.getY());
 	}
