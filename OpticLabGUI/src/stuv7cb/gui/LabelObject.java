@@ -52,20 +52,7 @@ abstract class LabelObject extends JLabel
 				// TODO Auto-generated method stub	
 			}
 		};
-		addMouseMotionListener(mml);/*new MouseMotionListener()
-		{
-			@Override		
-			public void mouseDragged(MouseEvent e) 
-			{
-				label.setLocation(label.getX()+e.getX()-clickX, label.getY()+e.getY()-clickY);
-				label.changeCenter(label.getCenter().getX()+e.getX()-clickX, label.getCenter().getY()+e.getY()-clickY);
-			}
-			@Override
-			public void mouseMoved(MouseEvent e) 
-			{
-				// TODO Auto-generated method stub	
-			}
-		});*/
+		addMouseMotionListener(mml);
 		ml=new MouseListener()
 		{
 			@Override
@@ -105,47 +92,7 @@ abstract class LabelObject extends JLabel
 				label.setBorder(BorderFactory.createEmptyBorder());
 			}
 		};
-		addMouseListener(ml);/*new MouseListener()
-		{
-
-			@Override
-			public void mouseClicked(MouseEvent e)
-			{
-				if (e.getButton()==MouseEvent.BUTTON3)
-				{
-			        popup.show(e.getComponent(), e.getX(), e.getY());
-				}
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) 
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) 
-			{
-				clickX=e.getX();
-				clickY=e.getY();
-				label.setBorder(BorderFactory.createDashedBorder(Color.BLACK));
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) 
-			{
-				label.setBorder(BorderFactory.createEmptyBorder());
-			}
-			
-		});*/
+		addMouseListener(ml);
 	}
 	void removeMouseControl()
 	{
@@ -381,6 +328,29 @@ abstract class LabelObject extends JLabel
 								add(panel, BorderLayout.CENTER);
 								this.panel=panel;
 								break;
+							}
+							case 8:
+							{
+								SetRealLense panel=new SetRealLense(parent)
+								{	
+									/**
+									 * 
+									 */
+									private static final long serialVersionUID = -4588540064778051364L;
+
+									void addObject()
+									{
+										((LabelRealLense)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
+										((LabelRealLense)label).changeR1(Double.valueOf(R1.getText()));
+										((LabelRealLense)label).changeR2(Double.valueOf(R2.getText()));
+										((LabelRealLense)label).changeAngle(Double.valueOf(angle.getText()));
+										((LabelRealLense)label).changeN(Double.valueOf(n.getText()));
+										((LabelRealLense)label).changeLength(Double.valueOf(length.getText()));
+										((LabelRealLense)label).changeD(Double.valueOf(d.getText()));
+										((LabelRealLense)label).paint(((LabelSphereMirror)label).getGraphics());
+										((LabelRealLense)label).updateUI();
+									}
+								};
 							}
 						}
 					}

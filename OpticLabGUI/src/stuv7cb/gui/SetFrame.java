@@ -103,6 +103,14 @@ class SetFrame extends JFrame
 				this.panel=panel;
 				break;
 			}
+			case 8:
+			{
+				SetRealLense panel=new SetRealLense(parent);
+				panel.addFields();
+				add(panel, BorderLayout.CENTER);
+				this.panel=panel;
+				break;
+			}
 		}
 	}
 	void addButton()

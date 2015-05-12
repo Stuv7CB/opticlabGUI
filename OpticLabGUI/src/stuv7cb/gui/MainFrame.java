@@ -70,7 +70,7 @@ public class MainFrame extends JFrame
 		mainPanel.setLayout(null);
 		mainPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		getContentPane().add(mainPanel);
-		
+		/*
 		LabelLense ll1=new LabelLense(new Point(50,100),100,50,0);
 		LabelLense ll2=new LabelLense(new Point(125,100),100,100,0);
 		LabelLense ll3=new LabelLense(new Point(200,100), 100, -25, 0);
@@ -81,7 +81,7 @@ public class MainFrame extends JFrame
 		mainPanel.add(ll2);
 		mainPanel.add(ll3);
 		mainPanel.add(lw);
-		
+		*/
 		addMenuBar();
 		addPanelOfSelection();
 	}
@@ -92,10 +92,10 @@ public class MainFrame extends JFrame
 		springLayout.putConstraint(SpringLayout.EAST, panelSelection, 0, SpringLayout.WEST, mainPanel);
 		springLayout.putConstraint(SpringLayout.NORTH, panelSelection, 0, SpringLayout.NORTH, getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panelSelection, 0, SpringLayout.SOUTH, getContentPane());
-		final SelectionLabel[] selectionLabel = new SelectionLabel[8];
+		final SelectionLabel[] selectionLabel = new SelectionLabel[9];
 		panelSelection.setLayout(null);
 		SelectionLabel.parent=this;
-		for(int i=0;i<8;i++)
+		for(int i=0;i<9;i++)
 		{
 			selectionLabel[i]=new SelectionLabel(i);
 			selectionLabel[i].addMouseListener(selectionLabel[i].new MyMouseListener());
@@ -300,6 +300,16 @@ public class MainFrame extends JFrame
 									Point p=new Point();
 									p.setLocation(params.get(i++),params.get(i++));
 									LabelSphereMirror label=new LabelSphereMirror(p, params.get(i++),params.get(i++),params.get(i++));
+									label.addMouseControl();
+									mainPaneladd(label);
+									label.addPopup();
+									label.updateUI();
+								}
+								case 8:
+								{
+									Point p=new Point();
+									p.setLocation(params.get(i++),params.get(i++));
+									LabelRealLense label=new LabelRealLense(p, params.get(i++), params.get(i++), params.get(i++), params.get(i++), params.get(i++), params.get(i++));
 									label.addMouseControl();
 									mainPaneladd(label);
 									label.addPopup();
