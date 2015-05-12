@@ -33,6 +33,18 @@ class LabelLense extends LabelObject
 		focus=f;
 		setDimension();
 	}
+	double getLength()
+	{
+		return length;
+	}
+	double getFocus()
+	{
+		return focus;
+	}
+	double getAngle()
+	{
+		return angle*180/Math.PI;
+	}
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);

@@ -10,8 +10,8 @@ class LabelLaser extends LabelObject
 	 * 
 	 */
 	private static final long serialVersionUID = -7342766801550239655L;
-	private Point center;
 	private double angle;
+	private Point center;
 	/**
 	 * @param p Координаты центра
 	 * @param a Угол наклона, отсчитывающийся от вертикали (в радианах)
@@ -23,10 +23,21 @@ class LabelLaser extends LabelObject
 		angle=a;
 		setDimension();
 	}
-	public void paintComponent(Graphics g)
+	void changeAngle(double a)
 	{
-		super.paintComponent(g);
-		g.fillOval(3, 3, 6, 6);
+		angle=a;
+	}
+	void changeCenter(double x, double y)
+	{
+		center.setLocation(x, y);
+	}
+	double getAngle()
+	{
+		return angle*180/Math.PI;
+	}
+	Point getCenter()
+	{
+		return center;
 	}
 	@Override
 	String getParams() 
@@ -34,6 +45,11 @@ class LabelLaser extends LabelObject
 		String line="";
 		line=line+center.getX()+" "+center.getY()+" "+angle;
 		return line;
+	}
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		g.fillOval(3, 3, 6, 6);
 	}
 	void setDimension()
 	{
@@ -45,17 +61,5 @@ class LabelLaser extends LabelObject
 		Dimension d=new Dimension();
 		d.setSize(12,12);
 		setSize(d);
-	}
-	void changeCenter(double x, double y)
-	{
-		center.setLocation(x, y);
-	}
-	Point getCenter()
-	{
-		return center;
-	}
-	void changeAngle(double a)
-	{
-		angle=a;
 	}
 }

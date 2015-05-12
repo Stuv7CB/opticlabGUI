@@ -28,7 +28,6 @@ class SetSphereMirror extends SetPanel
 		add(angle);
 		add(endAngle);
 		add(r);
-		
 	}
 
 	@Override

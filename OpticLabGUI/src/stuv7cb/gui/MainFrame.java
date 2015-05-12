@@ -21,10 +21,6 @@ public class MainFrame extends JFrame
 	 * 
 	 */
 	private static final long serialVersionUID = -7814866059557571520L;
-	private Toolkit kit = Toolkit.getDefaultToolkit();
-	private Dimension screenSize=kit.getScreenSize();
-	final int WIDTH=screenSize.width/2;
-	final int HEIGHT=screenSize.height/2;
 	private final String TITLE="Оптическая лаборатория";
 	private MainPanel mainPanel =new MainPanel();
 	private SpringLayout springLayout;
@@ -33,7 +29,7 @@ public class MainFrame extends JFrame
 	public MainFrame()
 	{
 		setMinimumSize(new Dimension(349, 278));
-		setSize(WIDTH, HEIGHT);
+		this.setExtendedState(MAXIMIZED_BOTH);
 		setTitle(TITLE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		springLayout = new SpringLayout();

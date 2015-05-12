@@ -3,6 +3,7 @@ package stuv7cb.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,13 +29,9 @@ abstract class LabelObject extends JLabel
 	protected int clickX;
 	protected int clickY;
 	protected int ID;
-	protected JPopupMenu popup=new JPopupMenu();
 	private MouseListener ml;
 	private MouseMotionListener mml;
-	int getID()
-	{
-		return ID;
-	}
+	protected JPopupMenu popup=new JPopupMenu();
 	void addMouseControl()
 	{
 		LabelObject label=this;
@@ -94,11 +91,6 @@ abstract class LabelObject extends JLabel
 		};
 		addMouseListener(ml);
 	}
-	void removeMouseControl()
-	{
-		removeMouseListener(ml);
-		removeMouseMotionListener(mml);
-	}
 	void addPopup()
 	{
 		Container c = this;
@@ -134,6 +126,32 @@ abstract class LabelObject extends JLabel
 					 * 
 					 */
 					private static final long serialVersionUID = 8856504742615904849L;
+					void addButton()
+					{
+						JPanel panelB = new JPanel();
+						JButton button = new JButton("Добавить");
+						JFrame frame=this;
+						button.addActionListener(new ActionListener()
+						{
+
+							@Override
+							public void actionPerformed(ActionEvent e) 
+							{
+								try
+								{
+									((SetPanel)panel).addObject();
+									frame.dispose();
+								}
+								catch(NumberFormatException nfe)
+								{
+									System.err.println(nfe.getLocalizedMessage()+"number is invalid.");
+									JOptionPane.showMessageDialog(frame, nfe.getLocalizedMessage()+"number is invalid.");
+								}
+							}
+						});
+						panelB.add(button);
+						add(panelB, BorderLayout.SOUTH);
+					}
 					void addObjects()
 					{
 						switch (ID)
@@ -146,7 +164,22 @@ abstract class LabelObject extends JLabel
 									 * 
 									 */
 									private static final long serialVersionUID = 1317636620999020251L;
-
+									
+									@Override
+									void addFields() 
+									{
+										xcord.setText(""+label.getCenter().getX());
+										ycord.setText(""+label.getCenter().getY());
+										length.setText(""+((LabelLense)label).getLength());
+										angle.setText(""+((LabelLense)label).getAngle());
+										f.setText(""+((LabelLense)label).getFocus());
+										setLayout(new GridLayout(5,1));
+										add(xcord);
+										add(ycord);
+										add(length);
+										add(angle);
+										add(f);
+									}
 									void addObject() 
 									{
 										((LabelLense)label).changeLength(Double.valueOf(length.getText()));
@@ -172,6 +205,14 @@ abstract class LabelObject extends JLabel
 									 */
 									private static final long serialVersionUID = -4864093504858950013L;
 
+									void addFields() 
+									{
+										xcord.setText(""+label.getCenter().getX());
+										ycord.setText(""+label.getCenter().getY());
+										setLayout(new GridLayout(2,1));
+										add(xcord);
+										add(ycord);
+									}
 									void addObject() 
 									{
 										((LabelSource)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
@@ -193,6 +234,19 @@ abstract class LabelObject extends JLabel
 									 */
 									private static final long serialVersionUID = -8262698205245021655L;
 
+									@Override
+									void addFields()
+									{
+										xcord.setText(""+label.getCenter().getX());
+										ycord.setText(""+label.getCenter().getY());
+										length.setText(""+((LabelDisplay)label).getLength());
+										angle.setText(""+((LabelDisplay)label).getAngle());
+										setLayout(new GridLayout(4,1));
+										add(xcord);
+										add(ycord);
+										add(length);
+										add(angle);
+									}
 									void addObject()
 									{
 										((LabelDisplay)label).changeLength(Double.valueOf(length.getText()));
@@ -217,6 +271,18 @@ abstract class LabelObject extends JLabel
 									 */
 									private static final long serialVersionUID = -7744158490634809134L;
 
+									void addFields()
+									{
+										xcord.setText(""+label.getCenter().getX());
+										ycord.setText(""+label.getCenter().getY());
+										length.setText(""+((LabelDisplay)label).getLength());
+										angle.setText(""+((LabelDisplay)label).getAngle());
+										setLayout(new GridLayout(4,1));
+										add(xcord);
+										add(ycord);
+										add(length);
+										add(angle);
+									}
 									void addObject()
 									{
 										((LabelMirror)label).changeLength(Double.valueOf(length.getText()));
@@ -241,6 +307,17 @@ abstract class LabelObject extends JLabel
 									 */
 									private static final long serialVersionUID = 4134310404204984628L;
 
+									@Override
+									void addFields() 
+									{
+										xcord.setText(""+label.getCenter().getX());
+										ycord.setText(""+label.getCenter().getY());
+										angle.setText(""+((LabelLaser)label).getAngle());
+										setLayout(new GridLayout(3,1));
+										add(xcord);
+										add(ycord);
+										add(angle);
+									}
 									void addObject() 
 									{
 										((LabelLaser)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
@@ -263,6 +340,23 @@ abstract class LabelObject extends JLabel
 									 */
 									private static final long serialVersionUID = 7570566962019361304L;
 
+									@Override
+									void addFields()
+									{
+										xcord.setText(""+label.getCenter().getX());
+										ycord.setText(""+label.getCenter().getY());
+										angle.setText(""+((LabelPlate)label).getAngle());
+										length.setText(""+((LabelPlate)label).getLength());
+										width.setText(""+((LabelPlate)label).getSpan());
+										n.setText(""+((LabelPlate)label).getN());
+										setLayout(new GridLayout(6,1));
+										add(xcord);
+										add(ycord);
+										add(length);
+										add(width);
+										add(angle);
+										add(n);
+									}
 									void addObject() 
 									{
 										((LabelPlate)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
@@ -288,6 +382,24 @@ abstract class LabelObject extends JLabel
 									 */
 									private static final long serialVersionUID = -7549903345315889770L;
 
+									void addFields()
+									{
+										xcord.setText(""+label.getCenter().getX());
+										ycord.setText(""+label.getCenter().getY());
+										angle.setText(""+((LabelPrism)label).getAngle());
+										a.setText(""+((LabelPrism)label).getA());
+										b.setText(""+((LabelPrism)label).getB());
+										c.setText(""+((LabelPrism)label).getC());
+										n.setText(""+((LabelPrism)label).getN());
+										setLayout(new GridLayout(7,1));
+										add(xcord);
+										add(ycord);
+										add(a);
+										add(b);
+										add(c);
+										add(angle);
+										add(n);
+									}
 									void addObject() 
 									{
 										((LabelPrism)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
@@ -314,6 +426,20 @@ abstract class LabelObject extends JLabel
 									 */
 									private static final long serialVersionUID = -4713732881465506820L;
 
+									void addFields() 
+									{
+										xcord.setText(""+label.getCenter().getX());
+										ycord.setText(""+label.getCenter().getY());
+										angle.setText(""+((LabelSphereMirror)label).getStartAngle());
+										endAngle.setText(""+((LabelSphereMirror)label).getEndAngle());
+										r.setText(""+((LabelSphereMirror)label).getR());
+										setLayout(new GridLayout(5,1));
+										add(xcord);
+										add(ycord);
+										add(angle);
+										add(endAngle);
+										add(r);
+									}
 									void addObject() 
 									{
 										((LabelSphereMirror)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
@@ -338,6 +464,26 @@ abstract class LabelObject extends JLabel
 									 */
 									private static final long serialVersionUID = -4588540064778051364L;
 
+									void addFields() 
+									{
+										xcord.setText(""+label.getCenter().getX());
+										ycord.setText(""+label.getCenter().getY());
+										angle.setText(""+((LabelRealLense)label).getAngle());
+										R1.setText(""+((LabelRealLense)label).getR1());
+										R2.setText(""+((LabelRealLense)label).getR2());
+										length.setText(""+((LabelRealLense)label).getLength());
+										n.setText(""+((LabelRealLense)label).getN());
+										d.setText(""+((LabelRealLense)label).getD());
+										setLayout(new GridLayout(8,1));
+										add(xcord);
+										add(ycord);
+										add(R1);
+										add(R2);
+										add(angle);
+										add(n);
+										add(length);
+										add(d);
+									}
 									void addObject()
 									{
 										((LabelRealLense)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
@@ -351,34 +497,12 @@ abstract class LabelObject extends JLabel
 										((LabelRealLense)label).updateUI();
 									}
 								};
+								panel.addFields();
+								add(panel, BorderLayout.CENTER);
+								this.panel=panel;
+								break;
 							}
 						}
-					}
-					void addButton()
-					{
-						JPanel panelB = new JPanel();
-						JButton button = new JButton("Добавить");
-						JFrame frame=this;
-						button.addActionListener(new ActionListener()
-						{
-
-							@Override
-							public void actionPerformed(ActionEvent e) 
-							{
-								try
-								{
-								((SetPanel)panel).addObject();
-								frame.dispose();
-								}
-								catch(NumberFormatException nfe)
-								{
-									System.err.println(nfe.getLocalizedMessage()+"number is invalid.");
-									JOptionPane.showMessageDialog(frame, nfe.getLocalizedMessage()+"number is invalid.");
-								}
-							}
-						});
-						panelB.add(button);
-						add(panelB, BorderLayout.SOUTH);
 					}
 				};//End of override
 			}
@@ -397,7 +521,16 @@ abstract class LabelObject extends JLabel
 		});
 		popup.add(delete);
 	}
-	abstract String getParams();
 	abstract void changeCenter(double x, double y);
 	abstract Point getCenter();
+	int getID()
+	{
+		return ID;
+	}
+	abstract String getParams();
+	void removeMouseControl()
+	{
+		removeMouseListener(ml);
+		removeMouseMotionListener(mml);
+	}
 }

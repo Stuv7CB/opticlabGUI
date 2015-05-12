@@ -17,10 +17,13 @@ class LabelSource extends LabelObject
 		ID=0;
 		setDimension();
 	}
-	public void paintComponent(Graphics g)
+	void changeCenter(double x, double y)
 	{
-		super.paintComponent(g);
-		g.fillOval(3, 3, 6, 6);
+		center.setLocation(x, y);
+	}
+	Point getCenter()
+	{
+		return center;
 	}
 	@Override
 	String getParams() 
@@ -28,6 +31,11 @@ class LabelSource extends LabelObject
 		String line="";
 		line=line+center.getX()+" "+center.getY();
 		return line;
+	}
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		g.fillOval(3, 3, 6, 6);
 	}
 	void setDimension()
 	{
@@ -39,13 +47,5 @@ class LabelSource extends LabelObject
 		Dimension d=new Dimension();
 		d.setSize(12,12);
 		setSize(d);
-	}
-	void changeCenter(double x, double y)
-	{
-		center.setLocation(x, y);
-	}
-	Point getCenter()
-	{
-		return center;
 	}
 }

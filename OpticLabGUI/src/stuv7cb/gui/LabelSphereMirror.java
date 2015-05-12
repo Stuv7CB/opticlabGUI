@@ -14,10 +14,10 @@ class LabelSphereMirror extends LabelObject
 	 * 
 	 */
 	private static final long serialVersionUID = -1456719604479245937L;
-	private double startAngle;
+	private Point center;
 	private double endAngle;
 	private double r;
-	private Point center;
+	private double startAngle;
 	LabelSphereMirror(Point p, double sa, double ea, double r)
 	{
 		ID=7;
@@ -27,10 +27,42 @@ class LabelSphereMirror extends LabelObject
 		this.r=r;
 		setDimension();
 	}
+	void changeCenter(double x, double y)
+	{
+		center.setLocation(x, y);
+	}
+	void changeEndAngle(double ea)
+	{
+		endAngle=ea*Math.PI/180;
+	}
+	void changeR(double r)
+	{
+		this.r=r;
+	}
+	void changeStartAngle(double sa)
+	{
+		startAngle=sa*Math.PI/180;
+	}
+	Point getCenter()
+	{
+		return center;
+	}
+	double getEndAngle()
+	{
+		return endAngle*180/Math.PI;
+	}
 	String getParams()
 	{
 		String line=""+center.getX()+" "+center.getY()+" "+r+" "+startAngle*(180/Math.PI)+" "+endAngle*(180/Math.PI);
 		return line;
+	}
+	double getR()
+	{
+		return r;
+	}
+	double getStartAngle()
+	{
+		return startAngle*180/Math.PI;
 	}
 	public void paintComponent(Graphics g)
 	{
@@ -41,26 +73,6 @@ class LabelSphereMirror extends LabelObject
 		Point p=new Point();
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
 		g2.draw(new Arc2D.Double(0, 0, 2*r, 2*r, 180*startAngle/Math.PI, 180*(endAngle-startAngle)/Math.PI, Arc2D.OPEN));
-	}
-	void changeCenter(double x, double y)
-	{
-		center.setLocation(x, y);
-	}
-	Point getCenter()
-	{
-		return center;
-	}
-	void changeStartAngle(double sa)
-	{
-		startAngle=sa*Math.PI/180;
-	}
-	void changeEndAngle(double ea)
-	{
-		endAngle=ea*Math.PI/180;
-	}
-	void changeR(double r)
-	{
-		this.r=r;
 	}
 	void setDimension()
 	{

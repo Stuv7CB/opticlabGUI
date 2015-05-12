@@ -14,13 +14,13 @@ class LabelRealLense extends LabelObject
 	 * 
 	 */
 	private static final long serialVersionUID = -4205626896439938682L;
-	private double R1;
-	private double R2;
 	private double angle;
 	private Point center;
-	private double n;
 	private double d;
 	private double length;
+	private double n;
+	private double R1;
+	private double R2;
 	/**
 	 * @param p Координата центра
 	 * @param R1 Длина линзы
@@ -41,6 +41,68 @@ class LabelRealLense extends LabelObject
 		this.d=d;
 		length=l;
 		setDimension();
+	}
+	void changeAngle(double a)
+	{
+		angle=a*Math.PI/180;
+	}
+	void changeCenter(double x, double y)
+	{
+		center.setLocation(x, y);
+	}
+	void changeD(double d)
+	{
+		this.d=d;
+	}
+	void changeLength(double l)
+	{
+		length=l;
+	}
+	void changeN(double n)
+	{
+		this.n=n;
+	}
+	void changeR1(double R1)
+	{
+		this.R1=R1;
+	}
+	void changeR2(double R2)
+	{
+		this.R2=R2;
+	}
+	double getAngle()
+	{
+		return angle*180/Math.PI;
+	}
+	Point getCenter()
+	{
+		return center;
+	}
+	double getD()
+	{
+		return d;
+	}
+	double getLength()
+	{
+		return length;
+	}
+	double getN()
+	{
+		return n;
+	}
+	String getParams()
+	{
+		String line="";
+		line+=line+center.getX()+" "+center.getY()+" "+length+" "+angle*(180/Math.PI)+" "+d+" "+R1+" "+R2+" "+n;
+		return line;
+	}
+	double getR1()
+	{
+		return R1;
+	}
+	double getR2()
+	{
+		return R2;
 	}
 	public void paintComponent(Graphics g)
 	{
@@ -74,36 +136,6 @@ class LabelRealLense extends LabelObject
 		}
 		g2.rotate(angle, p.getX(), p.getY());
 	}
-	void changeLength(double l)
-	{
-		length=l;
-	}
-	void changeAngle(double a)
-	{
-		angle=a*Math.PI/180;
-	}
-	void changeR1(double R1)
-	{
-		this.R1=R1;
-	}
-	void changeR2(double R2)
-	{
-		this.R2=R2;
-	}
-	void changeD(double d)
-	{
-		this.d=d;
-	}
-	void changeN(double n)
-	{
-		this.n=n;
-	}
-	String getParams()
-	{
-		String line="";
-		line+=line+center.getX()+" "+center.getY()+" "+length+" "+angle*(180/Math.PI)+" "+d+" "+R1+" "+R2+" "+n;
-		return line;
-	}
 	void setDimension()
 	{
 		Dimension dim=new Dimension();
@@ -112,13 +144,5 @@ class LabelRealLense extends LabelObject
 		p.setLocation(center.getX()-dim.getWidth()/2.0, center.getY()-dim.getHeight()/2.0);
 		setLocation(p);
 		setSize(dim);
-	}
-	void changeCenter(double x, double y)
-	{
-		center.setLocation(x, y);
-	}
-	Point getCenter()
-	{
-		return center;
 	}
 }

@@ -14,11 +14,11 @@ class LabelPlate extends LabelObject
 	 * 
 	 */
 	private static final long serialVersionUID = 4722310494349835255L;
-	private double length;
-	private double width;
 	private double angle;
-	private double n;
 	private Point center;
+	private double length;
+	private double n;
+	private double span;
 	/**
 	 * @param p Координаты центра
 	 * @param l Длина
@@ -32,9 +32,55 @@ class LabelPlate extends LabelObject
 		ID=4;
 		length=l;
 		angle=a;
-		width=w;
+		span=w;
 		this.n=n;
 		setDimension();
+	}
+	void changeAngle(double a)
+	{
+		angle=a*Math.PI/180;
+	}
+	void changeCenter(double x, double y)
+	{
+		center.setLocation(x, y);
+	}
+	void changeLength(double l)
+	{
+		length=l;
+	}
+	void changeN(double n)
+	{
+		this.n=n;
+	}
+	void changeWidth(double w)
+	{
+		span=w;
+	}
+	double getAngle()
+	{
+		return angle*180/Math.PI;
+	}
+	Point getCenter()
+	{
+		return center;
+	}
+	double getLength()
+	{
+		return length;
+	}
+	double getN()
+	{
+		return n;
+	}
+	String getParams()
+	{
+		String line="";
+		line+=line+center.getX()+" "+center.getY()+" "+length+" "+span+" "/*+angle*(180/Math.PI)+" "*/+n;
+		return line;
+	}
+	double getSpan()
+	{
+		return span;
 	}
 	public void paintComponent(Graphics g)
 	{
@@ -45,44 +91,14 @@ class LabelPlate extends LabelObject
 		Point p=new Point();
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
 		g2.rotate(-angle, p.getX(), p.getY());
-		g2.draw(new Rectangle2D.Double(p.getX()-0.5*width, p.getY()-0.5*length, width, length));
+		g2.draw(new Rectangle2D.Double(p.getX()-0.5*span, p.getY()-0.5*length, span, length));
 		g2.rotate(angle, p.getX(), p.getY());
-	}
-	void changeLength(double l)
-	{
-		length=l;
-	}
-	void changeAngle(double a)
-	{
-		angle=a*Math.PI/180;
-	}
-	void changeWidth(double w)
-	{
-		width=w;
-	}
-	void changeN(double n)
-	{
-		this.n=n;
-	}
-	void changeCenter(double x, double y)
-	{
-		center.setLocation(x, y);
-	}
-	Point getCenter()
-	{
-		return center;
-	}
-	String getParams()
-	{
-		String line="";
-		line+=line+center.getX()+" "+center.getY()+" "+length+" "+width+" "/*+angle*(180/Math.PI)+" "*/+n;
-		return line;
 	}
 	void setDimension()
 	{
 		Dimension d=new Dimension();
 		Point end=new Point();
-		d.setSize(Math.abs(length*Math.sin(Math.PI/2.0-angle))+Math.abs(width*Math.sin(angle))+10, Math.abs(length*Math.cos(Math.PI/2.0-angle))+Math.abs(width*Math.cos(angle))+10);
+		d.setSize(Math.abs(length*Math.sin(Math.PI/2.0-angle))+Math.abs(span*Math.sin(angle))+10, Math.abs(length*Math.cos(Math.PI/2.0-angle))+Math.abs(span*Math.cos(angle))+10);
 		end.setLocation(center.getX()-d.getWidth()/2.0-5, center.getY()-d.getHeight()/2.0-5);
 		setSize(d);
 		setLocation(end);

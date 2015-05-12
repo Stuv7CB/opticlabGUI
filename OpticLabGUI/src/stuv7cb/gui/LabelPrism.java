@@ -15,10 +15,11 @@ class LabelPrism extends LabelObject
 	 */
 	private static final long serialVersionUID = 4197113709182642607L;
 	private double a;
+	private double angle;
 	private double b;
 	private double c;
-	private double angle;
 	private Point center;
+	private final boolean CONSTRUCTOR2;
 	private double n;
 	private double x1;
 	private double x2;
@@ -26,7 +27,6 @@ class LabelPrism extends LabelObject
 	private double y1;
 	private double y2;
 	private double y3;
-	private final boolean CONSTRUCTOR2;
 	LabelPrism(Point p, double a, double b, double c, double angle, double n)
 	{
 		ID=6;
@@ -53,6 +53,54 @@ class LabelPrism extends LabelObject
 		CONSTRUCTOR2=true;
 		setDimension();
 	}
+	void changeA(double a)
+	{
+		this.a=a;
+	}
+	void changeAngle(double a)
+	{
+		angle=a*Math.PI/180;
+	}
+	void changeB(double b)
+	{
+		this.b=b;
+	}
+	void changeC(double c)
+	{
+		this.c=c;
+	}
+	void changeCenter(double x, double y)
+	{
+		center.setLocation(x, y);
+	}
+	void changeN(double n)
+	{
+		this.n=n;
+	}
+	double getA() {
+		return a;
+	}
+	double getAngle() {
+		return angle*180/Math.PI;
+	}
+	double getB() {
+		return b;
+	}
+	double getC() {
+		return c;
+	}
+	Point getCenter()
+	{
+		return center;
+	}
+	double getN() {
+		return n;
+	}
+	String getParams() 
+	{
+		String line=""+x1+" "+y1+" "+x2+" "+y2+" "+x3+" "+y3+" "+n;
+		return line;
+	}
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
@@ -78,11 +126,6 @@ class LabelPrism extends LabelObject
 		g2.draw(new Line2D.Double(x2,y2,x3,y3));
 		g2.draw(new Line2D.Double(x3,y3,x1,y1));
 	}
-	String getParams() 
-	{
-		String line=""+x1+" "+y1+" "+x2+" "+y2+" "+x3+" "+y3+" "+n;
-		return line;
-	}
 	void setDimension()
 	{
 		double ma=Math.sqrt(2*b*b+2*c*c-a*a)*0.5;
@@ -107,33 +150,5 @@ class LabelPrism extends LabelObject
 		end.setLocation(center.getX()-length, center.getY()-length);
 		setLocation(end);
 		setSize(d);
-	}
-	void changeN(double n)
-	{
-		this.n=n;
-	}
-	void changeCenter(double x, double y)
-	{
-		center.setLocation(x, y);
-	}
-	Point getCenter()
-	{
-		return center;
-	}
-	void changeAngle(double a)
-	{
-		angle=a*Math.PI/180;
-	}
-	void changeA(double a)
-	{
-		this.a=a;
-	}
-	void changeB(double b)
-	{
-		this.b=b;
-	}
-	void changeC(double c)
-	{
-		this.c=c;
 	}
 }

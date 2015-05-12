@@ -14,9 +14,9 @@ class LabelDisplay extends LabelObject
 	 * 
 	 */
 	private static final long serialVersionUID = 4510284477037061770L;
-	protected double length;
 	protected double angle;
 	protected Point center;
+	protected double length;
 	/**
 	 * @param p Координаты центра
 	 * @param l Длина
@@ -30,6 +30,37 @@ class LabelDisplay extends LabelObject
 		angle=a;
 		setDimension();
 	}
+	void changeAngle(double a)
+	{
+		angle=a*Math.PI/180;
+	}
+	void changeCenter(double x, double y)
+	{
+		center.setLocation(x, y);
+	}
+	void changeLength(double l)
+	{
+		length=l;
+	}
+	double getAngle()
+	{
+		return angle*180/Math.PI;
+	}
+	Point getCenter()
+	{
+		return center;
+	}
+	double getLength()
+	{
+		return length;
+	}
+	@Override
+	String getParams() 
+	{
+		String line="";
+		line+=line+center.getX()+" "+center.getY()+" "+length+" "+angle*(180/Math.PI);
+		return line;
+	}
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
@@ -41,21 +72,6 @@ class LabelDisplay extends LabelObject
 		g2.rotate(-angle, p.getX(), p.getY());
 		g2.draw(new Line2D.Double(p.getX(), p.getY()-0.5*length, p.getX(), p.getY()+0.5*length));
 		g2.rotate(angle, p.getX(), p.getY());
-	}
-	void changeLength(double l)
-	{
-		length=l;
-	}
-	void changeAngle(double a)
-	{
-		angle=a*Math.PI/180;
-	}
-	@Override
-	String getParams() 
-	{
-		String line="";
-		line+=line+center.getX()+" "+center.getY()+" "+length+" "+angle*(180/Math.PI);
-		return line;
 	}
 	void setDimension()
 	{
@@ -92,13 +108,5 @@ class LabelDisplay extends LabelObject
 		Dimension d=new Dimension();
 		d.setSize(width, height);
 		setSize(d);
-	}
-	void changeCenter(double x, double y)
-	{
-		center.setLocation(x, y);
-	}
-	Point getCenter()
-	{
-		return center;
 	}
 }
