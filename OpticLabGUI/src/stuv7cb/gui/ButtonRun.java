@@ -142,7 +142,7 @@ class ButtonRun extends JButton
 					}
 				}
 				String line=new String(buf, 0, i, "US-ASCII");
-				if((line.compareTo("FINISH")==0)&&(line.compareTo("ERR")==0))
+				if((line.compareTo("FINISH")==0)||(line.compareTo("ERR")==0))
 				{
 					socket.close();
 					break;
