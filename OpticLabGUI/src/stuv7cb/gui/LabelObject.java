@@ -507,6 +507,45 @@ abstract class LabelObject extends JLabel
 								this.panel=panel;
 								break;
 							}
+							case 9:
+							{
+								SetEllepticMirror panel=new SetEllepticMirror(parent)
+								{
+									/**
+									 * 
+									 */
+									private static final long serialVersionUID = -4713732881465506820L;
+
+									void addFields() 
+									{
+										xcord.setText(""+label.getCenter().getX());
+										ycord.setText(""+label.getCenter().getY());
+										angle.setText(""+((LabelEllepticMirror)label).getAngle());
+										b.setText(""+((LabelEllepticMirror)label).getB());
+										a.setText(""+((LabelEllepticMirror)label).getA());
+										setLayout(new GridLayout(5,1));
+										add(xcord);
+										add(ycord);
+										add(angle);
+										add(a);
+										add(b);
+									}
+									void addObject() 
+									{
+										((LabelEllepticMirror)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
+										((LabelEllepticMirror)label).changeAngle(Double.valueOf(angle.getText()));
+										((LabelEllepticMirror)label).changeB(Double.valueOf(b.getText()));
+										((LabelEllepticMirror)label).changeA(Double.valueOf(a.getText()));
+										((LabelEllepticMirror)label).setDimension();
+										((LabelEllepticMirror)label).paint(((LabelEllepticMirror)label).getGraphics());
+										((LabelEllepticMirror)label).updateUI();
+									}
+								};
+								panel.addFields();
+								add(panel, BorderLayout.CENTER);
+								this.panel=panel;
+								break;
+							}
 						}
 					}
 				};//End of override

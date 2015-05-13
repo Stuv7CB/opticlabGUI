@@ -354,10 +354,10 @@ public class MainFrame extends JFrame
 		springLayout.putConstraint(SpringLayout.EAST, panelSelection, 0, SpringLayout.WEST, mainPanel);
 		springLayout.putConstraint(SpringLayout.NORTH, panelSelection, 0, SpringLayout.NORTH, getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, panelSelection, 0, SpringLayout.SOUTH, getContentPane());
-		final SelectionLabel[] selectionLabel = new SelectionLabel[9];
+		final SelectionLabel[] selectionLabel = new SelectionLabel[10];
 		panelSelection.setLayout(null);
 		SelectionLabel.parent=this;
-		for(int i=0;i<9;i++)
+		for(int i=0;i<10;i++)
 		{
 			selectionLabel[i]=new SelectionLabel(i);
 			selectionLabel[i].addMouseListener(selectionLabel[i].new MyMouseListener());

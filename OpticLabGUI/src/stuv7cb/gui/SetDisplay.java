@@ -31,11 +31,19 @@ class SetDisplay extends SetPanel
 	{
 		Point p=new Point();
 		p.setLocation(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
-		LabelDisplay label=new LabelDisplay(p, Double.valueOf(length.getText()), Math.PI*Double.valueOf(angle.getText())/180);
-		label.addMouseControl();
-		frame.mainPaneladd(label);
-		label.addPopup();
-		label.updateUI();
+		LabelDisplay label;
+		if(Double.valueOf(length.getText())>0)
+		{
+			label=new LabelDisplay(p, Double.valueOf(length.getText()), Math.PI*Double.valueOf(angle.getText())/180);
+			label.addMouseControl();
+			frame.mainPaneladd(label);
+			label.addPopup();
+			label.updateUI();
+		}
+		else
+		{
+			System.err.println("Wrong params");
+		}
 	}
 
 }

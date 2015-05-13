@@ -111,6 +111,14 @@ class SetFrame extends JFrame
 				this.panel=panel;
 				break;
 			}
+			case 9:
+			{
+				SetEllepticMirror panel=new SetEllepticMirror(parent);
+				panel.addFields();
+				add(panel, BorderLayout.CENTER);
+				this.panel=panel;
+				break;
+			}
 		}
 	}
 	void addButton()
