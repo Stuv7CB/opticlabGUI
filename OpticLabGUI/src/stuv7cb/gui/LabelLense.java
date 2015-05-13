@@ -24,7 +24,7 @@ class LabelLense extends LabelObject
 	 * @param f Фокусное расстояние
 	 * @param a Угол наклона, отсчитываемый от вертикали (в радианах)
 	 */
-	LabelLense(Point p, double l, double f, double a)
+	LabelLense(Point p, double l, double a, double f)
 	{
 		center=p;
 		ID=2;
@@ -84,6 +84,7 @@ class LabelLense extends LabelObject
 	{
 		String line="";
 		line+=line+center.getX()+" "+center.getY()+" "+length+" "+angle*(180/Math.PI)+" "+focus;
+		System.out.println(line);
 		return line;
 	}
 	void setDimension()

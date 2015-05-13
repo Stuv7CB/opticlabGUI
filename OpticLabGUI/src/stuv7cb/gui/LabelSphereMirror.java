@@ -53,7 +53,7 @@ class LabelSphereMirror extends LabelObject
 	}
 	String getParams()
 	{
-		String line=""+center.getX()+" "+center.getY()+" "+r+" "+startAngle*(180/Math.PI)+" "+endAngle*(180/Math.PI);
+		String line=""+center.getX()+" "+center.getY()+" "+startAngle*(180/Math.PI)+" "+endAngle*(180/Math.PI)+" "+r;
 		return line;
 	}
 	double getR()

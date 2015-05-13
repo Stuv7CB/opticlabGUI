@@ -94,7 +94,7 @@ class LabelRealLense extends LabelObject
 	String getParams()
 	{
 		String line="";
-		line+=line+center.getX()+" "+center.getY()+" "+length+" "+angle*(180/Math.PI)+" "+d+" "+R1+" "+R2+" "+n;
+		line+=line+center.getX()+" "+center.getY()+" "+R1+" "+R2+" "+angle*(180/Math.PI)+" "+n+" "+length+" "+d;
 		return line;
 	}
 	double getR1()
@@ -148,7 +148,7 @@ class LabelRealLense extends LabelObject
 	void setDimension()
 	{
 		Dimension dim=new Dimension();
-		dim.setSize(Math.abs(R1)+Math.abs(R2)+d, Math.abs(R1)+Math.abs(R2)+d);
+		dim.setSize(2*length, 2*length);
 		Point p=new Point();
 		p.setLocation(center.getX()-dim.getWidth()/2.0, center.getY()-dim.getHeight()/2.0);
 		setLocation(p);

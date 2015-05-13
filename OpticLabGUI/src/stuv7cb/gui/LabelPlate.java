@@ -75,7 +75,7 @@ class LabelPlate extends LabelObject
 	String getParams()
 	{
 		String line="";
-		line+=line+center.getX()+" "+center.getY()+" "+length+" "+span+" "/*+angle*(180/Math.PI)+" "*/+n;
+		line+=line+center.getX()+" "+center.getY()+" "+length+" "+span+" "+angle*(180/Math.PI)+" "+n;
 		return line;
 	}
 	double getSpan()

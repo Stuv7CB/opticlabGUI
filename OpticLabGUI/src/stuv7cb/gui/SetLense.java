@@ -31,7 +31,7 @@ class SetLense extends SetPanel
 	{
 		Point p=new Point();
 		p.setLocation(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
-		LabelLense label=new LabelLense(p, Double.valueOf(length.getText()), Double.valueOf(f.getText()), Math.PI*Double.valueOf(angle.getText())/180);
+		LabelLense label=new LabelLense(p, Double.valueOf(length.getText()), Math.PI*Double.valueOf(angle.getText())/180, Double.valueOf(f.getText()));
 		label.addMouseControl();
 		frame.mainPaneladd(label);
 		label.addPopup();

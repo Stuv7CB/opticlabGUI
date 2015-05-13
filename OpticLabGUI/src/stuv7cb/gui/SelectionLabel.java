@@ -14,7 +14,7 @@ class SelectionLabel extends JLabel
 	 */
 	private static final long serialVersionUID = 7255951589130964243L;
 	static MainFrame parent;
-	protected final static String[] NAME={"Источник","Экран","Линза", "Зеркало", "Плоскопараллельная пластника", "Лазер", "Призма", "Сферическое зеркало", "Толстая линза"};
+	protected final static String[] NAME={"Источник","Экран","Линза", "Зеркало", "Плоскопараллельная пластиика", "Лазер", "Призма", "Сферическое зеркало", "Толстая линза"};
 	private int ID;
 	SelectionLabel(int i)
 	{

@@ -67,9 +67,9 @@ public class MainFrame extends JFrame
 		mainPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		getContentPane().add(mainPanel);
 		/*
-		LabelLense ll1=new LabelLense(new Point(50,100),100,50,0);
-		LabelLense ll2=new LabelLense(new Point(125,100),100,100,0);
-		LabelLense ll3=new LabelLense(new Point(200,100), 100, -25, 0);
+		LabelLense ll1=new LabelLense(new Point(50,100),100,0,50);
+		LabelLense ll2=new LabelLense(new Point(125,100),100,0,1000);
+		LabelLense ll3=new LabelLense(new Point(200,100), 100, 0, -25);
 		LabelSource ls=new LabelSource(new Point(0,100));
 		LabelDisplay lw=new LabelDisplay(new Point(300,100), 100, 0);
 		mainPanel.add(ls);
@@ -172,7 +172,7 @@ public class MainFrame extends JFrame
 									Point p=new Point();
 
 									p.setLocation(params.get(i++), params.get(i++));
-									LabelLense label=new LabelLense(p, params.get(i++), params.get(i++), params.get(i++));
+									LabelLense label=new LabelLense(p, params.get(i++), params.get(i++)*Math.PI/180, params.get(i++));
 									label.addMouseControl();
 									mainPaneladd(label);
 									label.addPopup();
@@ -195,7 +195,7 @@ public class MainFrame extends JFrame
 								{
 									Point p=new Point();
 									p.setLocation(params.get(i++),params.get(i++));
-									LabelDisplay label=new LabelDisplay(p,params.get(i++),params.get(i++));
+									LabelDisplay label=new LabelDisplay(p,params.get(i++),params.get(i++)*Math.PI/180);
 									label.addMouseControl();
 									mainPaneladd(label);
 									label.addPopup();
@@ -206,7 +206,7 @@ public class MainFrame extends JFrame
 								{
 									Point p=new Point();
 									p.setLocation(params.get(i++),params.get(i++));
-									LabelMirror label=new LabelMirror(p, params.get(i++),params.get(i++));
+									LabelMirror label=new LabelMirror(p, params.get(i++),params.get(i++)*Math.PI/180);
 									label.addMouseControl();
 									mainPaneladd(label);
 									label.addPopup();
@@ -217,7 +217,7 @@ public class MainFrame extends JFrame
 								{
 									Point p=new Point();
 									p.setLocation(params.get(i++),params.get(i++));
-									LabelPlate label=new LabelPlate(p, params.get(i++),params.get(i++),params.get(i++),params.get(i++));
+									LabelPlate label=new LabelPlate(p, params.get(i++),params.get(i++),params.get(i++)*Math.PI/180,params.get(i++));
 									label.addMouseControl();
 									mainPaneladd(label);
 									label.addPopup();
@@ -250,21 +250,23 @@ public class MainFrame extends JFrame
 								{
 									Point p=new Point();
 									p.setLocation(params.get(i++),params.get(i++));
-									LabelSphereMirror label=new LabelSphereMirror(p, params.get(i++),params.get(i++),params.get(i++));
+									LabelSphereMirror label=new LabelSphereMirror(p, params.get(i++)*Math.PI/180,params.get(i++)*Math.PI/180,params.get(i++));
 									label.addMouseControl();
 									mainPaneladd(label);
 									label.addPopup();
 									label.updateUI();
+									break;
 								}
 								case 8:
 								{
 									Point p=new Point();
 									p.setLocation(params.get(i++),params.get(i++));
-									LabelRealLense label=new LabelRealLense(p, params.get(i++), params.get(i++), params.get(i++), params.get(i++), params.get(i++), params.get(i++));
+									LabelRealLense label=new LabelRealLense(p, params.get(i++), params.get(i++), params.get(i++)*Math.PI/180, params.get(i++), params.get(i++), params.get(i++));
 									label.addMouseControl();
 									mainPaneladd(label);
 									label.addPopup();
 									label.updateUI();
+									break;
 								}
 								}
 							}
