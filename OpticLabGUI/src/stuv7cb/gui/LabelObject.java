@@ -388,27 +388,25 @@ abstract class LabelObject extends JLabel
 									{
 										xcord.setText(""+label.getCenter().getX());
 										ycord.setText(""+label.getCenter().getY());
-										angle.setText(""+((LabelPrism)label).getAngle());
-										a.setText(""+((LabelPrism)label).getA());
-										b.setText(""+((LabelPrism)label).getB());
-										c.setText(""+((LabelPrism)label).getC());
+										x2.setText(""+((LabelPrism)label).getB().getX());
+										y2.setText(""+((LabelPrism)label).getB().getY());
+										x3.setText(""+((LabelPrism)label).getC().getX());
+										y3.setText(""+((LabelPrism)label).getC().getY());
 										n.setText(""+((LabelPrism)label).getN());
 										setLayout(new GridLayout(7,1));
 										add(xcord);
 										add(ycord);
-										add(a);
-										add(b);
-										add(c);
-										add(angle);
+										add(x2);
+										add(y2);
+										add(x3);
+										add(y3);
 										add(n);
 									}
 									void addObject() 
 									{
 										((LabelPrism)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
-										((LabelPrism)label).changeAngle(Double.valueOf(angle.getText()));
-										((LabelPrism)label).changeA(Double.valueOf(a.getText()));
-										((LabelPrism)label).changeB(Double.valueOf(b.getText()));
-										((LabelPrism)label).changeC(Double.valueOf(c.getText()));
+										((LabelPrism)label).changeB(Double.valueOf(x2.getText()), Double.valueOf(y2.getText()));
+										((LabelPrism)label).changeC(Double.valueOf(x3.getText()), Double.valueOf(y3.getText()));
 										((LabelPrism)label).changeN(Double.valueOf(n.getText()));
 										((LabelPrism)label).setDimension();
 										((LabelPrism)label).paint(((LabelPrism)label).getGraphics());

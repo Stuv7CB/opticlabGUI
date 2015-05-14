@@ -14,80 +14,40 @@ class LabelPrism extends LabelObject
 	 * 
 	 */
 	private static final long serialVersionUID = 4197113709182642607L;
-	private double a;
-	private double angle;
-	private double b;
-	private double c;
-	private Point center;
-	private final boolean CONSTRUCTOR2;
 	private double n;
-	private double x1;
-	private double x2;
-	private double x3;
-	private double y1;
-	private double y2;
-	private double y3;
-	LabelPrism(Point p, double a, double b, double c, double angle, double n)
+	private Point center;
+	private Point B;
+	private Point C;
+	LabelPrism(Point p, Point b, Point c, double n)
 	{
 		ID=6;
-		this.a=a;
-		this.b=b;
-		this.c=c;
-		this.angle=angle;
-		this.n=n;
 		center=p;
-		CONSTRUCTOR2=false;
-		setDimension();
-	}
-	LabelPrism(Point p, double x1, double y1, double x2, double y2, double x3, double y3, double n)
-	{
-		ID=6;
-		this.x1=x1;
-		this.y1=y1;
-		this.x2=x2;
-		this.y2=y2;
-		this.x3=x3;
-		this.y3=y3;
+		B=b;
+		C=c;
 		this.n=n;
-		center=p;
-		CONSTRUCTOR2=true;
 		setDimension();
-	}
-	void changeA(double a)
-	{
-		this.a=a;
-	}
-	void changeAngle(double a)
-	{
-		angle=a*Math.PI/180;
-	}
-	void changeB(double b)
-	{
-		this.b=b;
-	}
-	void changeC(double c)
-	{
-		this.c=c;
 	}
 	void changeCenter(double x, double y)
 	{
 		center.setLocation(x, y);
 	}
+	void changeB(double x, double y)
+	{
+		B.setLocation(x, y);
+	}
+	void changeC(double x, double y)
+	{
+		C.setLocation(x, y);
+	}
 	void changeN(double n)
 	{
 		this.n=n;
 	}
-	double getA() {
-		return a;
+	Point getB() {
+		return B;
 	}
-	double getAngle() {
-		return angle*180/Math.PI;
-	}
-	double getB() {
-		return b;
-	}
-	double getC() {
-		return c;
+	Point getC() {
+		return C;
 	}
 	Point getCenter()
 	{
@@ -98,7 +58,7 @@ class LabelPrism extends LabelObject
 	}
 	String getParams() 
 	{
-		String line=""+x1+" "+y1+" "+x2+" "+y2+" "+x3+" "+y3+" "+n;
+		String line=""+center.getX()+" "+center.getX()+" "+B.getX()+" "+B.getY()+" "+C.getX()+" "+C.getY()+" "+n;
 		return line;
 	}
 	public void paintComponent(Graphics g)
@@ -108,47 +68,18 @@ class LabelPrism extends LabelObject
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setPaint(Color.black);
 		Point p=new Point();
+		Point r=new Point();
+		Point s=new Point();
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
-		if(!CONSTRUCTOR2)
-		{
-			g2.rotate(-angle, p.getX(), p.getY());
-			double ma=Math.sqrt(2*b*b+2*c*c-a*a)*0.5;
-			double cosalpha=(b*b-0.25*a*a-ma*ma)/(-1.0*a*ma);
-			x1=p.getX()-0.5*a-(1.0/3.0)*ma*cosalpha;
-			x2=p.getX()+0.5*a-(1.0/3.0)*ma*cosalpha;
-			x3=p.getX()+(2.0/3.0)*ma*cosalpha;
-			y1=p.getY()+(1.0/3.0)*ma*Math.sin(Math.acos(cosalpha));
-			y2=y1;
-			y3=p.getY()-(2.0/3.0)*ma*Math.sin(Math.acos(cosalpha));
-			g2.rotate(angle, p.getX(), p.getY());
-		}
-		g2.draw(new Line2D.Double(x1,y1,x2,y2));
-		g2.draw(new Line2D.Double(x2,y2,x3,y3));
-		g2.draw(new Line2D.Double(x3,y3,x1,y1));
+		r.setLocation(B.getX()-getLocation().getX(), B.getY()-getLocation().getY());
+		s.setLocation(C.getX()-getLocation().getX(), C.getY()-getLocation().getY());
+		g2.draw(new Line2D.Double(center, B));
+		g2.draw(new Line2D.Double(B, C));
+		g2.draw(new Line2D.Double(C, center));
 	}
 	void setDimension()
 	{
-		double ma=Math.sqrt(2*b*b+2*c*c-a*a)*0.5;
-		double mb=Math.sqrt(2*a*a+2*c*c-b*b)*0.5;
-		double mc=Math.sqrt(2*b*b+2*a*a-c*c)*0.5;
-		double length;
-		if(ma>=mb)
-		{
-			length=ma;
-		}
-		else
-		{
-			length=mb;
-		}
-		if(length<mc)
-		{
-			length=mc;
-		}
+		Point p=new Point();
 		Dimension d=new Dimension();
-		Point end=new Point();
-		d.setSize(2*length, 2*length);
-		end.setLocation(center.getX()-length, center.getY()-length);
-		setLocation(end);
-		setSize(d);
 	}
 }
