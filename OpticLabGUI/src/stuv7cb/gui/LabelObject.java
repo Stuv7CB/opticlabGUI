@@ -216,6 +216,7 @@ abstract class LabelObject extends JLabel
 									void addObject() 
 									{
 										((LabelSource)label).changeCenter(Double.valueOf(xcord.getText()), Double.valueOf(ycord.getText()));
+										((LabelSource)label).setDimension();
 										((LabelSource)label).paint(((LabelSource)label).getGraphics());
 										((LabelSource)label).updateUI();
 									}
