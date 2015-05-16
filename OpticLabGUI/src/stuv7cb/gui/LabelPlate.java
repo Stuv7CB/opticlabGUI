@@ -99,7 +99,7 @@ class LabelPlate extends LabelObject
 		Dimension d=new Dimension();
 		Point end=new Point();
 		d.setSize(Math.abs(length*Math.sin(Math.PI/2.0-angle))+Math.abs(span*Math.sin(angle))+10, Math.abs(length*Math.cos(Math.PI/2.0-angle))+Math.abs(span*Math.cos(angle))+10);
-		end.setLocation(center.getX()-d.getWidth()/2.0-5, center.getY()-d.getHeight()/2.0-5);
+		end.setLocation(center.getX()-d.getWidth()/2.0, center.getY()-d.getHeight()/2.0);
 		setSize(d);
 		setLocation(end);
 	}

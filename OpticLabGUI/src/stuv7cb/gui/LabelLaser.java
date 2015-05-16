@@ -33,7 +33,7 @@ class LabelLaser extends LabelObject
 	}
 	double getAngle()
 	{
-		return angle*180/Math.PI;
+		return angle;
 	}
 	Point getCenter()
 	{

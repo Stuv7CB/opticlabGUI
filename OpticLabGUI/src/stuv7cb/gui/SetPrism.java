@@ -3,7 +3,6 @@ package stuv7cb.gui;
 import java.awt.GridLayout;
 import java.awt.Point;
 
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class SetPrism extends SetPanel

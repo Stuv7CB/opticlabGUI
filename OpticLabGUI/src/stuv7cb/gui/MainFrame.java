@@ -67,9 +67,9 @@ public class MainFrame extends JFrame
 		mainPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		getContentPane().add(mainPanel);
 		/*
-		LabelLense ll1=new LabelLense(new Point(150,400),500,0,50);
-		LabelLense ll2=new LabelLense(new Point(225,400),500,0,1000);
-		LabelLense ll3=new LabelLense(new Point(200,400), 500, 0, -25);
+		LabelLense ll1=new LabelLense(new Point(50,100),100,0,50);
+		LabelLense ll2=new LabelLense(new Point(125,100),100,0,100);
+		LabelLense ll3=new LabelLense(new Point(200,100), 100, 0, -25);
 		LabelSource ls=new LabelSource(new Point(100,400));
 		LabelDisplay lw=new LabelDisplay(new Point(400,400), 500, 0);
 		mainPanel.add(ls);

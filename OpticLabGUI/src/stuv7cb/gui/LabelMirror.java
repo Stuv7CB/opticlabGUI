@@ -33,12 +33,12 @@ class LabelMirror extends LabelDisplay
 		g2.setPaint(Color.black);
 		Point p=new Point();
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
-		g2.rotate(angle, p.getX(), p.getY());
+		g2.rotate(-angle, p.getX(), p.getY());
 		g2.draw(new Line2D.Double(p.getX(), p.getY()-0.5*length, p.getX(), p.getY()+0.5*length));
 		for (int i=(int)(0.5*length); i>=(int)(-0.5*length); i-=4)
 		{
 			g2.draw(new Line2D.Double(p.getX(), p.getY()+i, p.getX()+5, p.getY()+i));
 		}
-		g2.rotate(-angle, p.getX(), p.getY());
+		g2.rotate(angle, p.getX(), p.getY());
 	}
 }

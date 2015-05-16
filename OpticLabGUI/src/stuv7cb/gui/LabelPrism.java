@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.geom.Line2D;
+import java.util.Arrays;
 
 class LabelPrism extends LabelObject
 {
@@ -28,6 +29,14 @@ class LabelPrism extends LabelObject
 		setDimension();
 	}
 	void changeCenter(double x, double y)
+	{
+		double dx=x-center.getX();
+		double dy=y-center.getY();
+		center.setLocation(x, y);
+		B.setLocation(B.getX()+dx, B.getY()+dy);
+		C.setLocation(C.getX()+dx, C.getY()+dy);
+	}
+	void changeA(double x, double y)
 	{
 		center.setLocation(x, y);
 	}
@@ -58,7 +67,7 @@ class LabelPrism extends LabelObject
 	}
 	String getParams() 
 	{
-		String line=""+center.getX()+" "+center.getX()+" "+B.getX()+" "+B.getY()+" "+C.getX()+" "+C.getY()+" "+n;
+		String line=""+center.getX()+" "+center.getY()+" "+B.getX()+" "+B.getY()+" "+C.getX()+" "+C.getY()+" "+n;
 		return line;
 	}
 	public void paintComponent(Graphics g)
@@ -73,13 +82,21 @@ class LabelPrism extends LabelObject
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
 		r.setLocation(B.getX()-getLocation().getX(), B.getY()-getLocation().getY());
 		s.setLocation(C.getX()-getLocation().getX(), C.getY()-getLocation().getY());
-		g2.draw(new Line2D.Double(center, B));
-		g2.draw(new Line2D.Double(B, C));
-		g2.draw(new Line2D.Double(C, center));
+		g2.draw(new Line2D.Double(p, r));
+		g2.draw(new Line2D.Double(r, s));
+		g2.draw(new Line2D.Double(s, p));
 	}
 	void setDimension()
 	{
 		Point p=new Point();
+		double[] arrX={center.getX(), B.getX(), C.getX()};
+		double[] arrY={center.getY(), B.getY(), C.getY()};
+		Arrays.sort(arrX);
+		Arrays.sort(arrY);
+		p.setLocation(arrX[0], arrY[0]);
 		Dimension d=new Dimension();
+		d.setSize(arrX[2]-arrX[0]+1, arrY[2]-arrY[0]+1);
+		setLocation(p);
+		setSize(d);
 	}
 }
