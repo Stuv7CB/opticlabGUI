@@ -2,7 +2,9 @@ package stuv7cb.gui;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.geom.Line2D;
 
 class LabelLaser extends LabelObject
 {
@@ -50,6 +52,12 @@ class LabelLaser extends LabelObject
 	{
 		super.paintComponent(g);
 		g.fillOval(3, 3, 6, 6);
+		Graphics2D g2=(Graphics2D)g;
+		Point p=new Point();
+		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
+		g2.rotate(-angle*Math.PI/180, p.getX(), p.getY());
+		g2.draw(new Line2D.Double(p.getX(), p.getY(), p.getX()+5, p.getY()));
+		g2.rotate(angle*Math.PI/180, p.getX(), p.getY());
 	}
 	void setDimension()
 	{
