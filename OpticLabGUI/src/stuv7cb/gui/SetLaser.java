@@ -3,6 +3,8 @@ package stuv7cb.gui;
 import java.awt.GridLayout;
 import java.awt.Point;
 
+import javax.swing.JLabel;
+
 class SetLaser extends SetPanel {
 
 	/**
@@ -18,9 +20,12 @@ class SetLaser extends SetPanel {
 	@Override
 	void addFields() 
 	{
-		setLayout(new GridLayout(3,1));
+		setLayout(new GridLayout(6,1));
+		add(new JLabel("Лазер"));
+		add(new JLabel("Координаты"));
 		add(xcord);
 		add(ycord);
+		add(new JLabel("Угол"));
 		add(angle);
 	}
 

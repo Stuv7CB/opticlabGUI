@@ -3,6 +3,7 @@ package stuv7cb.gui;
 import java.awt.GridLayout;
 import java.awt.Point;
 
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 class SetEllepticMirror extends SetPanel
@@ -22,11 +23,16 @@ class SetEllepticMirror extends SetPanel
 	@Override
 	void addFields() 
 	{
-		setLayout(new GridLayout(5,1));
+		setLayout(new GridLayout(10,1));
+		add(new JLabel("Эллиптическое зеркало"));
+		add(new JLabel("Координаты"));
 		add(xcord);
 		add(ycord);
+		add(new JLabel("Угол"));
 		add(angle);
+		add(new JLabel("Большая полуось"));
 		add(a);
+		add(new JLabel("Малая полуось"));
 		add(b);
 	}
 

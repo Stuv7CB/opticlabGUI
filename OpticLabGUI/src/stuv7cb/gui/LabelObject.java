@@ -173,11 +173,16 @@ abstract class LabelObject extends JLabel
 										length.setText(""+((LabelLense)label).getLength());
 										angle.setText(""+((LabelLense)label).getAngle());
 										f.setText(""+((LabelLense)label).getFocus());
-										setLayout(new GridLayout(5,1));
+										setLayout(new GridLayout(10,1));
+										add(new JLabel("Линза"));
+										add(new JLabel("Координаты"));
 										add(xcord);
 										add(ycord);
+										add(new JLabel("Длина"));
 										add(length);
+										add(new JLabel("Угол"));
 										add(angle);
+										add(new JLabel("Фокус"));
 										add(f);
 									}
 									void addObject() 
@@ -209,7 +214,9 @@ abstract class LabelObject extends JLabel
 									{
 										xcord.setText(""+label.getCenter().getX());
 										ycord.setText(""+label.getCenter().getY());
-										setLayout(new GridLayout(2,1));
+										setLayout(new GridLayout(4,1));
+										add(new JLabel("Линза"));
+										add(new JLabel("Координаты"));
 										add(xcord);
 										add(ycord);
 									}
@@ -242,10 +249,14 @@ abstract class LabelObject extends JLabel
 										ycord.setText(""+label.getCenter().getY());
 										length.setText(""+((LabelDisplay)label).getLength());
 										angle.setText(""+((LabelDisplay)label).getAngle());
-										setLayout(new GridLayout(4,1));
+										setLayout(new GridLayout(8,1));
+										add(new JLabel("Экран"));
+										add(new JLabel("Координаты"));
 										add(xcord);
 										add(ycord);
+										add(new JLabel("Длина"));
 										add(length);
+										add(new JLabel("Угол"));
 										add(angle);
 									}
 									void addObject()
@@ -278,10 +289,14 @@ abstract class LabelObject extends JLabel
 										ycord.setText(""+label.getCenter().getY());
 										length.setText(""+((LabelDisplay)label).getLength());
 										angle.setText(""+((LabelDisplay)label).getAngle());
-										setLayout(new GridLayout(4,1));
+										setLayout(new GridLayout(8,1));
+										add(new JLabel("Зеркало"));
+										add(new JLabel("Координаты"));
 										add(xcord);
 										add(ycord);
+										add(new JLabel("Длина"));
 										add(length);
+										add(new JLabel("Угол"));
 										add(angle);
 									}
 									void addObject()
@@ -314,9 +329,12 @@ abstract class LabelObject extends JLabel
 										xcord.setText(""+label.getCenter().getX());
 										ycord.setText(""+label.getCenter().getY());
 										angle.setText(""+((LabelLaser)label).getAngle());
-										setLayout(new GridLayout(3,1));
+										setLayout(new GridLayout(6,1));
+										add(new JLabel("Лазер"));
+										add(new JLabel("Координаты"));
 										add(xcord);
 										add(ycord);
+										add(new JLabel("Угол"));
 										add(angle);
 									}
 									void addObject() 
@@ -351,12 +369,18 @@ abstract class LabelObject extends JLabel
 										length.setText(""+((LabelPlate)label).getLength());
 										width.setText(""+((LabelPlate)label).getSpan());
 										n.setText(""+((LabelPlate)label).getN());
-										setLayout(new GridLayout(6,1));
+										setLayout(new GridLayout(12,1));
+										add(new JLabel("Пластинка"));
+										add(new JLabel("Координаты"));
 										add(xcord);
 										add(ycord);
+										add(new JLabel("Длина"));
 										add(length);
+										add(new JLabel("Ширина"));
 										add(width);
+										add(new JLabel("Угол"));
 										add(angle);
+										add(new JLabel("Показатель преломления"));
 										add(n);
 									}
 									void addObject() 
@@ -394,13 +418,18 @@ abstract class LabelObject extends JLabel
 										x3.setText(""+((LabelPrism)label).getC().getX());
 										y3.setText(""+((LabelPrism)label).getC().getY());
 										n.setText(""+((LabelPrism)label).getN());
-										setLayout(new GridLayout(7,1));
+										setLayout(new GridLayout(12,1));
+										add(new JLabel("Призма"));
+										add(new JLabel("Координаты A"));
 										add(xcord);
 										add(ycord);
+										add(new JLabel("Координаты B"));
 										add(x2);
 										add(y2);
+										add(new JLabel("Координаты C"));
 										add(x3);
 										add(y3);
+										add(new JLabel("Показатель преломлени"));
 										add(n);
 									}
 									void addObject() 
@@ -435,11 +464,16 @@ abstract class LabelObject extends JLabel
 										angle.setText(""+((LabelSphereMirror)label).getStartAngle());
 										endAngle.setText(""+((LabelSphereMirror)label).getEndAngle());
 										r.setText(""+((LabelSphereMirror)label).getR());
-										setLayout(new GridLayout(5,1));
+										setLayout(new GridLayout(10,1));
+										add(new JLabel("Сферическое зеркало"));
+										add(new JLabel("Координаты"));
 										add(xcord);
 										add(ycord);
+										add(new JLabel("Угол начала"));
 										add(angle);
+										add(new JLabel("Угол конца"));
 										add(endAngle);
+										add(new JLabel("Радиус"));
 										add(r);
 									}
 									void addObject() 
@@ -477,14 +511,22 @@ abstract class LabelObject extends JLabel
 										length.setText(""+((LabelRealLense)label).getLength());
 										n.setText(""+((LabelRealLense)label).getN());
 										d.setText(""+((LabelRealLense)label).getD());
-										setLayout(new GridLayout(8,1));
+										setLayout(new GridLayout(16,1));
+										add(new JLabel("Толстая линза"));
+										add(new JLabel("Координаты"));
 										add(xcord);
 										add(ycord);
+										add(new JLabel("Радиус одной поверхности"));
 										add(R1);
+										add(new JLabel("Радиус второй поверхности"));
 										add(R2);
+										add(new JLabel("Угол"));
 										add(angle);
+										add(new JLabel("Показатель преломления"));
 										add(n);
+										add(new JLabel("Длина"));
 										add(length);
+										add(new JLabel("Толщина"));
 										add(d);
 									}
 									void addObject()
@@ -522,11 +564,16 @@ abstract class LabelObject extends JLabel
 										angle.setText(""+((LabelEllepticMirror)label).getAngle());
 										b.setText(""+((LabelEllepticMirror)label).getB());
 										a.setText(""+((LabelEllepticMirror)label).getA());
-										setLayout(new GridLayout(5,1));
+										setLayout(new GridLayout(10,1));
+										add(new JLabel("Эллиптическое зеркало"));
+										add(new JLabel("Координаты"));
 										add(xcord);
 										add(ycord);
+										add(new JLabel("Угол"));
 										add(angle);
+										add(new JLabel("Большая полуось"));
 										add(a);
+										add(new JLabel("Малая полуось"));
 										add(b);
 									}
 									void addObject() 

@@ -3,6 +3,7 @@ package stuv7cb.gui;
 import java.awt.GridLayout;
 import java.awt.Point;
 
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 class SetSphereMirror extends SetPanel
@@ -22,11 +23,16 @@ class SetSphereMirror extends SetPanel
 	@Override
 	void addFields() 
 	{
-		setLayout(new GridLayout(5,1));
+		setLayout(new GridLayout(10,1));
+		add(new JLabel("Сферическое зеркало"));
+		add(new JLabel("Координаты"));
 		add(xcord);
 		add(ycord);
+		add(new JLabel("Угол начала"));
 		add(angle);
+		add(new JLabel("Угол конца"));
 		add(endAngle);
+		add(new JLabel("Радиус"));
 		add(r);
 	}
 

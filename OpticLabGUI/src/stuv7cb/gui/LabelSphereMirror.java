@@ -72,7 +72,7 @@ class LabelSphereMirror extends LabelObject
 		g2.setPaint(Color.black);
 		Point p=new Point();
 		p.setLocation(center.getX()-getLocation().getX(), center.getY()-getLocation().getY());
-		g2.draw(new Arc2D.Double(0, 0, 2*r, 2*r, 90+180*startAngle/Math.PI, 90+180*(endAngle-startAngle)/Math.PI, Arc2D.OPEN));
+		g2.draw(new Arc2D.Double(0, 0, 2*r, 2*r, 90+180*startAngle/Math.PI, 180*(endAngle-startAngle)/Math.PI, Arc2D.OPEN));
 	}
 	void setDimension()
 	{

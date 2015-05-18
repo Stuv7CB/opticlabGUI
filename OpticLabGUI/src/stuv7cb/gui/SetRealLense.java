@@ -3,6 +3,7 @@ package stuv7cb.gui;
 import java.awt.GridLayout;
 import java.awt.Point;
 
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -24,14 +25,22 @@ class SetRealLense extends SetPanel
 	@Override
 	void addFields() 
 	{
-		setLayout(new GridLayout(8,1));
+		setLayout(new GridLayout(16,1));
+		add(new JLabel("Толстая линза"));
+		add(new JLabel("Координаты"));
 		add(xcord);
 		add(ycord);
+		add(new JLabel("Радиус одной поверхности"));
 		add(R1);
+		add(new JLabel("Радиус второй поверхности"));
 		add(R2);
+		add(new JLabel("Угол"));
 		add(angle);
+		add(new JLabel("Показатель преломления"));
 		add(n);
+		add(new JLabel("Длина"));
 		add(length);
+		add(new JLabel("Толщина"));
 		add(d);
 	}
 	void addObject() 

@@ -3,6 +3,7 @@ package stuv7cb.gui;
 import java.awt.GridLayout;
 import java.awt.Point;
 
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class SetPrism extends SetPanel
@@ -23,13 +24,18 @@ public class SetPrism extends SetPanel
 
 	void addFields()
 	{
-		setLayout(new GridLayout(7,1));
+		setLayout(new GridLayout(12,1));
+		add(new JLabel("Призма"));
+		add(new JLabel("Координаты A"));
 		add(xcord);
 		add(ycord);
+		add(new JLabel("Координаты B"));
 		add(x2);
 		add(y2);
+		add(new JLabel("Координаты C"));
 		add(x3);
 		add(y3);
+		add(new JLabel("Показатель преломлени"));
 		add(n);
 	}
 

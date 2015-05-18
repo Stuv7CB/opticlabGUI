@@ -3,6 +3,7 @@ package stuv7cb.gui;
 import java.awt.GridLayout;
 import java.awt.Point;
 
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 class SetDisplay extends SetPanel
@@ -20,10 +21,14 @@ class SetDisplay extends SetPanel
 	@Override
 	void addFields()
 	{
-		setLayout(new GridLayout(4,1));
+		setLayout(new GridLayout(8,1));
+		add(new JLabel("Экран"));
+		add(new JLabel("Координаты"));
 		add(xcord);
 		add(ycord);
+		add(new JLabel("Длина"));
 		add(length);
+		add(new JLabel("Угол"));
 		add(angle);
 	}
 	@Override

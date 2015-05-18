@@ -3,6 +3,8 @@ package stuv7cb.gui;
 import java.awt.GridLayout;
 import java.awt.Point;
 
+import javax.swing.JLabel;
+
 class SetSource extends SetPanel {
 
 	/**
@@ -18,7 +20,9 @@ class SetSource extends SetPanel {
 	@Override
 	void addFields() 
 	{
-		setLayout(new GridLayout(2,1));
+		setLayout(new GridLayout(4,1));
+		add(new JLabel("Линза"));
+		add(new JLabel("Координаты"));
 		add(xcord);
 		add(ycord);
 	}

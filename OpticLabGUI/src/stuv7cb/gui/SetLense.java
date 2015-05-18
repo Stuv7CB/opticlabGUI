@@ -3,6 +3,7 @@ package stuv7cb.gui;
 import java.awt.GridLayout;
 import java.awt.Point;
 
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 class SetLense extends SetPanel 
@@ -20,11 +21,16 @@ class SetLense extends SetPanel
 	@Override
 	void addFields() 
 	{
-		setLayout(new GridLayout(5,1));
+		setLayout(new GridLayout(10,1));
+		add(new JLabel("Линза"));
+		add(new JLabel("Координаты"));
 		add(xcord);
 		add(ycord);
+		add(new JLabel("Длина"));
 		add(length);
+		add(new JLabel("Угол"));
 		add(angle);
+		add(new JLabel("Фокус"));
 		add(f);
 	}
 	void addObject() 
