@@ -215,7 +215,7 @@ abstract class LabelObject extends JLabel
 										xcord.setText(""+label.getCenter().getX());
 										ycord.setText(""+label.getCenter().getY());
 										setLayout(new GridLayout(4,1));
-										add(new JLabel("Линза"));
+										add(new JLabel("Источник"));
 										add(new JLabel("Координаты"));
 										add(xcord);
 										add(ycord);
