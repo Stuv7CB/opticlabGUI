@@ -57,6 +57,7 @@ class MainPanel extends JPanel
 		{
 			int i=0;
 			array.add(new Line2D.Double(params.get(i++),params.get(i++),params.get(i++),params.get(i++)));
+			updateUI();
 		}
 	}
 	public void paintComponent(Graphics g)
