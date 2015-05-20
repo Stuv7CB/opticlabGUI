@@ -144,5 +144,4 @@ class LabelLense extends LabelObject
             while (deg1 < 0 || deg1 > 360);
             return deg1;
     }
-
 }

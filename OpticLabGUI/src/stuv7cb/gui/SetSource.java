@@ -21,7 +21,7 @@ class SetSource extends SetPanel {
 	void addFields() 
 	{
 		setLayout(new GridLayout(4,1));
-		add(new JLabel("Линза"));
+		add(new JLabel("Источник"));
 		add(new JLabel("Координаты"));
 		add(xcord);
 		add(ycord);
