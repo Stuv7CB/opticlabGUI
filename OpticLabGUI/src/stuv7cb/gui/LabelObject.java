@@ -507,7 +507,7 @@ abstract class LabelObject extends JLabel
 										ycord.setText(""+label.getCenter().getY());
 										angle.setText(""+((LabelRealLense)label).getAngle());
 										R1.setText(""+((LabelRealLense)label).getR1());
-										R2.setText(""+((LabelRealLense)label).getR2());
+										R2.setText(""+(((LabelRealLense)label).getR2()));
 										length.setText(""+((LabelRealLense)label).getLength());
 										n.setText(""+((LabelRealLense)label).getN());
 										d.setText(""+((LabelRealLense)label).getD());

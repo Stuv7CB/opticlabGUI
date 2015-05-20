@@ -29,7 +29,7 @@ class LabelLense extends LabelObject
 		center=p;
 		ID=2;
 		length=l;
-		angle=a;
+		angle=deg360(180*a/Math.PI);
 		focus=f;
 		setDimension();
 	}
@@ -78,7 +78,7 @@ class LabelLense extends LabelObject
 	}
 	void changeAngle(double a)
 	{
-		angle=a*Math.PI/180;
+		angle=deg360(a*180/Math.PI)*Math.PI/180;
 	}
 	String getParams()
 	{
@@ -135,4 +135,14 @@ class LabelLense extends LabelObject
 	{
 		focus=f;
 	}
+    double deg360(double deg1)
+    {
+            do {
+                    if (deg1 < 0)           deg1    += 360;
+                    if (deg1 >360)          deg1    -= 360;
+            }
+            while (deg1 < 0 || deg1 > 360);
+            return deg1;
+    }
+
 }

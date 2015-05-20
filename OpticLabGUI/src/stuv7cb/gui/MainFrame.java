@@ -265,7 +265,7 @@ public class MainFrame extends JFrame
 								{
 									Point p=new Point();
 									p.setLocation(params.get(i++),params.get(i++));
-									LabelRealLense label=new LabelRealLense(p, params.get(i++), params.get(i++), params.get(i++)*Math.PI/180, params.get(i++), params.get(i++), params.get(i++));
+									LabelRealLense label=new LabelRealLense(p, params.get(i++), (-params.get(i++)), params.get(i++)*Math.PI/180, params.get(i++), params.get(i++), params.get(i++));
 									label.addMouseControl();
 									mainPaneladd(label);
 									label.addPopup();
