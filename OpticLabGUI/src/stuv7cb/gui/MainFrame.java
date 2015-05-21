@@ -361,7 +361,7 @@ public class MainFrame extends JFrame
 		final SelectionLabel[] selectionLabel = new SelectionLabel[10];
 		panelSelection.setLayout(null);
 		SelectionLabel.parent=this;
-		for(int i=0;i<10;i++)
+		for(int i=0;i<9;i++)
 		{
 			selectionLabel[i]=new SelectionLabel(i);
 			selectionLabel[i].addMouseListener(selectionLabel[i].new MyMouseListener());
