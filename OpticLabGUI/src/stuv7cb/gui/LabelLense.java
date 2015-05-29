@@ -29,7 +29,7 @@ class LabelLense extends LabelObject
 		center=p;
 		ID=2;
 		length=l;
-		angle=deg360(180*a/Math.PI);
+		angle=deg360(180*a/Math.PI)*Math.PI/180;
 		focus=f;
 		setDimension();
 	}
